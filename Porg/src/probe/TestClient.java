@@ -19,7 +19,7 @@ public class TestClient {
 	}
 	
 	public void ausgabe(){
-		while(!Nachrichten.isEmpty())
+		while(!Nachrichten.isEmpty()){
 			Nachricht m = Nachrichten.poll();
 			
 				switch (m.getTyp()){
