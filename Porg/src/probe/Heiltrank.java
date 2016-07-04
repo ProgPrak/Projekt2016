@@ -9,7 +9,6 @@ public class Heiltrank extends Spielelement{
 			this.wirkung = wirkung;
 			this.posx=x;
 			this.posy=y;
-			aufgenommen = false;
 		}
 		
 		//Heilwirkung des Tranks zurückgeben

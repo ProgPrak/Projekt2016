@@ -4,50 +4,50 @@ import java.io.IOException;
 
 public class Level {
 
-	public static int levelID;
-	public static int [][] levelInhalt;
+	public static int ID;
+	public static int [][] Inhalt;
 
 	public Level(int id, int [][]level) throws IOException {
-		 levelID = id;
-		 levelInhalt = level;
+		 ID = id;
+		 Inhalt = level;
 	 }
 	
 	//kein Setter für die Level-ID benötigt, da diese nicht mehr verändert werden soll
 	
 	//getter-Methode für die Level-ID
-	public static int getLevelID(){
-		return levelID;
+	public static int getID(){
+		return ID;
 	}
 	
 	//setter-Methode, um bestimmte Felder im Level zu verändern
-	public static void setLevelInhalt(int x, int y, int inhalt){
-		levelInhalt[x][y] = inhalt;
+	public static void setInhalt(int x, int y, int inhalt){
+		Inhalt[x][y] = inhalt;
 	}
 	
 	//Hilfsmethode, später wieder löschen, Array voller 0en füllen
 	public static void setInhaltNull(){
-		for(int i = 0; i<levelInhalt.length;i++){
-			for (int j  = 0;j<levelInhalt[0].length;j++){
-				levelInhalt[j][i]=0;
+		for(int i = 0; i<Inhalt.length;i++){
+			for (int j  = 0;j<Inhalt[0].length;j++){
+				Inhalt[j][i]=0;
 			}
 		}
 	}
 	
 	//getter-Methode, um das gesamte Level auszulesen
 	public static int [][] getKomplettesLevel(){
-		return levelInhalt;
+		return Inhalt;
 	}
 	
 	//getter-Methode, um ein bestimmtes Feld auszulesen
-	public static int getBestimmtenLevelInhalt(int x, int y){
-		return levelInhalt[x][y];
+	public static int getBestimmtenInhalt(int x, int y){
+		return Inhalt[x][y];
 	}
 	
 	//Methode um Level auf der Konsole auszugeben
 	public void ausgabe(){
-		for(int i=0;i<levelInhalt.length;i++){
-			for(int j = 0;j<levelInhalt[0].length;j++){
-				System.out.print(levelInhalt[j][i]);
+		for(int i=0;i<Inhalt.length;i++){
+			for(int j = 0;j<Inhalt[0].length;j++){
+				System.out.print(Inhalt[j][i]);
 			}
 			System.out.println();
 		}
@@ -55,11 +55,11 @@ public class Level {
 	
 	//Länge des Arrays in x-Richtung bestimmen
 	public int getLaengeX(){
-		return levelInhalt.length;
+		return Inhalt.length;
 	}
 	
 	//Länge des Arrays in y-Richtung bestimmen
 	public int getLaengeY(){
-		return levelInhalt[0].length;
+		return Inhalt[0].length;
 	}
 }

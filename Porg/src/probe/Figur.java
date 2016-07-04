@@ -2,16 +2,15 @@ package probe;
 
 import java.awt.Image;
 
-//Monster und Spieler sind Figuren
+//Oberklasse f�r Monster und Spieler
 public class Figur {
 
 	//Attribute
 	int ID;
-	int posx,posy;
 	int Gesundheit;
 	int MaxGesundheit;
 	int Schaden;
-	//private Image Bild;
+	int posx,posy;
 	
 	//Getter und Setter
 	public void setPos(int x,int y){
@@ -54,10 +53,6 @@ public class Figur {
 		this.ID=i;
 	}
 	
-	//public Image getBild(){
-	//	return Bild;
-	//}
-	
 	//Bewegung einer Figur
 	public void hoch(){
 		posy--;
@@ -76,3 +71,4 @@ public class Figur {
 	}
 	
 }
+// ich war hier
