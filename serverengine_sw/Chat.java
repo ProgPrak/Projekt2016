@@ -1,4 +1,4 @@
-package Spielweltverwaltung;
+package serverengine_sw;
 
 public class Chat {
 	static int anzahlNachrichten;

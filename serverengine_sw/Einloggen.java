@@ -1,4 +1,4 @@
-package Spielweltverwaltung;
+package serverengine_sw;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

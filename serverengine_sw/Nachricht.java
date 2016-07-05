@@ -1,4 +1,4 @@
-package Spielweltverwaltung;
+package serverengine_sw;
 
 public class Nachricht {
 	int typ;
