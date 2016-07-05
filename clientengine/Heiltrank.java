@@ -1,4 +1,4 @@
-package probe;
+package clientengine;
 
 //Hat Attribute und Methoden des Spielelements
 public class Heiltrank extends Spielelement{

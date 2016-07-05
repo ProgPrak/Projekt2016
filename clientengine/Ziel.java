@@ -1,4 +1,4 @@
-package probe;
+package clientengine;
 
 //Das Ziel, welches zur Bewltigung des Levels erreicht werden muss
 public class Ziel {

@@ -1,4 +1,4 @@
-package probe;
+package clientengine;
 
 public class Nachricht {
 	int typ;
