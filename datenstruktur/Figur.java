@@ -6,11 +6,11 @@ import java.awt.Image;
 public class Figur {
 
 	//Attribute
-	int Gesundheit;
-	int MaxGesundheit;
-	int Schaden;
-	int posx,posy;
-	Image Bild;
+	private int Gesundheit;
+	private int MaxGesundheit;
+	private int Schaden;
+	private int posx,posy;
+	private Image Bild;
 	
 	//Getter und Setter
 	public void setPos(int x,int y){

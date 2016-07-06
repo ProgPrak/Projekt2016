@@ -10,28 +10,27 @@ import javax.imageio.ImageIO;
 public class Spieler extends Figur {
 
 	private String name;
-	
 
 	private boolean hatSchluessel;
-	private int anzahlHeiltraenke;
+	private int anzHeiltraenke;
 	private int heiltrankWirkung;
 	
 	private GUImain fenster;
 
 
-	public boolean onRand;
+	public boolean AmRand;
 	
 	public Spieler(GUImain fenster){
 		this.fenster = fenster;
 		
 		setAnzahlHeiltraenke(0);
 		setPos(0,0);		
-		setHealth(100);
-		setMaxHealth(getHealth());
+		setGesundheit(100);
+		setMaxGesundheit(getGesundheit());
 		setName("Hindi Bones");
 		
 		try {
-			setImage(ImageIO.read(new File("img/spieler.png")));
+			setBild(ImageIO.read(new File("img/spieler.png")));
 		} catch (IOException e) {
 			System.err.print("Das Bild konnte nicht geladen werden.");
 		}
@@ -46,21 +45,21 @@ public class Spieler extends Figur {
 	}	
 	
 	public int benutzeHeiltrank(){
-		setAnzahlHeiltraenke(anzahlHeiltraenke-1);
+		setAnzahlHeiltraenke(anzHeiltraenke-1);
 		return heiltrankWirkung;
 	}
 	
 	public void nimmHeiltrank(Heiltrank t){
-		anzahlHeiltraenke++;
+		anzHeiltraenke++;
 		heiltrankWirkung = t.getWirkung();
 	}
 	
 	public void setAnzahlHeiltraenke(int anzahl){
-		if (anzahl >= 0) anzahlHeiltraenke = anzahl;
+		if (anzahl >= 0) anzHeiltraenke = anzahl;
 	}
 	
 	public int getAnzahlHeiltraenke(){
-		return anzahlHeiltraenke;
+		return anzHeiltraenke;
 	}
 	
 	public boolean hatSchluessel(){
