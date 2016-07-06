@@ -278,28 +278,28 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		{
 			spieler.hoch();	
 			spielFeld.repaint();	
-			testClient.sende(new Nachricht(1,spieler.getPosX(),spieler.getPosY()));
+			testClient.sende(new Nachricht(1,spieler.getPosX()/32,spieler.getPosY()/32));
 
 		}
 		if(((e.getY()-55+spielFeld.getstarty()) > spieler.getPosY()+32) && (e.getX()<=spieler.getPosX()+35) && (e.getX()>=spieler.getPosX()) && spielFeld.getMap()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] != 0 && spielFeld.getMonsterMap()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] == 0)
 		{
 			spieler.runter();
 			spielFeld.repaint();
-			testClient.sende(new Nachricht(1,spieler.getPosX(),spieler.getPosY()));
+			testClient.sende(new Nachricht(1,spieler.getPosX()/32,spieler.getPosY()/32));
 
 		}
 		if((e.getX() > spieler.getPosX()+32) && ((e.getY()-55+spielFeld.getstarty()) > spieler.getPosY()) && ((e.getY()-55+spielFeld.getstarty()) < spieler.getPosY()+32) && spielFeld.getMap()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] != 0 && spielFeld.getMonsterMap()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] ==0)
 		{
 			spieler.rechts();
 			spielFeld.repaint();
-			testClient.sende(new Nachricht(1,spieler.getPosX(),spieler.getPosY()));
+			testClient.sende(new Nachricht(1,spieler.getPosX()/32,spieler.getPosY()/32));
 
 		}
 		if((e.getX() < spieler.getPosX()) && ((e.getY()-55+spielFeld.getstarty()) > spieler.getPosY()) && ((e.getY()-55+spielFeld.getstarty()) < spieler.getPosY()+32) && spielFeld.getMap()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] != 0 && spielFeld.getMonsterMap()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] ==0)
 		{
 			spieler.links();
 			spielFeld.repaint();
-			testClient.sende(new Nachricht(1,spieler.getPosX(),spieler.getPosY()));
+			testClient.sende(new Nachricht(1,spieler.getPosX()/32,spieler.getPosY()/32));
 
 		}
 	}
@@ -341,7 +341,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 			{
 				spieler.hoch();	
 				spielFeld.repaint();	
-				testClient.sende(new Nachricht(1,spieler.getPosX(),spieler.getPosY()));
+				testClient.sende(new Nachricht(1,spieler.getPosX()/32,spieler.getPosY()/32));
 			}
 		}
 		
@@ -351,7 +351,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 			{
 				spieler.runter();
 				spielFeld.repaint();				
-				testClient.sende(new Nachricht(1,spieler.getPosX(),spieler.getPosY()));
+				testClient.sende(new Nachricht(1,spieler.getPosX()/32,spieler.getPosY()/32));
 			}
 		}
 		
@@ -361,7 +361,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 			{
 				spieler.rechts();
 				spielFeld.repaint();				
-				testClient.sende(new Nachricht(1,spieler.getPosX(),spieler.getPosY()));
+				testClient.sende(new Nachricht(1,spieler.getPosX()/32,spieler.getPosY()/32));
 			}
 		}
 		
@@ -371,7 +371,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 			{
 				spieler.links();
 				spielFeld.repaint();				
-				testClient.sende(new Nachricht(1,spieler.getPosX(),spieler.getPosY()));
+				testClient.sende(new Nachricht(1,spieler.getPosX()/32,spieler.getPosY()/32));
 			}
 		}
 	}
