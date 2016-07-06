@@ -110,7 +110,7 @@ public class SpielFeld extends JPanel
 		 Toolkit tk = Toolkit.getDefaultToolkit();
 		 this.bildx = bildx;
 		 this.bildy = bildy;
-	    //  image = tk.getImage("logo.jpg");
+	    //  image = tk.getBild("logo.jpg");
 		  
 		 boden = tk.getImage("img/boden.png");
 		 wand = tk.getImage("img/wand.png");
@@ -134,7 +134,7 @@ public class SpielFeld extends JPanel
 	    {
 	    	
 	    	super.paintComponent(g);
-	    	if(((fenster.spieler.getYPos()-448)/32) > 0)starty=(fenster.spieler.getYPos()-448)/32+1;
+	    	if(((fenster.spieler.getPosY()-448)/32) > 0)starty=(fenster.spieler.getPosY()-448)/32+1;
 	    	else
 	    		{
 	    			if(starty>1)starty-=1;
@@ -142,10 +142,10 @@ public class SpielFeld extends JPanel
 	    		}
 	    	maleMap(g, 20,20,bildx,bildy, dummyMap,monsterMap,trankMap,startx,starty);
 	    	
-	    	/*if(fenster.spieler.getYPos() >=480)
+	    	/*if(fenster.spieler.getPosY() >=480)
 	    	{
-	    		this.setLocation(0, (fenster.spieler.getYPos()-480)/32);
-	    		maley = fenster.spieler.getYPos()/32+2;
+	    		this.setLocation(0, (fenster.spieler.getPosY()-480)/32);
+	    		maley = fenster.spieler.getPosY()/32+2;
 	    	}*/
 	     
 	    }
@@ -186,7 +186,7 @@ public class SpielFeld extends JPanel
 	    					fenster.spieler.setPos(i*bildX, (j-starty)*bildY);
 	    					startpunktSpieler = true;
 	    				}
-	    				//g.drawImage(fenster.spieler.getImage(), i*bildX, j*bildY, this);
+	    				//g.drawImage(fenster.spieler.getBild(), i*bildX, j*bildY, this);
 	    				
 	    			}
 	    			if(monsterMap[i][j] == 1){
@@ -213,11 +213,11 @@ public class SpielFeld extends JPanel
 	    		{
 	    			for(int l = 0; l<20; l++)
 	    			{
-	    				if(k*32 < fenster.spieler.getXPos()-32*2 || k*32 > fenster.spieler.getXPos()+32*2 || l*32 <fenster.spieler.getYPos()-32*2-getstarty() || l*32 > fenster.spieler.getYPos()+32*2-getstarty()) g.fillRect(k*32, l*32, 32, 32);
+	    				if(k*32 < fenster.spieler.getPosX()-32*2 || k*32 > fenster.spieler.getPosX()+32*2 || l*32 <fenster.spieler.getPosY()-32*2-getstarty() || l*32 > fenster.spieler.getPosY()+32*2-getstarty()) g.fillRect(k*32, l*32, 32, 32);
 	    			}
 	    		}
 	    	}
-	    	g.drawImage(fenster.spieler.getImage(), fenster.spieler.getXPos(), fenster.spieler.getYPos()-(starty*32),bildX,bildY, this);
+	    	g.drawImage(fenster.spieler.getBild(), fenster.spieler.getPosX(), fenster.spieler.getPosY()-(starty*32),bildX,bildY, this);
 			
 	    	
 	    	
