@@ -2,15 +2,8 @@ package GUI;
 
 import clientengine.Level;
 
+// Nachrichten werden zwischen Client und Server gesendet
 public class Nachricht {
-	int typ;
-	int spielerID;
-	int xKoo;
-	int yKoo;
-	boolean aufgenommen;
-	String fehlermeldung, benutzername, passwort;
-	Level leveldaten;
-	
 	/* 
 	 * Typen von Messages:
 	 * type 0 : Login-Message
@@ -21,20 +14,24 @@ public class Nachricht {
 	 * type 5 : Fehler (z.B. falsche Login-Daten, inkonsistente Bewegungen, usw)
 	 * type 6 : Level geladen
 	 */
+	int typ;
 	
-	// Nachricht, die gesendet wird, wenn sich der Spieler bewegt, die Koordinaten sind die neuen Koordinaten
-	public Nachricht(int t, int p,int x, int y){
+	// Eine Nachricht kann Koordinaten Enthalten
+	int xKoo;										
+	int yKoo;
+	
+	// LevelNachricht enthaelt Benutzername und Passwort; Fehlermeldung, falls Verbindung abbricht oder aehnlich
+	String fehlermeldung, benutzername, passwort;
+	
+	//Level kann per Nachricht geschickt werden
+	Level leveldaten;
+	
+	// Nachricht, die gesendet wird, wenn sich der Spieler bewegt (type 1), die Koordinaten sind die neuen Koordinaten ¨
+	// oder, wenn ein Trank (type 2) oder der Schluessel (type 4) aufgenommen wurden
+	public Nachricht(int t,int x, int y){
 		this.typ=t;
-		this.spielerID=p;
 		this.xKoo=x;
 		this.yKoo=y;
-	}
-	
-	// Nachricht, die gesendet wird, wenn ein Trank (type 2) oder der Schluessel (type 4) aufgenommen wurden
-	public Nachricht(int t,int a, int b){
-		this.typ=t;
-		this.xKoo=a;
-		this.yKoo=b;
 	}
 	
 	// Nachricht, die ein Level enthält (wird am Anfang vom Server empfangen)
@@ -61,16 +58,17 @@ public class Nachricht {
 		this.typ = t;
 	}
 	
-	
+	//Typ der Nachricht muss beim Empfangen geladen werden
 	public int getTyp(){
 		return this.typ;
 	}
-	public int getID(){
-		return this.spielerID;
-	}
+	
+	//Enthalten x-Koordinate muss bei Standort geladen werden
 	public int getxKoo(){
 		return this.xKoo;
 	}
+	
+	//Enthalten y-Koordinate muss bei Standort geladen werden
 	public int getyKoo(){
 		return this.yKoo;
 	}
