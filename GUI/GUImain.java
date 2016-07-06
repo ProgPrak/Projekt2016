@@ -334,7 +334,49 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 
 			}
 		}
+		if(e.getKeyCode() == KeyEvent.VK_LEFT)
+		{
+			if(spielFeld.getMap()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] != 0 && spielFeld.getMonsterMap()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] !=0)
+			{	
+			spielFeld.loescheMonster((spieler.getPosX()/32)-1, ((spieler.getPosY()/32)));
+			mm.aktualisiereMap(spielFeld.getMap());
+			mm.repaint();
+			}
+		}
+		if(e.getKeyCode() == KeyEvent.VK_RIGHT)
+		{
+			if(spielFeld.getMap()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] != 0 && spielFeld.getMonsterMap()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] !=0)
+			{
+				spielFeld.loescheMonster((spieler.getPosX()/32)+1, ((spieler.getPosY()/32)));
+				mm.aktualisiereMap(spielFeld.getMap());
+				mm.repaint();
+			}
+		}
+		if(e.getKeyCode() == KeyEvent.VK_DOWN)
+		{
+			
+			if(spielFeld.getMap()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] != 0 && spielFeld.getMonsterMap()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] !=0)
+			{
+				spielFeld.loescheMonster(spieler.getPosX()/32, ((spieler.getPosY()/32)+1));
+				mm.aktualisiereMap(spielFeld.getMap());
+				mm.repaint();
+			}
+		}
+		if(e.getKeyCode() == KeyEvent.VK_UP)
+		{
+			if(spielFeld.getMap()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] != 0 && spielFeld.getMonsterMap()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] !=0)	
+			{
+				spielFeld.loescheMonster(spieler.getPosX()/32, ((spieler.getPosY()/32)-1));
+				mm.aktualisiereMap(spielFeld.getMap());
+				mm.repaint();
+			}
+		}
 		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) 
+	{
 		if(e.getKeyCode() == KeyEvent.VK_UP)
 		{
 			if(spielFeld.getMap()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] != 0 && spielFeld.getMonsterMap()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] == 0)	
@@ -374,48 +416,6 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 				spieler.links();
 				spielFeld.repaint();				
 				testClient.sende(new Nachricht(1,spieler.getPosX()/32,spieler.getPosY()/32));
-			}
-		}
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) 
-	{
-		if(e.getKeyCode() == KeyEvent.VK_LEFT)
-		{
-			if(spielFeld.getMap()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] != 0 && spielFeld.getMonsterMap()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] !=0)
-			{	
-			spielFeld.loescheMonster((spieler.getPosX()/32)-1, ((spieler.getPosY()/32)));
-			mm.aktualisiereMap(spielFeld.getMap());
-			mm.repaint();
-			}
-		}
-		if(e.getKeyCode() == KeyEvent.VK_RIGHT)
-		{
-			if(spielFeld.getMap()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] != 0 && spielFeld.getMonsterMap()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] !=0)
-			{
-				spielFeld.loescheMonster((spieler.getPosX()/32)+1, ((spieler.getPosY()/32)));
-				mm.aktualisiereMap(spielFeld.getMap());
-				mm.repaint();
-			}
-		}
-		if(e.getKeyCode() == KeyEvent.VK_DOWN)
-		{
-			
-			if(spielFeld.getMap()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] != 0 && spielFeld.getMonsterMap()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] !=0)
-			{
-				spielFeld.loescheMonster(spieler.getPosX()/32, ((spieler.getPosY()/32)+1));
-				mm.aktualisiereMap(spielFeld.getMap());
-				mm.repaint();
-			}
-		}
-		if(e.getKeyCode() == KeyEvent.VK_UP)
-		{
-			if(spielFeld.getMap()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] != 0 && spielFeld.getMonsterMap()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] !=0)	
-			{
-				spielFeld.loescheMonster(spieler.getPosX()/32, ((spieler.getPosY()/32)-1));
-				mm.aktualisiereMap(spielFeld.getMap());
-				mm.repaint();
 			}
 		}
 		
