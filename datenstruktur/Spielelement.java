@@ -1,5 +1,7 @@
 package datenstruktur;
 
+import java.awt.Image;
+
 public class Spielelement {
 
 	//Es gibt zwei Spielelemente, Key und Heiltrank, die über ähnliche Methoden verfügen.
@@ -7,6 +9,7 @@ public class Spielelement {
 	
 	int posx,posy;
 	boolean aufgenommen;
+	Image Bild;
 	
 	//Position eines Spielelements wird geändert
 	public void setPos(int a, int b){
@@ -32,5 +35,10 @@ public class Spielelement {
 	//Spielelemente erhalten den Status aufgenommen, wenn sie aufgenommen wurden
 	public void aufnehmen(){
 		this.aufgenommen=true;
+	}
+	
+	//Bild des Spielelements wird zurückgegeben
+	public Image getBild(){
+		return this.Bild;
 	}
 }

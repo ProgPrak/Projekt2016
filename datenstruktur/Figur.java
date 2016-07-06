@@ -2,7 +2,7 @@ package datenstruktur;
 
 import java.awt.Image;
 
-//Oberklasse fï¿½r Monster und Spieler
+//Oberklasse fuer Monster und Spieler
 public class Figur {
 
 	//Attribute
@@ -45,23 +45,7 @@ public class Figur {
 		return Schaden;
 	}
 	
-	
-	/*public void hoch(){
-		posy--;
-	}
-	
-	public void runter(){
-		posy++;
-	}
-	
-	public void rechts(){
-		posx++;
-	}
-	
-	public void links(){
-		posx--;
-	}
-	*/
+	//Wichtig für die GUI um die Bilder von Monster und Spieler zu laden
 	public Image getBild(){
 		return Bild;
 	}
