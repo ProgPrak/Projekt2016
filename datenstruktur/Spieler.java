@@ -1,33 +1,27 @@
 package datenstruktur;
 
 import GUI.GUImain;
-
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
+
+//Spieler ist eine Unterklasse der Klasse Figur
 public class Spieler extends Figur {
 
-	private String name;
-
-	private boolean hatSchluessel;
-	private int anzHeiltraenke;
-	private int heiltrankWirkung;
+	private String name;			//Name des Spielers
+	private boolean hatSchluessel;	//Status, ob Schlüssel vorhanden ist
+	private int anzHeiltraenke;		//Anzahl der aufgenommenen Tränke
+	private int heiltrankWirkung;	//Wirkung des Heiltranks wird hier gespeichert
+	private GUImain fenster;		//Fenster in dem gespielt wird
 	
-	private GUImain fenster;
-
-
-	public boolean AmRand;
-	
+	//Konstruktor
 	public Spieler(GUImain fenster){
 		this.fenster = fenster;
-		
 		setAnzahlHeiltraenke(0);
 		setPos(0,0);		
 		setGesundheit(100);
 		setMaxGesundheit(getGesundheit());
 		setName("Hindi Bones");
-		
 		try {
 			setBild(ImageIO.read(new File("img/spieler.png")));
 		} catch (IOException e) {
@@ -35,40 +29,49 @@ public class Spieler extends Figur {
 		}
 	}
 
+	//Schlüssel wird aufgenommen
 	public void nimmSchluessel(){
 		hatSchluessel = true;
 	}
 	
+	//Schlüssel ist nicht mehr aufgenommen
 	public void entferneSchluessel(){
 		hatSchluessel = false;
 	}	
 	
+	//Heiltrank wird benutzt
 	public int benutzeHeiltrank(){
 		setAnzahlHeiltraenke(anzHeiltraenke-1);
 		return heiltrankWirkung;
 	}
 	
+	//Heiltrank wird aufgenommen
 	public void nimmHeiltrank(Heiltrank t){
 		anzHeiltraenke++;
 		heiltrankWirkung = t.getWirkung();
 	}
 	
+	//Anzahl der Heiltraenke wird veraendert
 	public void setAnzahlHeiltraenke(int anzahl){
 		if (anzahl >= 0) anzHeiltraenke = anzahl;
 	}
 	
+	//Anzahl der Heiltraenke wird zurueckgegeben
 	public int getAnzahlHeiltraenke(){
 		return anzHeiltraenke;
 	}
 	
+	//Status, ob der Schlüssel bereits aufgenommen wurde
 	public boolean hatSchluessel(){
 		return hatSchluessel;
 	}
-		
+	
+	//Name des Spielers wird zurückgegeben
 	public String getName(){
 		return name;
 	}
 	
+	//Name des Spielers wird geaendert
 	public void setName(String name){
 		this.name = name;
 	}
