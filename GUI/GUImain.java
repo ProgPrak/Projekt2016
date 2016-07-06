@@ -235,7 +235,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		// TODO Auto-generated method stub
 		
 	}
-
+// maus drücken
 	@Override
 	public void mousePressed(MouseEvent e) {
 		if((e.getY()-55+spielFeld.getstarty() < spieler.getPosY()) && (e.getX()<=spieler.getPosX()+35) && (e.getX()>=spieler.getPosX()) && spielFeld.getMap()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] != 0 && spielFeld.getMonsterMap()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] != 0)
