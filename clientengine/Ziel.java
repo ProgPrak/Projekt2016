@@ -3,7 +3,7 @@ package clientengine;
 //Das Ziel, welches zur Bewltigung des Levels erreicht werden muss
 public class Ziel {
 	int posx,posy;
-	//testest
+
 	public Ziel(int x, int y){
 		this.posx=x;
 		this.posy=y;
