@@ -277,22 +277,30 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		if(((e.getY()-55+spielFeld.getstarty()) < spieler.getPosY()) && (e.getX()<=spieler.getPosX()+35) && (e.getX()>=spieler.getPosX()) && spielFeld.getMap()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] != 0 && spielFeld.getMonsterMap()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] == 0)
 		{
 			spieler.hoch();	
-			spielFeld.repaint();			
+			spielFeld.repaint();	
+			testClient.sende(new Nachricht(1,spieler.getPosX(),spieler.getPosY()));
+
 		}
 		if(((e.getY()-55+spielFeld.getstarty()) > spieler.getPosY()+32) && (e.getX()<=spieler.getPosX()+35) && (e.getX()>=spieler.getPosX()) && spielFeld.getMap()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] != 0 && spielFeld.getMonsterMap()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] == 0)
 		{
 			spieler.runter();
 			spielFeld.repaint();
+			testClient.sende(new Nachricht(1,spieler.getPosX(),spieler.getPosY()));
+
 		}
 		if((e.getX() > spieler.getPosX()+32) && ((e.getY()-55+spielFeld.getstarty()) > spieler.getPosY()) && ((e.getY()-55+spielFeld.getstarty()) < spieler.getPosY()+32) && spielFeld.getMap()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] != 0 && spielFeld.getMonsterMap()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] ==0)
 		{
 			spieler.rechts();
 			spielFeld.repaint();
+			testClient.sende(new Nachricht(1,spieler.getPosX(),spieler.getPosY()));
+
 		}
 		if((e.getX() < spieler.getPosX()) && ((e.getY()-55+spielFeld.getstarty()) > spieler.getPosY()) && ((e.getY()-55+spielFeld.getstarty()) < spieler.getPosY()+32) && spielFeld.getMap()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] != 0 && spielFeld.getMonsterMap()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] ==0)
 		{
 			spieler.links();
 			spielFeld.repaint();
+			testClient.sende(new Nachricht(1,spieler.getPosX(),spieler.getPosY()));
+
 		}
 	}
 
