@@ -71,4 +71,3 @@ public class Figur {
 	}
 	
 }
-// ich war hier

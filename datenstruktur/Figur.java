@@ -2,65 +2,75 @@ package datenstruktur;
 
 import java.awt.Image;
 
-public abstract class Figur {
+//Oberklasse f�r Monster und Spieler
+public class Figur {
 
-	private int xPos, yPos;
-	private Image image;
+	//Attribute
+	int Gesundheit;
+	int MaxGesundheit;
+	int Schaden;
+	int posx,posy;
+	Image Bild;
 	
-	private int health;
-	private int schaden;
-	
-	private int maxHealth;
-			
-	public int getMaxHealth(){
-		return maxHealth;
+	//Getter und Setter
+	public void setPos(int x,int y){
+		this.posx=x;
+		this.posy=y;
 	}
 	
-	public void setMaxHealth(int maxHealth){
-		this.maxHealth = maxHealth;
+	public int getPosY(){
+		return posy;
 	}
 	
-	public void setSchaden(int schaden){
-		this.schaden = schaden;
+	public int getPosX(){
+		return posx;
+	}
+	
+	public int getGesundheit(){
+		return Gesundheit;
+	}
+	
+	public void setGesundheit(int g){
+		this.Gesundheit=g;
+		if(Gesundheit>MaxGesundheit){
+			Gesundheit=MaxGesundheit;
+		}
+	}
+	
+	public void setMaxGesundheit(int g){
+		this.MaxGesundheit=g;
 	}
 	
 	public int getSchaden(){
-		return schaden;
+		return Schaden;
 	}
 	
-	public void changeHealth(int change){
-		health = Math.min(health + change, getMaxHealth());
+	//Bewegung einer Figur
+	public void hoch(){
+		posy--;
 	}
 	
-	public void setHealth(int health){
-		this.health = health;
+	public void runter(){
+		posy++;
 	}
 	
-	public int getHealth(){
-		return health;
+	public void rechts(){
+		posx++;
 	}
 	
-	public Image getImage(){
-		return image;
+	public void links(){
+		posx--;
 	}
 	
-	public void setImage(Image img){
-		image = img;
+	public Image getBild(){
+		return Bild;
 	}
 	
-	public void setPos(int xPos, int yPos){
-		this.xPos = xPos;
-		this.yPos = yPos;
+	public void setBild(Image img){
+		Bild = img;
 	}
 	
-	public int getYPos(){
-		return yPos;
-	}
-	
-	public int getXPos(){
-		return xPos;
-	}
-	
+	/*	
 	public void hoch(){
 		yPos = yPos -32;
 	}
@@ -75,5 +85,5 @@ public abstract class Figur {
 	
 	public void rechts(){
 		xPos = xPos + 32;
-	}
+	}*/
 }

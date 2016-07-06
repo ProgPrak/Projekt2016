@@ -1,5 +1,5 @@
 package clientengine;
-
+//Alessio
 //Der Spieler ist eine Unterklasse der Klasse Figur
 public class Spieler extends Figur {
 	
