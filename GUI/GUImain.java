@@ -378,12 +378,13 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		{
 			if(spielFeld.getMap()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] != 0 && spielFeld.getMonsterMap()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] ==0)
 			{
-				spielFeld.loescheMonster((spieler.getPosX()/32)-1, ((spieler.getPosY()/32)));
-				mm.aktualisiereMap(spielFeld.getMap());
-				mm.repaint();
+				
 				spieler.links();
 				spielFeld.repaint();				
 				testClient.sende(new Nachricht(1,spieler.getPosX()/32,spieler.getPosY()/32));
+				spielFeld.loescheMonster((spieler.getPosX()/32)-1, ((spieler.getPosY()/32)));
+				mm.aktualisiereMap(spielFeld.getMap());
+				mm.repaint();
 			}
 		}
 	}
