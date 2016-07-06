@@ -74,8 +74,4 @@ public class Spieler extends Figur {
 	public void setName(String name){
 		this.name = name;
 	}
-	
-	
-
-	
 }
