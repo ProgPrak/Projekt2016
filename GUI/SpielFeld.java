@@ -1,6 +1,9 @@
 package GUI;
 
 import javax.swing.*;
+
+import datenstruktur.Schluessel;
+
 import java.awt.*;
 
 @SuppressWarnings("serial")
@@ -11,6 +14,9 @@ public class SpielFeld extends JPanel
 	  GUImain fenster;
 	  private Image boden,wand,tuerZu,tuerOffen,schluessel,heiltrank, monster1, monster2;
 	  private boolean startpunktSpieler = false;
+	  
+	  private Schluessel schluessel1;
+	  
 	  int[][] trankMap={
 			  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 			  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -121,6 +127,8 @@ public class SpielFeld extends JPanel
 		 monster1 = tk.getImage("img/drache1.png");
 		 monster2 = tk.getImage("img/drache2.png");
 		 this.requestFocus();
+		 
+		 schluessel1 = new Schluessel(3*32, 3*32);
 	     
 	  }
 	  
@@ -189,12 +197,14 @@ public class SpielFeld extends JPanel
 	    				//g.drawImage(fenster.spieler.getBild(), i*bildX, j*bildY, this);
 	    				
 	    			}
-	    			if(monsterMap[i][j] == 1){
+	    			if(monsterMap[i][j] == 1)
+	    			{
 	    				g.drawImage(monster1, i*bildX, (j-starty)*bildY,bildX,bildY, this);
 	    				g.setColor(Color.GREEN);
 	    				g.fillRect(i*bildX, (j-starty)*bildY, bildX, bildY/6);
 	    			}
-	    			if(monsterMap[i][j] == 2){
+	    			if(monsterMap[i][j] == 2)
+	    			{
 	    				g.drawImage(monster2, i*bildX, (j-starty)*bildY,bildX,bildY, this);
 	    				g.setColor(Color.GREEN);
 	    				g.fillRect(i*bildX, (j-starty)*bildY, bildX, bildY/6);
@@ -205,6 +215,9 @@ public class SpielFeld extends JPanel
 	    			}
 	    		}
 	    	}
+	    	
+	    	g.drawImage(schluessel1.getBild(), schluessel1.getPosX(), schluessel1.getPosY(), this);
+	    	
 	    	
 	    	g.setColor(Color.BLACK);	
 	    	if(fenster.menu.getbKarte() == false)
