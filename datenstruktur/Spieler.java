@@ -8,9 +8,9 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 //Jabo
 public class Spieler extends Figur {
-// Kommentar1234
+
 	private String name;
-//ghsdf
+
 	private boolean hatSchluessel;
 	private int anzHeiltraenke;
 	private int heiltrankWirkung;

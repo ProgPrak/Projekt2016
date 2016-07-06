@@ -1,4 +1,6 @@
-package clientengine;
+package datenstruktur;
+
+import clientengine.Level;
 
 public class Nachricht {
 	int typ;

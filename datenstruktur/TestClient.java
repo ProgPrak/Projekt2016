@@ -1,7 +1,9 @@
-package clientengine;
+package datenstruktur;
 
 import java.util.LinkedList;
 import java.util.Queue;
+
+import clientengine.Level;
 
 public class TestClient {
 

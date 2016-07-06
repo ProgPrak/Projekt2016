@@ -4,6 +4,9 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
+import datenstruktur.Nachricht;
+import datenstruktur.TestClient;
+
 public class Spiel {
 
 	Level level, LevelServerseite;
