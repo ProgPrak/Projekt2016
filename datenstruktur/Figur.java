@@ -45,8 +45,8 @@ public class Figur {
 		return Schaden;
 	}
 	
-	//Bewegung einer Figur
-	public void hoch(){
+	
+	/*public void hoch(){
 		posy--;
 	}
 	
@@ -61,7 +61,7 @@ public class Figur {
 	public void links(){
 		posx--;
 	}
-	
+	*/
 	public Image getBild(){
 		return Bild;
 	}
@@ -70,20 +70,20 @@ public class Figur {
 		Bild = img;
 	}
 	
-	/*	
+	//Bewegung einer Figur	
 	public void hoch(){
-		yPos = yPos -32;
+		posy = posy -32;
 	}
 	
 	public void runter(){
-		yPos = yPos +32;
+		posy = posy +32;
 	}
 	
 	public void links(){
-		xPos = xPos - 32;
+		posx = posx - 32;
 	}
 	
 	public void rechts(){
-		xPos = xPos + 32;
-	}*/
+		posx = posx + 32;
+	}
 }

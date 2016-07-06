@@ -334,6 +334,46 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 
 			}
 		}
+		
+		if(e.getKeyCode() == KeyEvent.VK_UP)
+		{
+			if(spielFeld.getMap()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] != 0 && spielFeld.getMonsterMap()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] == 0)	
+			{
+				spieler.hoch();	
+				spielFeld.repaint();	
+				testClient.sende(new Nachricht(1,spieler.getPosX(),spieler.getPosY()));
+			}
+		}
+		
+		if(e.getKeyCode() == KeyEvent.VK_DOWN)
+		{
+			if(spielFeld.getMap()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] != 0 && spielFeld.getMonsterMap()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] == 0)
+			{
+				spieler.runter();
+				spielFeld.repaint();				
+				testClient.sende(new Nachricht(1,spieler.getPosX(),spieler.getPosY()));
+			}
+		}
+		
+		if(e.getKeyCode() == KeyEvent.VK_RIGHT)
+		{
+			if(spielFeld.getMap()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] != 0 && spielFeld.getMonsterMap()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] ==0)
+			{
+				spieler.rechts();
+				spielFeld.repaint();				
+				testClient.sende(new Nachricht(1,spieler.getPosX(),spieler.getPosY()));
+			}
+		}
+		
+		if(e.getKeyCode() == KeyEvent.VK_LEFT)
+		{
+			if(spielFeld.getMap()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] != 0 && spielFeld.getMonsterMap()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] ==0)
+			{
+				spieler.links();
+				spielFeld.repaint();				
+				testClient.sende(new Nachricht(1,spieler.getPosX(),spieler.getPosY()));
+			}
+		}
 	}
 
 	@Override
