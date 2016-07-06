@@ -12,24 +12,28 @@ public class Figur {
 	private int posx,posy;
 	private Image Bild;
 	
-	//Getter und Setter
+	//Neue Position der Figur wird gesetzt
 	public void setPos(int x,int y){
 		this.posx=x;
 		this.posy=y;
 	}
 	
+	//Y-Koordinate der Figur wird geladen
 	public int getPosY(){
 		return posy;
 	}
 	
+	// X-Koordinate der Figur wird geladen
 	public int getPosX(){
 		return posx;
 	}
 	
+	//Gesundheit der Figur wird geladen
 	public int getGesundheit(){
 		return Gesundheit;
 	}
 	
+	//Gesundheit der Figur wird gesetzt, kann aber nicht groesser als die Maximale Gesundheit sein
 	public void setGesundheit(int g){
 		this.Gesundheit=g;
 		if(Gesundheit>MaxGesundheit){
@@ -37,36 +41,42 @@ public class Figur {
 		}
 	}
 	
+	//Maximale Gesundheit der Figur wird gesetzt
 	public void setMaxGesundheit(int g){
 		this.MaxGesundheit=g;
 	}
 	
+	//Schaden der Figur wird geladen
 	public int getSchaden(){
 		return Schaden;
 	}
 	
-	//Wichtig für die GUI um die Bilder von Monster und Spieler zu laden
+	//Bild der Figur wird geladen
 	public Image getBild(){
 		return Bild;
 	}
 	
-	public void setBild(Image img){
-		Bild = img;
+	//Bild der Figur setzen
+	public void setBild(Image b){
+		this.Bild=b;
 	}
 	
-	//Bewegung einer Figur	
+	//Bewegung einer Figur nach oben, Summand 32 wichtig für das Zeichnen	
 	public void hoch(){
 		posy = posy -32;
 	}
 	
+	//Bewegung einer Figur nach unten, Summand 32 wichtig für das Zeichnen
 	public void runter(){
 		posy = posy +32;
 	}
 	
+	//Bewegung einer Figur nach links, Summand 32 wichtig für das Zeichnen
 	public void links(){
 		posx = posx - 32;
 	}
 	
+	//Bewegung einer Figur nach rechts, Summand 32 wichtig für das Zeichnen
 	public void rechts(){
 		posx = posx + 32;
 	}

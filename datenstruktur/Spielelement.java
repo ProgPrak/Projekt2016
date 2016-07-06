@@ -7,9 +7,10 @@ public class Spielelement {
 	//Es gibt zwei Spielelemente, Key und Heiltrank, die über ähnliche Methoden verfügen.
 	//Diesen Fakt kann man über Vererbung elegant ausnutzen
 	
-	int posx,posy;
-	boolean aufgenommen;
-	Image Bild;
+	//Attribute
+	int posx,posy;			//Position des Spielelements
+	boolean aufgenommen;	//Status, ob das Element aufgenommen wurde
+	Image Bild;				//Bild des Spielelements
 	
 	//Position eines Spielelements wird geändert
 	public void setPos(int a, int b){
