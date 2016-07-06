@@ -4,7 +4,7 @@ import java.awt.Image;
 
 //Oberklasse f�r Monster und Spieler
 public class Figur {
-
+// testtest
 	//Attribute
 	private int Gesundheit;
 	private int MaxGesundheit;
