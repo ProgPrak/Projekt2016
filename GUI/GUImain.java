@@ -39,6 +39,8 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 	public boolean highscoreAngezeigt = false;
 	public int breite,laenge;
 	
+	private TestClient testClient;
+	
 	public GUImain()
 	{/*
 		this.startZeit = System.currentTimeMillis();
@@ -82,6 +84,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		this.spieler = new Spieler(this);
 		this.sn = new Systemnachrichten();
 		this.mm = new Minimap(this);
+		this.testClient = new TestClient(1);
 		mm.setPreferredSize(new Dimension(100, 500));
 		pf.setPreferredSize(new Dimension(500,50));
 		menu.setPreferredSize(new Dimension(width, 25));
