@@ -383,27 +383,40 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 	{
 		if(e.getKeyCode() == KeyEvent.VK_LEFT)
 		{
+			if(spielFeld.getMap()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] != 0 && spielFeld.getMonsterMap()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] !=1)
+			{	
 			spielFeld.loescheMonster((spieler.getPosX()/32)-1, ((spieler.getPosY()/32)));
 			mm.aktualisiereMap(spielFeld.getMap());
-			mm.repaint();	
+			mm.repaint();
+			}
 		}
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT)
 		{
-			spielFeld.loescheMonster((spieler.getPosX()/32)+1, ((spieler.getPosY()/32)));
-			mm.aktualisiereMap(spielFeld.getMap());
-			mm.repaint();
+			if(spielFeld.getMap()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] != 0 && spielFeld.getMonsterMap()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] !=1)
+			{
+				spielFeld.loescheMonster((spieler.getPosX()/32)+1, ((spieler.getPosY()/32)));
+				mm.aktualisiereMap(spielFeld.getMap());
+				mm.repaint();
+			}
 		}
 		if(e.getKeyCode() == KeyEvent.VK_DOWN)
 		{
-			spielFeld.loescheMonster(spieler.getPosX()/32, ((spieler.getPosY()/32)+1));
-			mm.aktualisiereMap(spielFeld.getMap());
-			mm.repaint();
+			
+			if(spielFeld.getMap()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] != 0 && spielFeld.getMonsterMap()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] !=1)
+			{
+				spielFeld.loescheMonster(spieler.getPosX()/32, ((spieler.getPosY()/32)+1));
+				mm.aktualisiereMap(spielFeld.getMap());
+				mm.repaint();
+			}
 		}
 		if(e.getKeyCode() == KeyEvent.VK_UP)
 		{
-			spielFeld.loescheMonster(spieler.getPosX()/32, ((spieler.getPosY()/32)-1));
-			mm.aktualisiereMap(spielFeld.getMap());
-			mm.repaint();
+			if(spielFeld.getMap()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] != 0 && spielFeld.getMonsterMap()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] !=1)	
+			{
+				spielFeld.loescheMonster(spieler.getPosX()/32, ((spieler.getPosY()/32)-1));
+				mm.aktualisiereMap(spielFeld.getMap());
+				mm.repaint();
+			}
 		}
 		
 	}
