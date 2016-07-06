@@ -238,29 +238,29 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		if((e.getY()-55+spielFeld.getstarty() < spieler.getYPos()) && (e.getX()<=spieler.getXPos()+35) && (e.getX()>=spieler.getXPos()) && spielFeld.getMap()[spieler.getXPos()/32][(spieler.getYPos()/32)-1] != 0 && spielFeld.getMonsterMap()[spieler.getXPos()/32][(spieler.getYPos()/32)-1] != 0)
+		if((e.getY()-55+spielFeld.getstarty() < spieler.getPosY()) && (e.getX()<=spieler.getPosX()+35) && (e.getX()>=spieler.getPosX()) && spielFeld.getMap()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] != 0 && spielFeld.getMonsterMap()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] != 0)
 		{
-			spielFeld.loescheMonster(spieler.getXPos()/32, ((spieler.getYPos()/32)-1));
+			spielFeld.loescheMonster(spieler.getPosX()/32, ((spieler.getPosY()/32)-1));
 			mm.aktualisiereMap(spielFeld.getMap());
 			mm.repaint();
 		}
-		if((e.getY()-55+spielFeld.getstarty() > spieler.getYPos()+32) && (e.getX()<=spieler.getXPos()+35) && (e.getX()>=spieler.getXPos()) && spielFeld.getMap()[spieler.getXPos()/32][(spieler.getYPos()/32)+1] != 0 && spielFeld.getMonsterMap()[spieler.getXPos()/32][(spieler.getYPos()/32)+1] !=0)
+		if((e.getY()-55+spielFeld.getstarty() > spieler.getPosY()+32) && (e.getX()<=spieler.getPosX()+35) && (e.getX()>=spieler.getPosX()) && spielFeld.getMap()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] != 0 && spielFeld.getMonsterMap()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] !=0)
 		{
-			spielFeld.loescheMonster(spieler.getXPos()/32, ((spieler.getYPos()/32)+1));
-			mm.aktualisiereMap(spielFeld.getMap());
-			mm.repaint();
-
-		}
-		if((e.getX() > spieler.getXPos()+32) && (e.getY()-55+spielFeld.getstarty() > spieler.getYPos()) && (e.getY()-55+spielFeld.getstarty() < spieler.getYPos()+32) && spielFeld.getMap()[(spieler.getXPos()/32)+1][(spieler.getYPos()/32)] != 0 && spielFeld.getMonsterMap()[(spieler.getXPos()/32)+1][(spieler.getYPos()/32)] !=0)
-		{
-			spielFeld.loescheMonster((spieler.getXPos()/32)+1, ((spieler.getYPos()/32)));
+			spielFeld.loescheMonster(spieler.getPosX()/32, ((spieler.getPosY()/32)+1));
 			mm.aktualisiereMap(spielFeld.getMap());
 			mm.repaint();
 
 		}
-		if((e.getX() < spieler.getXPos()) && (e.getY()-55+spielFeld.getstarty() > spieler.getYPos()) && (e.getY()-55+spielFeld.getstarty() < spieler.getYPos()+32) && spielFeld.getMap()[(spieler.getXPos()/32)-1][(spieler.getYPos()/32)] != 0 && spielFeld.getMonsterMap()[(spieler.getXPos()/32)-1][(spieler.getYPos()/32)] != 0)
+		if((e.getX() > spieler.getPosX()+32) && (e.getY()-55+spielFeld.getstarty() > spieler.getPosY()) && (e.getY()-55+spielFeld.getstarty() < spieler.getPosY()+32) && spielFeld.getMap()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] != 0 && spielFeld.getMonsterMap()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] !=0)
 		{
-			spielFeld.loescheMonster((spieler.getXPos()/32)-1, ((spieler.getYPos()/32)));
+			spielFeld.loescheMonster((spieler.getPosX()/32)+1, ((spieler.getPosY()/32)));
+			mm.aktualisiereMap(spielFeld.getMap());
+			mm.repaint();
+
+		}
+		if((e.getX() < spieler.getPosX()) && (e.getY()-55+spielFeld.getstarty() > spieler.getPosY()) && (e.getY()-55+spielFeld.getstarty() < spieler.getPosY()+32) && spielFeld.getMap()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] != 0 && spielFeld.getMonsterMap()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] != 0)
+		{
+			spielFeld.loescheMonster((spieler.getPosX()/32)-1, ((spieler.getPosY()/32)));
 			mm.aktualisiereMap(spielFeld.getMap());
 			mm.repaint();
 
@@ -271,22 +271,22 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 	public void mouseReleased(MouseEvent e) 
 	{
 
-		if(((e.getY()-55+spielFeld.getstarty()) < spieler.getYPos()) && (e.getX()<=spieler.getXPos()+35) && (e.getX()>=spieler.getXPos()) && spielFeld.getMap()[spieler.getXPos()/32][(spieler.getYPos()/32)-1] != 0 && spielFeld.getMonsterMap()[spieler.getXPos()/32][(spieler.getYPos()/32)-1] == 0)
+		if(((e.getY()-55+spielFeld.getstarty()) < spieler.getPosY()) && (e.getX()<=spieler.getPosX()+35) && (e.getX()>=spieler.getPosX()) && spielFeld.getMap()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] != 0 && spielFeld.getMonsterMap()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] == 0)
 		{
 			spieler.hoch();	
 			spielFeld.repaint();			
 		}
-		if(((e.getY()-55+spielFeld.getstarty()) > spieler.getYPos()+32) && (e.getX()<=spieler.getXPos()+35) && (e.getX()>=spieler.getXPos()) && spielFeld.getMap()[spieler.getXPos()/32][(spieler.getYPos()/32)+1] != 0 && spielFeld.getMonsterMap()[spieler.getXPos()/32][(spieler.getYPos()/32)+1] == 0)
+		if(((e.getY()-55+spielFeld.getstarty()) > spieler.getPosY()+32) && (e.getX()<=spieler.getPosX()+35) && (e.getX()>=spieler.getPosX()) && spielFeld.getMap()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] != 0 && spielFeld.getMonsterMap()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] == 0)
 		{
 			spieler.runter();
 			spielFeld.repaint();
 		}
-		if((e.getX() > spieler.getXPos()+32) && ((e.getY()-55+spielFeld.getstarty()) > spieler.getYPos()) && ((e.getY()-55+spielFeld.getstarty()) < spieler.getYPos()+32) && spielFeld.getMap()[(spieler.getXPos()/32)+1][(spieler.getYPos()/32)] != 0 && spielFeld.getMonsterMap()[(spieler.getXPos()/32)+1][(spieler.getYPos()/32)] ==0)
+		if((e.getX() > spieler.getPosX()+32) && ((e.getY()-55+spielFeld.getstarty()) > spieler.getPosY()) && ((e.getY()-55+spielFeld.getstarty()) < spieler.getPosY()+32) && spielFeld.getMap()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] != 0 && spielFeld.getMonsterMap()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] ==0)
 		{
 			spieler.rechts();
 			spielFeld.repaint();
 		}
-		if((e.getX() < spieler.getXPos()) && ((e.getY()-55+spielFeld.getstarty()) > spieler.getYPos()) && ((e.getY()-55+spielFeld.getstarty()) < spieler.getYPos()+32) && spielFeld.getMap()[(spieler.getXPos()/32)-1][(spieler.getYPos()/32)] != 0 && spielFeld.getMonsterMap()[(spieler.getXPos()/32)-1][(spieler.getYPos()/32)] ==0)
+		if((e.getX() < spieler.getPosX()) && ((e.getY()-55+spielFeld.getstarty()) > spieler.getPosY()) && ((e.getY()-55+spielFeld.getstarty()) < spieler.getPosY()+32) && spielFeld.getMap()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] != 0 && spielFeld.getMonsterMap()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] ==0)
 		{
 			spieler.links();
 			spielFeld.repaint();
@@ -302,12 +302,12 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		
 		if(e.getKeyCode() == KeyEvent.VK_SPACE)
 		{
-			if(spielFeld.getTrankMap()[spieler.getXPos()/32][spieler.getYPos()/32] == 1)
+			if(spielFeld.getTrankMap()[spieler.getPosX()/32][spieler.getPosY()/32] == 1)
 			{
 				sn.nachricht("Trank aufgenommen!");
 				sn.repaint();
 				spieler.setAnzahlHeiltraenke(spieler.getAnzahlHeiltraenke()+1);
-				spielFeld.loescheTrank(spieler.getXPos()/32, spieler.getYPos()/32);
+				spielFeld.loescheTrank(spieler.getPosX()/32, spieler.getPosY()/32);
 				mm.aktualisiereTrank(spielFeld.getTrankMap());
 				mm.repaint();
 
