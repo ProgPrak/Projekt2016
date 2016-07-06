@@ -7,6 +7,10 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 //Jabo
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/ProgPrak/Projekt2016.git
 public class Spieler extends Figur {
 
 	private String name;
@@ -73,8 +77,4 @@ public class Spieler extends Figur {
 	public void setName(String name){
 		this.name = name;
 	}
-	
-	
-
-	
 }

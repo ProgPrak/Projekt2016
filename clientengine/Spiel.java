@@ -4,8 +4,8 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
-import datenstruktur.Nachricht;
-import datenstruktur.TestClient;
+import GUI.Nachricht;
+import GUI.TestClient;
 
 public class Spiel {
 

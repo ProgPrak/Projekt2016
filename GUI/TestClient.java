@@ -1,4 +1,4 @@
-package datenstruktur;
+package GUI;
 
 import java.util.LinkedList;
 import java.util.Queue;

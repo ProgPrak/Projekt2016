@@ -1,4 +1,4 @@
-package datenstruktur;
+package GUI;
 
 import clientengine.Level;
 
