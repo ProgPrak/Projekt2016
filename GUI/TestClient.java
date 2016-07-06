@@ -8,8 +8,8 @@ import clientengine.Level;
 
 public class TestClient {
 
-	int id;
-	Queue<Nachricht> Nachrichten = new LinkedList<Nachricht>();
+	int id;																	
+	Queue<Nachricht> Nachrichten = new LinkedList<Nachricht>();				
 	Queue<Nachricht> NachrichtenEmpfangen = new LinkedList<Nachricht>();
 	Level aktuellesLevel;
 	String benutzername, passwort;
