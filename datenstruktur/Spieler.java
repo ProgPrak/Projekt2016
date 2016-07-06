@@ -7,8 +7,9 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 //Jabo
+//dghasuifuisfhsuie
 public class Spieler extends Figur {
-// Kommentar
+
 	private String name;
 
 	private boolean hatSchluessel;
