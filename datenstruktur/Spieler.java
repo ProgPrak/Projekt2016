@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-//Jabo
 public class Spieler extends Figur {
 
 	private String name;
