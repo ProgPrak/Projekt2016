@@ -1,5 +1,7 @@
 package clientengine;
 
+import datenstruktur.Spielelement;
+
 //Hat Attribute und Methoden des Spielelements
 public class Heiltrank extends Spielelement{
 	private int wirkung;

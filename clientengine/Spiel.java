@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 
 import GUI.Nachricht;
 import GUI.TestClient;
+import datenstruktur.Schluessel;
 
 public class Spiel {
 
