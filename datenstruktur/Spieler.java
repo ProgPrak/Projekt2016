@@ -10,7 +10,7 @@ import javax.imageio.ImageIO;
 public class Spieler extends Figur {
 // Kommentar1234
 	private String name;
-//asdkjlas
+//ghsdf
 	private boolean hatSchluessel;
 	private int anzHeiltraenke;
 	private int heiltrankWirkung;
