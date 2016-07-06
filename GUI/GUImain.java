@@ -319,6 +319,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 				sn.repaint();
 				spieler.setAnzahlHeiltraenke(spieler.getAnzahlHeiltraenke()+1);
 				spielFeld.loescheTrank(spieler.getPosX()/32, spieler.getPosY()/32);
+				testClient.sende(new Nachricht(2,spieler.getPosX()/32, spieler.getPosY()/32));
 				mm.aktualisiereTrank(spielFeld.getTrankMap());
 				mm.repaint();
 
