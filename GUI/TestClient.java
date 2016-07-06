@@ -17,7 +17,8 @@ public class TestClient {
 	}
 	
 	public void sende(Nachricht m){
-		System.out.println(m);
+		Nachrichten.add(m);
+		ausgabe();
 	}
 	
 	public void ausgabe(){
