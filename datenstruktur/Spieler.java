@@ -6,12 +6,6 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-<<<<<<< HEAD
-//Jabo
-
-=======
-//Jabo
->>>>>>> branch 'master' of https://github.com/ProgPrak/Projekt2016.git
 public class Spieler extends Figur {
 
 	private String name;
