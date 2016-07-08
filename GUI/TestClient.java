@@ -128,8 +128,12 @@ public class TestClient
 	}
 		public void nextLevel(){
 			
+			if(levelnummer == 1)aktuellesLevel = level2;
+			if(levelnummer == 2)aktuellesLevel = level3;
+			if(levelnummer == 3)aktuellesLevel = level4;
+			if(levelnummer == 4)aktuellesLevel = level5;
 			levelnummer++;
-			aktuellesLevel = alleLevel.get(levelnummer);
+
 		}
 	
 	/*

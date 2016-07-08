@@ -100,6 +100,7 @@ public class SpielFeld extends JPanel
 	    			{
 	    				g.drawImage(boden, i*bildX, (j-starty)*bildY,bildX,bildY, this);
 	    				if(startpunktSpieler == false){
+	    					System.out.println(i*bildX+"  "+(j-starty)*bildY);
 	    					fenster.spieler.setPos(i*bildX, (j-starty)*bildY);
 	    					startpunktSpieler = true;
 	    				}

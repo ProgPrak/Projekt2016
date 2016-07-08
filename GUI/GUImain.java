@@ -344,6 +344,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 					spielFeld.aktualisiereArrayFlexibel(spieler.getPosX()/32, spieler.getPosY()/32-1,6);
 				}
 				spielFeld.repaint();
+				mm.repaint();
 				spieler.entferneSchluessel();
 			}
 		}
@@ -484,7 +485,6 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		testClient.nextLevel();
 		spielFeld.aktualisiereArray();
 		mm.aktualisiereKarte(spielFeld.getKarte());
-		
 		spielFeld.repaint();
 		mm.repaint();
 	}
