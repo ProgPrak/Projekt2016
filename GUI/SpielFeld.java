@@ -16,35 +16,8 @@ public class SpielFeld extends JPanel
 	  private Image boden,wand,tuerZu,tuerOffen,schluessel,heiltrank, monster1;
 	  private boolean startpunktSpieler = false;
 	  
-	  int[][] dummyMap={
-			  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-			  {0,0,1,5,1,1,0,1,1,1,0,0,0,0,0,1,1,1,0,0},
-			  {0,0,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,1,0,0},
-			  {0,0,0,1,1,1,1,1,1,1,0,0,0,0,0,5,0,1,0,0},
-			  {0,0,0,2,0,0,0,1,0,1,0,0,0,0,0,1,0,5,0,0},
-			  {0,0,0,1,1,1,0,1,1,1,0,0,0,0,0,1,0,1,0,0},
-			  {0,0,0,0,0,1,0,1,0,7,0,0,0,0,0,1,0,1,0,0},
-			  {0,1,1,1,1,1,0,1,1,1,1,1,0,0,0,1,0,1,0,0},
-			  {0,1,0,5,0,0,0,1,0,1,0,1,0,0,0,1,0,1,0,0},
-			  {0,1,1,1,1,1,0,1,1,1,1,1,1,1,0,1,0,1,0,0},
-			  {0,0,0,1,0,1,0,1,0,1,0,0,0,1,0,1,0,1,0,0},
-			  {0,1,1,1,0,1,1,1,1,1,0,0,0,1,0,1,0,5,0,0},
-			  {0,1,0,0,0,0,0,1,0,1,0,0,0,1,0,1,0,1,0,0},
-			  {0,1,0,0,0,0,0,1,0,1,1,1,1,1,1,1,0,1,0,0},
-			  {0,1,0,0,0,0,0,1,0,1,0,1,0,1,0,1,0,1,0,0},
-			  {0,1,1,1,1,1,1,4,1,2,0,1,0,1,1,1,1,1,0,0},
-			  {0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,1,0,1,0,0},
-			  {0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,1,0,1,0,0},
-			  {0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,6,0,0},
-			  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
-	  // 0 = Wand
-	  // 1 = Boden
-	  // 2 = Trank
-	  // 3 = tuerZu
-	  // 4 = Spieler
-	  // 5 = Monster
-	  // 6 = Tuer offen
-	  // 7 = Tuer zu
+	  int[][] aktuellesLevel;
+	  
 	  
 	  //Lädt Bilder aus Dateien
 	  public SpielFeld(GUImain fenster,int bildx,int bildy) 
@@ -53,7 +26,7 @@ public class SpielFeld extends JPanel
 		 Toolkit tk = Toolkit.getDefaultToolkit();
 		 this.bildx = bildx;
 		 this.bildy = bildy;
-		  
+		 aktuellesLevel = fenster.testClient.aktuellesLevel;
 		 boden = tk.getImage("img/boden.png");
 		 wand = tk.getImage("img/wand.png");
 		 tuerZu = tk.getImage("img/tuer.png");
@@ -69,7 +42,7 @@ public class SpielFeld extends JPanel
 	  
 	  public int[][] getKarte()
 	  {
-		  return dummyMap;
+		  return aktuellesLevel;
 	  }
 
 	  //Allgemeine "Paint" Methode, scrollen der Map ist eingebaut
@@ -84,12 +57,12 @@ public class SpielFeld extends JPanel
 	    			if(starty>1)starty-=1;
 	    			else starty=0;
 	    		}
-	    	maleMap(g, 20,20,bildx,bildy, dummyMap,startx,starty);
+	    	maleMap(g, 20,20,bildx,bildy, aktuellesLevel,startx,starty);
 	    		     
 	    }
 
 	    // Zeichnet die Komponenten auf das Panel, abhängig von Zahlen im Array
-	    public void maleMap(Graphics g, int maleX, int maleY, int bildX, int bildY,int[][] dummyMap, int startx, int starty) 
+	    public void maleMap(Graphics g, int maleX, int maleY, int bildX, int bildY,int[][] aktuellesLevel, int startx, int starty) 
 	    {
 	    	this.startx = startx;
 	    	this.starty = starty;
@@ -98,27 +71,27 @@ public class SpielFeld extends JPanel
 	    	{
 	    		for(int j = starty; j<maleY; j++)
 	    		{
-	    			if(dummyMap[i][j] != 0)
+	    			if(aktuellesLevel[i][j] != 0)
 	    			{
 	    				g.drawImage(boden, i*bildX, (j-starty)*bildY, bildX, bildY, this);
 	    			}
 	    			
-	    			if(dummyMap[i][j] == 0)
+	    			if(aktuellesLevel[i][j] == 0)
 	    			{
 	    				g.drawImage(wand, i*bildX, (j-starty)*bildY,bildX,bildY, this);
 	    			}
 	    			
-	    			if(dummyMap[i][j] == 2)
+	    			if(aktuellesLevel[i][j] == 2)
 	    			{
 	    				g.drawImage(heiltrank, i*bildX, (j-starty)*bildY,bildX,bildY, this);
 	    			}
 	    			
-	    			if(dummyMap[i][j] == 3)
+	    			if(aktuellesLevel[i][j] == 3)
 	    			{
 	    				g.drawImage(schluessel, i*bildX, (j-starty)*bildY,bildX,bildY, this);
 	    			}
 	    			
-	    			if(dummyMap[i][j] == 4 )
+	    			if(aktuellesLevel[i][j] == 4 )
 	    			{
 	    				g.drawImage(boden, i*bildX, (j-starty)*bildY,bildX,bildY, this);
 	    				if(startpunktSpieler == false){
@@ -128,22 +101,22 @@ public class SpielFeld extends JPanel
 	    				//g.drawImage(fenster.spieler.getBild(), i*bildX, j*bildY, this);
 	    				
 	    			}
-	    			if(dummyMap[i][j] == 6)
+	    			if(aktuellesLevel[i][j] == 6)
 	    			{
 	    				g.drawImage(tuerOffen, i*bildX, (j-starty)*bildY,bildX,bildY, this);
 	    			}
-	    			if(dummyMap[i][j] == 7)
+	    			if(aktuellesLevel[i][j] == 7)
 	    			{
 	    				g.drawImage(tuerZu, i*bildX, (j-starty)*bildY,bildX,bildY, this);
 	    			}
-	    			if(dummyMap[i][j] == 5)
+	    			if(aktuellesLevel[i][j] == 5)
 	    			{
 	    				g.drawImage(monster1, i*bildX, (j-starty)*bildY,bildX,bildY, this);
 	    				g.setColor(Color.GREEN);
 	    				g.fillRect(i*bildX, (j-starty)*bildY, bildX, bildY/6);
 	    			}
 	    			
-	    			if(dummyMap[i][j] == 2)
+	    			if(aktuellesLevel[i][j] == 2)
 	    			{
 	    				g.drawImage(heiltrank, i*bildX, (j-starty)*bildY,bildX,bildY, this);
 	    			}
@@ -170,12 +143,12 @@ public class SpielFeld extends JPanel
 
 	    public void loescheTrank(int i , int j)
 	    {
-	    	dummyMap[i][j] = 1;
+	    	aktuellesLevel[i][j] = 1;
 	    }
 	    
 	    public void loescheMonster(int i , int j)
 	    {
-	    	dummyMap[i][j] = 1;
+	    	aktuellesLevel[i][j] = 1;
 	    }
 	    
 	    public int getstarty()

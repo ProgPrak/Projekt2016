@@ -44,7 +44,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 	public int breite,laenge;
 	
 	//Test-Client zum übermitteln der Nachrichten
-	private TestClient testClient;
+	public TestClient testClient;
 	
 	public GUImain()
 	{
@@ -79,7 +79,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		this.sn = new Systemnachrichten();
 		sn.setLocation((int)tk.getScreenSize().getWidth()/2+500, (int)tk.getScreenSize().getHeight()/2-117);
 		this.mm = new Minimap(this);
-		this.testClient = new TestClient(1);
+		this.testClient = new TestClient(1,this);
 		mm.setPreferredSize(new Dimension(100, 500));
 		pf.setPreferredSize(new Dimension(500,235));
 		menu.setPreferredSize(new Dimension(width, 25));
@@ -279,7 +279,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		{
 			spieler.hoch();	
 			spielFeld.repaint();	
-			testClient.sende(new Nachricht(1,spieler.getPosX()/32,spieler.getPosY()/32));
+			testClient.aktualisiere(1);
 		}
 		
 		// Wird das Feld unter dem Spieler angeklickt, so bewegt sich der Spieler ein Feld nach unten, sofern dies möglich ist
@@ -288,7 +288,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		{
 			spieler.runter();
 			spielFeld.repaint();
-			testClient.sende(new Nachricht(1,spieler.getPosX()/32,spieler.getPosY()/32));
+			testClient.aktualisiere(1);
 		}
 		
 		// Wird das Feld rechts neben dem Spieler angeklickt, so bewegt sich der Spieler ein Feld nach rechts, sofern dies möglich ist
@@ -297,7 +297,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		{
 			spieler.rechts();
 			spielFeld.repaint();
-			testClient.sende(new Nachricht(1,spieler.getPosX()/32,spieler.getPosY()/32));
+			testClient.aktualisiere(1);
 		}
 		
 		// Wird das Feld links neben dem Spieler angeklickt, so bewegt sich der Spieler ein Feld nach links, sofern dies möglich ist
@@ -306,7 +306,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		{
 			spieler.links();
 			spielFeld.repaint();
-			testClient.sende(new Nachricht(1,spieler.getPosX()/32,spieler.getPosY()/32));
+			testClient.aktualisiere(1);
 		}
 	}
 
@@ -328,11 +328,11 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 				sn.repaint();
 				spieler.setAnzahlHeiltraenke(spieler.getAnzahlHeiltraenke()+1);
 				spielFeld.loescheTrank(spieler.getPosX()/32, spieler.getPosY()/32);
-				testClient.sende(new Nachricht(2,spieler.getPosX()/32, spieler.getPosY()/32));
+				testClient.aktualisiere(2);
 				mm.aktualisiereMap(spielFeld.getKarte());
 				mm.repaint();
-
 			}
+			
 		}
 		
 		// N-Taste setzt einen Trank ein.
@@ -343,7 +343,6 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 				spieler.setAnzahlHeiltraenke(spieler.getAnzahlHeiltraenke()-1);
 				sn.nachricht("Trank eingesetzt!");
 				sn.repaint();
-
 			}
 		}
 		
@@ -398,7 +397,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 				
 				spieler.hoch();	
 				spielFeld.repaint();	
-				testClient.sende(new Nachricht(1,spieler.getPosX()/32,spieler.getPosY()/32));
+				testClient.aktualisiere(1);
 			}
 		}
 		
@@ -408,7 +407,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 			{
 				spieler.runter();
 				spielFeld.repaint();				
-				testClient.sende(new Nachricht(1,spieler.getPosX()/32,spieler.getPosY()/32));
+				testClient.aktualisiere(1);
 			}
 		}
 		
@@ -419,7 +418,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 				
 				spieler.rechts();
 				spielFeld.repaint();				
-				testClient.sende(new Nachricht(1,spieler.getPosX()/32,spieler.getPosY()/32));
+				testClient.aktualisiere(1);
 			}
 		}
 		
@@ -429,7 +428,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 			{
 				spieler.links();
 				spielFeld.repaint();				
-				testClient.sende(new Nachricht(1,spieler.getPosX()/32,spieler.getPosY()/32));
+				testClient.aktualisiere(1);
 			}
 		}
 		

@@ -1,25 +1,74 @@
 package GUI;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
 import clientengine.Level;
+import datenstruktur.Spieler;
 
 
-public class TestClient {
-
+public class TestClient
+{
+	GUImain gui;
 	int id;																	
 	Queue<Nachricht> Nachrichten = new LinkedList<Nachricht>();				
 	Queue<Nachricht> NachrichtenEmpfangen = new LinkedList<Nachricht>();
-	Level aktuellesLevel;
+	int[][] aktuellesLevel, level1, level2, level3, level4, level5;
+	ArrayList<int[][]> alleLevel;
 	String benutzername, passwort;
-	public TestClient(int i){
+	int levelnummer;
+	Spieler spieler;
+	int[][] dummyMap={
+			  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+			  {0,0,1,5,1,1,0,1,1,1,0,0,0,0,0,1,1,1,0,0},
+			  {0,0,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,1,0,0},
+			  {0,0,0,1,1,1,1,1,1,1,0,0,0,0,0,5,0,1,0,0},
+			  {0,0,0,2,0,0,0,1,0,1,0,0,0,0,0,1,0,5,0,0},
+			  {0,0,0,1,1,1,0,1,1,1,0,0,0,0,0,1,0,1,0,0},
+			  {0,0,0,0,0,1,0,1,0,7,0,0,0,0,0,1,0,1,0,0},
+			  {0,1,1,1,1,1,0,1,1,1,1,1,0,0,0,1,0,1,0,0},
+			  {0,1,0,5,0,0,0,1,0,1,0,1,0,0,0,1,0,1,0,0},
+			  {0,1,1,1,1,1,0,1,1,1,1,1,1,1,0,1,0,1,0,0},
+			  {0,0,0,1,0,1,0,1,0,1,0,0,0,1,0,1,0,1,0,0},
+			  {0,1,1,1,0,1,1,1,1,1,0,0,0,1,0,1,0,5,0,0},
+			  {0,1,0,0,0,0,0,1,0,1,0,0,0,1,0,1,0,1,0,0},
+			  {0,1,0,0,0,0,0,1,0,1,1,1,1,1,1,1,0,1,0,0},
+			  {0,1,0,0,0,0,0,1,0,1,0,1,0,1,0,1,0,1,0,0},
+			  {0,1,1,1,1,1,1,4,1,2,0,1,0,1,1,1,1,1,0,0},
+			  {0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,1,0,1,0,0},
+			  {0,0,0,0,0,0,0,0,0,1,8,1,0,0,0,1,0,1,0,0},
+			  {0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,6,0,0},
+			  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
+	// 0 = Wand
+		  // 1 = Boden
+		  // 2 = Trank
+		  // 3 = tuerZu
+		  // 4 = Spieler
+		  // 5 = Monster
+		  // 6 = Tuer offen
+		  // 7 = Tuer zu
+		  // 8 = Schlüssel
+
+	public TestClient(int i, GUImain gui){
 		this.id=i;
-	}
-	
+		this.gui = gui;
+		aktuellesLevel = dummyMap;
+		alleLevel.add(level1);alleLevel.add(level2);alleLevel.add(level3);alleLevel.add(level4);alleLevel.add(level5);
+	}		
 	public void sende(Nachricht m){
 		Nachrichten.add(m);
 		ausgabe();
+	}
+	
+	public void aktualisiere(int ereignis){
+		aktuellesLevel=gui.spielFeld.getKarte();
+		spieler = gui.spieler;
+		sende(new Nachricht(ereignis,spieler.getPosX(),spieler.getPosY()));
+	}
+	
+	public int[][] getAktuellesLevel(){
+		return aktuellesLevel;
 	}
 	
 	public void ausgabe(){
@@ -65,12 +114,17 @@ public class TestClient {
 					case 3: System.out.println("Das Level wurde abgeschlossen!");break;
 					case 4: System.out.println("Der Schluessel an der Stelle "+m.getxKoo()+", "+m.getyKoo()+" wurde aufgenommen");break;
 					case 5: System.out.println("Ein Fehler ist aufgetreten!");break;
-					case 6: System.out.println("Level wurde geladen!");this.aktuellesLevel=m.leveldaten;break;
+					case 6: System.out.println("Level wurde geladen!");break;
 					case 7: System.out.println("Der Schlüssel wurde durch cheaten aufgenommen.");break;
 				}
-			
 		}
 	}
+		public int[][] getNaechstesLevel(){
+			levelnummer++;
+			aktuellesLevel = alleLevel.get(levelnummer);
+			return alleLevel.get(levelnummer);
+		}
+	
 	/*
 	 * Nachrichtentypen
 	 * 0 - Einloggen
