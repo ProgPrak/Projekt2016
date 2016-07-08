@@ -25,7 +25,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	// DIe für das Spiel relevanten Panels werden benannt
+	// Die für das Spiel relevanten Panels werden benannt
 	private PasswortFenster pf;	
 	public SpielFeld spielFeld;
 	public Menu menu;
@@ -92,12 +92,12 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		steuerung.setPreferredSize(new Dimension(width, height));
 		highscore.setPreferredSize(new Dimension(width, height));
 		this.PasswortFensterAnzeigen();
-		//this.setSize(width,height);
 		this.setTitle(title);
 		this.setBackground(Color.BLACK);
 		
 	}
 	
+	// Entfernt Container, die nicht angezeigt werden sollen und zeigt Spielfeld
 	public void SpielfeldAnzeigen() 
 	{
 		this.remove(highscore);
@@ -109,9 +109,9 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		this.getContentPane().add(mm, BorderLayout.EAST);
 		this.requestFocus();
 		this.pack();	
-		//spielFeld.repaint();
 	}
 	
+	// Entfernt Container, die nicht angezeigt werden sollen und zeigt Highscore
 	public void highscoreAnzeigen()
 	{
 		this.remove(spielFeld);
@@ -126,6 +126,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		highscore.repaint();		
 	}
 	
+	// Entfernt Container, die nicht angezeigt werden sollen und zeigt Steuerung
 	public void SteuerungAnzeigen()
 	{
 		this.remove(pf);
@@ -139,6 +140,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		steuerung.repaint();
 	}
 	
+	// Entfernt Container, die nicht angezeigt werden sollen und zeigt PasswortFenster
 	public void PasswortFensterAnzeigen()
 	{
 		this.remove(spielFeld);
@@ -152,7 +154,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		
 	}
 
-	
+	// Startet Thread und erstellt GUI
 	public static void main(String[] args)
 	{
 		GUImain gui = new GUImain();
