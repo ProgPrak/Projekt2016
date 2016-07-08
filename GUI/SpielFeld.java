@@ -12,10 +12,8 @@ public class SpielFeld extends JPanel
 	int malex = 20,maley = 20,bildx,bildy,startx=0,starty=0;
 	  //private Image image;
 	  GUImain fenster;
-	  private Image boden,wand,tuerZu,tuerOffen,schluessel,heiltrank, monster1, monster2;
+	  private Image boden,wand,tuerZu,tuerOffen,schluessel,heiltrank, monster1;
 	  private boolean startpunktSpieler = false;
-	  
-	  private Schluessel schluessel1;
 	  
 	  int[][] dummyMap={
 			  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -62,10 +60,9 @@ public class SpielFeld extends JPanel
 		 schluessel = tk.getImage("img/schluessel.png");
 		 heiltrank = tk.getImage("img/trank.png");
 		 monster1 = tk.getImage("img/drache1.png");
-		 monster2 = tk.getImage("img/drache2.png");
 		 this.requestFocus();
 		 
-		 schluessel1 = new Schluessel(3*32, 3*32);
+
 	     
 	  }
 	  
