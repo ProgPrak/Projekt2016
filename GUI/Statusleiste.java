@@ -38,8 +38,6 @@ public class Statusleiste extends JPanel
 		for(int i = 0; i < 100; i++){
 			g.drawImage(hintergrund, i*32, 0, null);
 		}	
-		//if(trank !=null)g.drawImage(trank, 50, 0, this);
-		//if(schluessel !=null)g.drawImage(schluessel, 100, 8, this);
 		if(spieler !=null)g.drawImage(spieler, 0, 0, this);
 		g.setColor(Color.WHITE);
 		g.drawString("Level: " + fenster.levelNow +1, 56, 20);
