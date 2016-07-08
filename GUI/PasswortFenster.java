@@ -20,8 +20,9 @@ public class PasswortFenster extends JPanel
        
         kontrollFenster = f;
  
-        hintergrundBild = new JLabel(new ImageIcon("img/giphy.gif"));
+        hintergrundBild = new JLabel(new ImageIcon("img/giphy1.gif"));
         hintergrundBild.setLayout(null);
+        hintergrundBild.setPreferredSize(new Dimension(500, 200));
         
         passwortFeld = new JPasswordField(10);
         passwortFeld.setActionCommand(OK);
