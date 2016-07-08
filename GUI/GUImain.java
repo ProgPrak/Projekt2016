@@ -179,7 +179,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 					{
 						gui.sn.nachricht("User: "+gui.pf.getLoginName()+" ist angemeldet.");
 						gui.SpielfeldAnzeigen();
-						gui.pf.setBooleanFalse();
+						gui.pf.setEinloggenFalsch();
 						gui.startZeit = System.currentTimeMillis();
 					}
 					if(gui.menu.getbNeustart() == true)

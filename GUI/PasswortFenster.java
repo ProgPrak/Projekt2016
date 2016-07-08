@@ -62,7 +62,7 @@ public class PasswortFenster extends JPanel
         return p;
     }
     
-    public void setBooleanFalse()
+    public void setEinloggenFalsch()
     {
     	einloggenWahr = false;
     }
