@@ -9,8 +9,9 @@ import java.awt.*;
 @SuppressWarnings("serial")
 public class SpielFeld extends JPanel
 {
+	
 	int malex = 20,maley = 20,bildx,bildy,startx=0,starty=0;
-	  //private Image image;
+
 	  GUImain fenster;
 	  private Image boden,wand,tuerZu,tuerOffen,schluessel,heiltrank, monster1;
 	  private boolean startpunktSpieler = false;
@@ -45,7 +46,7 @@ public class SpielFeld extends JPanel
 	  // 6 = Tuer offen
 	  // 7 = Tuer zu
 	  
-
+	  //Lädt Bilder aus Dateien
 	  public SpielFeld(GUImain fenster,int bildx,int bildy) 
 	  {
 		 this.fenster = fenster;
@@ -66,11 +67,12 @@ public class SpielFeld extends JPanel
 	     
 	  }
 	  
-	  public int[][] getMap()
+	  public int[][] getKarte()
 	  {
 		  return dummyMap;
 	  }
 
+	  //Allgemeine "Paint" Methode, scrollen der Map ist eingebaut
 	    @Override
 	   public void paintComponent(Graphics g) 
 	    {
@@ -83,15 +85,10 @@ public class SpielFeld extends JPanel
 	    			else starty=0;
 	    		}
 	    	maleMap(g, 20,20,bildx,bildy, dummyMap,startx,starty);
-	    	
-	    	/*if(fenster.spieler.getPosY() >=480)
-	    	{
-	    		this.setLocation(0, (fenster.spieler.getPosY()-480)/32);
-	    		maley = fenster.spieler.getPosY()/32+2;
-	    	}*/
-	     
+	    		     
 	    }
 
+	    // Zeichnet die Komponenten auf das Panel, abhängig von Zahlen im Array
 	    public void maleMap(Graphics g, int maleX, int maleY, int bildX, int bildY,int[][] dummyMap, int startx, int starty) 
 	    {
 	    	this.startx = startx;
@@ -171,11 +168,13 @@ public class SpielFeld extends JPanel
 	    	
 		}
 
-	    public void loescheTrank(int i , int j){
+	    public void loescheTrank(int i , int j)
+	    {
 	    	dummyMap[i][j] = 1;
 	    }
 	    
-	    public void loescheMonster(int i , int j){
+	    public void loescheMonster(int i , int j)
+	    {
 	    	dummyMap[i][j] = 1;
 	    }
 	    

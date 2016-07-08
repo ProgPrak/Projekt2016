@@ -189,7 +189,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 						gui.remove(gui.highscore);
 						gui.remove(gui.leiste);
 						gui.remove(gui.mm);
-						gui.menu.setFalsebNeustart();
+						gui.menu.setFalschNeustartBoolean();
 						gui.initialisiereJFrame(20*32, 15*32, "Hindi Bones");
 					}
 					
@@ -239,30 +239,30 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 	@Override
 	public void mousePressed(MouseEvent e) 
 	{
-		if((e.getY()-55+spielFeld.getstarty() < spieler.getPosY()) && (e.getX()<=spieler.getPosX()+35) && (e.getX()>=spieler.getPosX()) && spielFeld.getMap()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] != 0 && spielFeld.getMap()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] ==5)
+		if((e.getY()-55+spielFeld.getstarty() < spieler.getPosY()) && (e.getX()<=spieler.getPosX()+35) && (e.getX()>=spieler.getPosX()) && spielFeld.getKarte()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] != 0 && spielFeld.getKarte()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] ==5)
 		{
 			spielFeld.loescheMonster(spieler.getPosX()/32, ((spieler.getPosY()/32)-1));
-			mm.aktualisiereMap(spielFeld.getMap());
+			mm.aktualisiereMap(spielFeld.getKarte());
 			mm.repaint();
 		}
-		if((e.getY()-55+spielFeld.getstarty() > spieler.getPosY()+32) && (e.getX()<=spieler.getPosX()+35) && (e.getX()>=spieler.getPosX()) && spielFeld.getMap()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] != 0 && spielFeld.getMap()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] ==5)
+		if((e.getY()-55+spielFeld.getstarty() > spieler.getPosY()+32) && (e.getX()<=spieler.getPosX()+35) && (e.getX()>=spieler.getPosX()) && spielFeld.getKarte()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] != 0 && spielFeld.getKarte()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] ==5)
 		{
 			spielFeld.loescheMonster(spieler.getPosX()/32, ((spieler.getPosY()/32)+1));
-			mm.aktualisiereMap(spielFeld.getMap());
+			mm.aktualisiereMap(spielFeld.getKarte());
 			mm.repaint();
 
 		}
-		if((e.getX() > spieler.getPosX()+32) && (e.getY()-55+spielFeld.getstarty() > spieler.getPosY()) && (e.getY()-55+spielFeld.getstarty() < spieler.getPosY()+32) && spielFeld.getMap()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] != 0 && spielFeld.getMap()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] ==5)
+		if((e.getX() > spieler.getPosX()+32) && (e.getY()-55+spielFeld.getstarty() > spieler.getPosY()) && (e.getY()-55+spielFeld.getstarty() < spieler.getPosY()+32) && spielFeld.getKarte()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] != 0 && spielFeld.getKarte()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] ==5)
 		{
 			spielFeld.loescheMonster((spieler.getPosX()/32)+1, ((spieler.getPosY()/32)));
-			mm.aktualisiereMap(spielFeld.getMap());
+			mm.aktualisiereMap(spielFeld.getKarte());
 			mm.repaint();
 
 		}
-		if((e.getX() < spieler.getPosX()) && (e.getY()-55+spielFeld.getstarty() > spieler.getPosY()) && (e.getY()-55+spielFeld.getstarty() < spieler.getPosY()+32) && spielFeld.getMap()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] != 0 && spielFeld.getMap()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] ==5)
+		if((e.getX() < spieler.getPosX()) && (e.getY()-55+spielFeld.getstarty() > spieler.getPosY()) && (e.getY()-55+spielFeld.getstarty() < spieler.getPosY()+32) && spielFeld.getKarte()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] != 0 && spielFeld.getKarte()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] ==5)
 		{
 			spielFeld.loescheMonster((spieler.getPosX()/32)-1, ((spieler.getPosY()/32)));
-			mm.aktualisiereMap(spielFeld.getMap());
+			mm.aktualisiereMap(spielFeld.getKarte());
 			mm.repaint();
 
 		}
@@ -275,7 +275,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		
 		// Wird das Feld über dem Spieler angeklickt, so bewegt sich der Spieler ein Feld nach oben, sofern dies möglich ist
 		// Zudem sendet der Client eine Message an den Server, dass der Spieler nun an einer neuen Position ist
-		if(((e.getY()-55+spielFeld.getstarty()) < spieler.getPosY()) && (e.getX()<=spieler.getPosX()+35) && (e.getX()>=spieler.getPosX()) && spielFeld.getMap()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] != 0 && spielFeld.getMap()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] !=5)
+		if(((e.getY()-55+spielFeld.getstarty()) < spieler.getPosY()) && (e.getX()<=spieler.getPosX()+35) && (e.getX()>=spieler.getPosX()) && spielFeld.getKarte()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] != 0 && spielFeld.getKarte()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] !=5)
 		{
 			spieler.hoch();	
 			spielFeld.repaint();	
@@ -284,7 +284,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		
 		// Wird das Feld unter dem Spieler angeklickt, so bewegt sich der Spieler ein Feld nach unten, sofern dies möglich ist
 		// Zudem sendet der Client eine Message an den Server, dass der Spieler nun an einer neuen Position ist
-		if(((e.getY()-55+spielFeld.getstarty()) > spieler.getPosY()+32) && (e.getX()<=spieler.getPosX()+35) && (e.getX()>=spieler.getPosX()) && spielFeld.getMap()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] != 0 && spielFeld.getMap()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] !=5)
+		if(((e.getY()-55+spielFeld.getstarty()) > spieler.getPosY()+32) && (e.getX()<=spieler.getPosX()+35) && (e.getX()>=spieler.getPosX()) && spielFeld.getKarte()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] != 0 && spielFeld.getKarte()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] !=5)
 		{
 			spieler.runter();
 			spielFeld.repaint();
@@ -293,7 +293,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		
 		// Wird das Feld rechts neben dem Spieler angeklickt, so bewegt sich der Spieler ein Feld nach rechts, sofern dies möglich ist
 		// Zudem sendet der Client eine Message an den Server, dass der Spieler nun an einer neuen Position ist
-		if((e.getX() > spieler.getPosX()+32) && ((e.getY()-55+spielFeld.getstarty()) > spieler.getPosY()) && ((e.getY()-55+spielFeld.getstarty()) < spieler.getPosY()+32) && spielFeld.getMap()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] != 0 && spielFeld.getMap()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] !=5)
+		if((e.getX() > spieler.getPosX()+32) && ((e.getY()-55+spielFeld.getstarty()) > spieler.getPosY()) && ((e.getY()-55+spielFeld.getstarty()) < spieler.getPosY()+32) && spielFeld.getKarte()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] != 0 && spielFeld.getKarte()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] !=5)
 		{
 			spieler.rechts();
 			spielFeld.repaint();
@@ -302,7 +302,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		
 		// Wird das Feld links neben dem Spieler angeklickt, so bewegt sich der Spieler ein Feld nach links, sofern dies möglich ist
 		// Zudem sendet der Client eine Message an den Server, dass der Spieler nun an einer neuen Position ist
-		if((e.getX() < spieler.getPosX()) && ((e.getY()-55+spielFeld.getstarty()) > spieler.getPosY()) && ((e.getY()-55+spielFeld.getstarty()) < spieler.getPosY()+32) && spielFeld.getMap()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] != 0 && spielFeld.getMap()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] !=5)
+		if((e.getX() < spieler.getPosX()) && ((e.getY()-55+spielFeld.getstarty()) > spieler.getPosY()) && ((e.getY()-55+spielFeld.getstarty()) < spieler.getPosY()+32) && spielFeld.getKarte()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] != 0 && spielFeld.getKarte()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] !=5)
 		{
 			spieler.links();
 			spielFeld.repaint();
@@ -322,14 +322,14 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		// Leertaste nimmt Trank auf, wenn er unter Spieler ist und schickt Nachricht an Server.
 		if(e.getKeyCode() == KeyEvent.VK_SPACE)
 		{
-			if(spielFeld.getMap()[spieler.getPosX()/32][spieler.getPosY()/32] == 2)
+			if(spielFeld.getKarte()[spieler.getPosX()/32][spieler.getPosY()/32] == 2)
 			{
 				sn.nachricht("Trank aufgenommen!");
 				sn.repaint();
 				spieler.setAnzahlHeiltraenke(spieler.getAnzahlHeiltraenke()+1);
 				spielFeld.loescheTrank(spieler.getPosX()/32, spieler.getPosY()/32);
 				testClient.sende(new Nachricht(2,spieler.getPosX()/32, spieler.getPosY()/32));
-				mm.aktualisiereTrank(spielFeld.getMap());
+				mm.aktualisiereMap(spielFeld.getKarte());
 				mm.repaint();
 
 			}
@@ -350,38 +350,38 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		// Spieler Bewegung
 		if(e.getKeyCode() == KeyEvent.VK_LEFT)
 		{
-			if(spielFeld.getMap()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] != 0 && spielFeld.getMap()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] ==5)
+			if(spielFeld.getKarte()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] != 0 && spielFeld.getKarte()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] ==5)
 			{	
 			spielFeld.loescheMonster((spieler.getPosX()/32)-1, ((spieler.getPosY()/32)));
-			mm.aktualisiereMap(spielFeld.getMap());
+			mm.aktualisiereMap(spielFeld.getKarte());
 			mm.repaint();
 			}
 		}
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT)
 		{
-			if(spielFeld.getMap()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] != 0 && spielFeld.getMap()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] ==5)
+			if(spielFeld.getKarte()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] != 0 && spielFeld.getKarte()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] ==5)
 			{
 				spielFeld.loescheMonster((spieler.getPosX()/32)+1, ((spieler.getPosY()/32)));
-				mm.aktualisiereMap(spielFeld.getMap());
+				mm.aktualisiereMap(spielFeld.getKarte());
 				mm.repaint();
 			}
 		}
 		if(e.getKeyCode() == KeyEvent.VK_DOWN)
 		{
 			
-			if(spielFeld.getMap()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] != 0 && spielFeld.getMap()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] ==5)
+			if(spielFeld.getKarte()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] != 0 && spielFeld.getKarte()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] ==5)
 			{
 				spielFeld.loescheMonster(spieler.getPosX()/32, ((spieler.getPosY()/32)+1));
-				mm.aktualisiereMap(spielFeld.getMap());
+				mm.aktualisiereMap(spielFeld.getKarte());
 				mm.repaint();
 			}
 		}
 		if(e.getKeyCode() == KeyEvent.VK_UP)
 		{
-			if(spielFeld.getMap()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] != 0 && spielFeld.getMap()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] ==5)	
+			if(spielFeld.getKarte()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] != 0 && spielFeld.getKarte()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] ==5)	
 			{
 				spielFeld.loescheMonster(spieler.getPosX()/32, ((spieler.getPosY()/32)-1));
-				mm.aktualisiereMap(spielFeld.getMap());
+				mm.aktualisiereMap(spielFeld.getKarte());
 				mm.repaint();
 			}
 		}
@@ -393,7 +393,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 	{
 		if(e.getKeyCode() == KeyEvent.VK_UP)
 		{
-			if(spielFeld.getMap()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] != 0 && spielFeld.getMap()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] !=5)	
+			if(spielFeld.getKarte()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] != 0 && spielFeld.getKarte()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] !=5)	
 			{
 				
 				spieler.hoch();	
@@ -404,7 +404,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		
 		if(e.getKeyCode() == KeyEvent.VK_DOWN)
 		{
-			if(spielFeld.getMap()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] != 0 && spielFeld.getMap()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] !=5)
+			if(spielFeld.getKarte()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] != 0 && spielFeld.getKarte()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] !=5)
 			{
 				spieler.runter();
 				spielFeld.repaint();				
@@ -414,7 +414,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT)
 		{
-			if(spielFeld.getMap()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] != 0 && spielFeld.getMap()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] !=5)
+			if(spielFeld.getKarte()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] != 0 && spielFeld.getKarte()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] !=5)
 			{
 				
 				spieler.rechts();
@@ -425,7 +425,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		
 		if(e.getKeyCode() == KeyEvent.VK_LEFT)
 		{
-			if(spielFeld.getMap()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] != 0 && spielFeld.getMap()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] !=5)
+			if(spielFeld.getKarte()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] != 0 && spielFeld.getKarte()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] !=5)
 			{
 				spieler.links();
 				spielFeld.repaint();				

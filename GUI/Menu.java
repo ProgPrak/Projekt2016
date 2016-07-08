@@ -25,11 +25,13 @@ import javax.swing.JMenuItem;
 	     JMenuItem neustart;
 	     JMenuItem karteaufdecken;
 	     JMenuItem steuerung;
-	    JMenuItem karteanzeigen;
+	     JMenuItem karteanzeigen;
 	     JMenuItem ausloggen;
 	     
 	     boolean bKarte, bNeustart, bBeenden, bHighscore, bSteuerung;
 
+	     
+	     // Erstelle Menüpunkte und füge diese Obermenü hinzu. Die beiden Obermenüs werden der Menüleiste hinzugefügt.
 	     public Menu(GUImain gui) {
 	           
 	    	 this.gui = gui;
@@ -49,7 +51,7 @@ import javax.swing.JMenuItem;
 	         neustart.addActionListener(this);
 	         karteaufdecken.addActionListener(this);
 	         steuerung.addActionListener(this);
-	      karteanzeigen.addActionListener(this);
+	         karteanzeigen.addActionListener(this);
 	         ausloggen.addActionListener(this);
 	         optionen.add(beenden);
 	         anzeige.add(highscore);
@@ -63,7 +65,7 @@ import javax.swing.JMenuItem;
 	     }
 	     
 	    
-
+	    // Führt bestimmte Aktionen bei drücken auf die einzelnen Menüpunkte aus
 		public void actionPerformed(ActionEvent object) 
 	     {
 	          if (object.getSource() == neustart)
@@ -138,19 +140,19 @@ import javax.swing.JMenuItem;
 	     {
 	    	 bHighscore = false;
 	     }
-	     public void setFalsebNeustart()
+	     public void setFalschNeustartBoolean()
 	     {
 	    	 bNeustart = false;
 	     }
-	     public void setFalsebKarteAufdecken()
+	     public void setFalschKarteAufdeckenBoolean()
 	     {
 	    	 bKarte = false;
 	     }
-	     public void setFalsebSteuerung()
+	     public void setFalschSteuerungBoolean()
 	     {
 	    	 bSteuerung = false;
 	     }
-	     public boolean getbSteuerung()
+	     public boolean getSteuerungBoolean()
 	     {
 	    	 return bSteuerung;
 	     }

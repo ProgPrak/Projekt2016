@@ -14,7 +14,7 @@ public class Minimap extends JPanel
 	GUImain gui;
 	int[][] karte;
 	
-	private Image boden, wand, tuerZu, tuerOffen, schluessel, heiltrank, monster1,monster2;
+	private Image boden, wand, tuerZu, tuerOffen, schluessel, heiltrank, monster1;
 
 	private static final long serialVersionUID = 1L;
 
