@@ -245,28 +245,28 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 	{
 		if((e.getY()-55+spielFeld.getstarty() < spieler.getPosY()) && (e.getX()<=spieler.getPosX()+35) && (e.getX()>=spieler.getPosX()) && spielFeld.getKarte()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] != 0 && spielFeld.getKarte()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] ==5)
 		{
-			spielFeld.aktualisiereArray(spieler.getPosX()/32, ((spieler.getPosY()/32)-1));
-			mm.aktualisiereKarte(spielFeld.getKarte());
+			testClient.aktualisiereArray(spieler.getPosX()/32, ((spieler.getPosY()/32)-1));
+			mm.aktualisiereKarte(testClient.getAktuellesLevel());
 			mm.repaint();
 		}
 		if((e.getY()-55+spielFeld.getstarty() > spieler.getPosY()+32) && (e.getX()<=spieler.getPosX()+35) && (e.getX()>=spieler.getPosX()) && spielFeld.getKarte()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] != 0 && spielFeld.getKarte()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] ==5)
 		{
-			spielFeld.aktualisiereArray(spieler.getPosX()/32, ((spieler.getPosY()/32)+1));
-			mm.aktualisiereKarte(spielFeld.getKarte());
+			testClient.aktualisiereArray(spieler.getPosX()/32, ((spieler.getPosY()/32)+1));
+			mm.aktualisiereKarte(testClient.getAktuellesLevel());
 			mm.repaint();
 
 		}
 		if((e.getX() > spieler.getPosX()+32) && (e.getY()-55+spielFeld.getstarty() > spieler.getPosY()) && (e.getY()-55+spielFeld.getstarty() < spieler.getPosY()+32) && spielFeld.getKarte()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] != 0 && spielFeld.getKarte()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] ==5)
 		{
-			spielFeld.aktualisiereArray((spieler.getPosX()/32)+1, ((spieler.getPosY()/32)));
-			mm.aktualisiereKarte(spielFeld.getKarte());
+			testClient.aktualisiereArray((spieler.getPosX()/32)+1, ((spieler.getPosY()/32)));
+			mm.aktualisiereKarte(testClient.getAktuellesLevel());
 			mm.repaint();
 
 		}
 		if((e.getX() < spieler.getPosX()) && (e.getY()-55+spielFeld.getstarty() > spieler.getPosY()) && (e.getY()-55+spielFeld.getstarty() < spieler.getPosY()+32) && spielFeld.getKarte()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] != 0 && spielFeld.getKarte()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] ==5)
 		{
-			spielFeld.aktualisiereArray((spieler.getPosX()/32)-1, ((spieler.getPosY()/32)));
-			mm.aktualisiereKarte(spielFeld.getKarte());
+			testClient.aktualisiereArray((spieler.getPosX()/32)-1, ((spieler.getPosY()/32)));
+			mm.aktualisiereKarte(testClient.getAktuellesLevel());
 			mm.repaint();
 
 		}
@@ -329,19 +329,19 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 			{
 				if(spielFeld.getKarte()[spieler.getPosX()/32+1][spieler.getPosY()/32] == 7)
 				{
-					spielFeld.aktualisiereArrayFlexibel(spieler.getPosX()/32+1, spieler.getPosY()/32,6);
+					testClient.aktualisiereArrayFlexibel(spieler.getPosX()/32+1, spieler.getPosY()/32,6);
 				}
 				if(spielFeld.getKarte()[spieler.getPosX()/32-1][spieler.getPosY()/32] == 7)
 				{
-					spielFeld.aktualisiereArrayFlexibel(spieler.getPosX()/32-1, spieler.getPosY()/32,6);
+					testClient.aktualisiereArrayFlexibel(spieler.getPosX()/32-1, spieler.getPosY()/32,6);
 				}
 				if(spielFeld.getKarte()[spieler.getPosX()/32][spieler.getPosY()/32+1] == 7)
 				{
-					spielFeld.aktualisiereArrayFlexibel(spieler.getPosX()/32, spieler.getPosY()/32+1,6);
+					testClient.aktualisiereArrayFlexibel(spieler.getPosX()/32, spieler.getPosY()/32+1,6);
 				}
 				if(spielFeld.getKarte()[spieler.getPosX()/32][spieler.getPosY()/32-1] == 7)
 				{
-					spielFeld.aktualisiereArrayFlexibel(spieler.getPosX()/32, spieler.getPosY()/32-1,6);
+					testClient.aktualisiereArrayFlexibel(spieler.getPosX()/32, spieler.getPosY()/32-1,6);
 				}
 				spielFeld.repaint();
 				mm.repaint();
@@ -357,9 +357,9 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 				sn.nachricht("Trank aufgenommen!");
 				sn.repaint();
 				spieler.setAnzahlHeiltraenke(spieler.getAnzahlHeiltraenke()+1);
-				spielFeld.aktualisiereArray(spieler.getPosX()/32, spieler.getPosY()/32);
+				testClient.aktualisiereArray(spieler.getPosX()/32, spieler.getPosY()/32);
 				testClient.aktualisiere(2);
-				mm.aktualisiereKarte(spielFeld.getKarte());
+				mm.aktualisiereKarte(testClient.getAktuellesLevel());
 				mm.repaint();
 			}
 			
@@ -368,9 +368,9 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 				spieler.nimmSchluessel();
 				sn.nachricht("Spieler hat Schlüssel aufgenommen.");
 				sn.repaint();
-				spielFeld.aktualisiereArray(spieler.getPosX()/32,spieler.getPosY()/32);
+				testClient.aktualisiereArray(spieler.getPosX()/32,spieler.getPosY()/32);
 				testClient.aktualisiere(2);
-				mm.aktualisiereKarte(spielFeld.getKarte());
+				mm.aktualisiereKarte(testClient.getAktuellesLevel());
 				mm.repaint();
 			}
 			
@@ -387,13 +387,13 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 			}
 		}
 		
-		// Spieler Bewegung
+		// Monster töten
 		if(e.getKeyCode() == KeyEvent.VK_LEFT)
 		{
 			if(spielFeld.getKarte()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] != 0 && spielFeld.getKarte()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] ==5)
 			{	
-			spielFeld.aktualisiereArray((spieler.getPosX()/32)-1, ((spieler.getPosY()/32)));
-			mm.aktualisiereKarte(spielFeld.getKarte());
+			testClient.aktualisiereArray((spieler.getPosX()/32)-1, ((spieler.getPosY()/32)));
+			mm.aktualisiereKarte(testClient.getAktuellesLevel());
 			mm.repaint();
 			}
 		}
@@ -401,8 +401,8 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		{
 			if(spielFeld.getKarte()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] != 0 && spielFeld.getKarte()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] ==5)
 			{
-				spielFeld.aktualisiereArray((spieler.getPosX()/32)+1, ((spieler.getPosY()/32)));
-				mm.aktualisiereKarte(spielFeld.getKarte());
+				testClient.aktualisiereArray((spieler.getPosX()/32)+1, ((spieler.getPosY()/32)));
+				mm.aktualisiereKarte(testClient.getAktuellesLevel());
 				mm.repaint();
 			}
 		}
@@ -411,8 +411,8 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 			
 			if(spielFeld.getKarte()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] != 0 && spielFeld.getKarte()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] ==5)
 			{
-				spielFeld.aktualisiereArray(spieler.getPosX()/32, ((spieler.getPosY()/32)+1));
-				mm.aktualisiereKarte(spielFeld.getKarte());
+				testClient.aktualisiereArray(spieler.getPosX()/32, ((spieler.getPosY()/32)+1));
+				mm.aktualisiereKarte(testClient.getAktuellesLevel());
 				mm.repaint();
 			}
 		}
@@ -420,14 +420,16 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		{
 			if(spielFeld.getKarte()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] != 0 && spielFeld.getKarte()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] ==5)	
 			{
-				spielFeld.aktualisiereArray(spieler.getPosX()/32, ((spieler.getPosY()/32)-1));
-				mm.aktualisiereKarte(spielFeld.getKarte());
+				testClient.aktualisiereArray(spieler.getPosX()/32, ((spieler.getPosY()/32)-1));
+				mm.aktualisiereKarte(testClient.getAktuellesLevel());
 				mm.repaint();
 			}
 		}
 		
 	}
 
+	
+	// Spieler Bewegung mit Pfeiltasten
 	@Override
 	public void keyReleased(KeyEvent e) 
 	{
@@ -435,7 +437,6 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		{
 			if(spielFeld.getKarte()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] != 0 && spielFeld.getKarte()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] !=5)	
 			{
-				
 				spieler.hoch();	
 				spielFeld.repaint();	
 				testClient.aktualisiere(1);

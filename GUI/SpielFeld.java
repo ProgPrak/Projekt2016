@@ -34,7 +34,6 @@ public class SpielFeld extends JPanel
 		 heiltrank = tk.getImage("img/trank.png");
 		 monster1 = tk.getImage("img/drache1.png");
 		 this.requestFocus();	
-		 fenster.spieler.setPos(getSpielerMapX(), getSpielerMapY());
 	  }
 	  
 	  private int getSpielerMapY() 
@@ -170,15 +169,7 @@ public class SpielFeld extends JPanel
 	    	
 		}
 
-	    public void aktualisiereArray(int i , int j)
-	    {
-	    	aktuellesLevel[i][j] = 1;
-	    }
 	    
-	    public void aktualisiereArrayFlexibel(int i , int j, int k)
-	    {
-	    	aktuellesLevel[i][j] = k;
-	    }
 	    
 	    public int getstarty()
 	    {

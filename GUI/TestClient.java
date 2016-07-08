@@ -17,7 +17,10 @@ public class TestClient
 	String benutzername, passwort;
 	int levelnummer;
 	Spieler spieler;
-	int[][] dummyMap={
+	 int[][] dummyMap;
+			  
+	
+	final int[][] dummyMap2={
 			  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 			  {0,0,1,5,1,1,0,1,1,1,0,0,0,0,0,1,1,1,0,0},
 			  {0,0,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,1,0,0},
@@ -35,7 +38,7 @@ public class TestClient
 			  {0,1,0,0,0,0,0,1,0,1,0,1,0,1,0,1,0,1,0,0},
 			  {0,1,1,1,1,1,1,4,1,2,0,1,0,1,1,1,1,1,0,0},
 			  {0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,1,0,1,0,0},
-			  {0,0,0,0,0,0,0,0,0,1,3,1,0,0,0,1,0,1,0,0},
+			  {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3},
 			  {0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,7,0,0},
 			  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
 		  // 0 = Wand
@@ -50,17 +53,48 @@ public class TestClient
 	public TestClient(int i, GUImain gui){
 		this.id=i;
 		this.gui = gui;
-		aktuellesLevel = dummyMap;
 		levelnummer = 1;
-		
+		dummyMap = new int[][]{
+				  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+				  {0,0,1,5,1,1,0,1,1,1,0,0,0,0,0,1,1,1,0,0},
+				  {0,0,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,1,0,0},
+				  {0,0,0,1,1,1,1,1,1,1,0,0,0,0,0,5,0,1,0,0},
+				  {0,0,0,2,0,0,0,1,0,1,0,0,0,0,0,1,0,5,0,0},
+				  {0,0,0,1,1,1,0,1,1,1,0,0,0,0,0,1,0,1,0,0},
+				  {0,0,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,1,0,0},
+				  {0,1,1,1,1,1,0,1,1,1,1,1,0,0,0,1,0,1,0,0},
+				  {0,1,0,5,0,0,0,1,0,1,0,1,0,0,0,1,0,1,0,0},
+				  {0,1,1,1,1,1,0,1,1,1,1,1,1,1,0,1,0,1,0,0},
+				  {0,0,0,1,0,1,0,1,0,1,0,0,0,1,0,1,0,1,0,0},
+				  {0,1,1,1,0,1,1,1,1,1,0,0,0,1,0,1,0,5,0,0},
+				  {0,1,0,0,0,0,0,1,0,1,0,0,0,1,0,1,0,1,0,0},
+				  {0,1,0,0,0,0,0,1,0,1,1,1,1,1,1,1,0,1,0,0},
+				  {0,1,0,0,0,0,0,1,0,1,0,1,0,1,0,1,0,1,0,0},
+				  {0,1,1,1,1,1,1,4,1,2,0,1,0,1,1,1,1,1,0,0},
+				  {0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,1,0,1,0,0},
+				  {0,0,0,0,0,0,0,0,0,1,3,1,0,0,0,1,0,1,0,0},
+				  {0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,7,0,0},
+				  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
+				  
+		aktuellesLevel = dummyMap;
 	}		
+	
+	public void aktualisiereArray(int i , int j)
+    {
+    	aktuellesLevel[i][j] = 1;
+    }
+    
+    public void aktualisiereArrayFlexibel(int i , int j, int k)
+    {
+    	aktuellesLevel[i][j] = k;
+    }
+    
 	public void sende(Nachricht m){
 		Nachrichten.add(m);
 		ausgabe();
 	}
 	
 	public void aktualisiere(int ereignis){
-		aktuellesLevel=gui.spielFeld.getKarte();
 		spieler = gui.spieler;
 		sende(new Nachricht(ereignis,spieler.getPosX(),spieler.getPosY()));
 	}
@@ -121,26 +155,25 @@ public class TestClient
 			
 			if(levelnummer == 1)
 			{
-				aktuellesLevel = dummyMap;
-				levelnummer++;
+				aktuellesLevel = dummyMap2;
+				System.out.println(aktuellesLevel[18][17]);
 			}
-			else if(levelnummer == 2)
+			if(levelnummer == 2)
 			{
 				aktuellesLevel = level3;
 				levelnummer++;
 			}
-			else if(levelnummer == 3)
+			if(levelnummer == 3)
 			{
 				aktuellesLevel = level4;
 				levelnummer++;
 			}
-			else if(levelnummer == 4)
+			if(levelnummer == 4)
 			{
 				aktuellesLevel = level5;
 				levelnummer++;
 			}
-			
-			System.out.println("level "+levelnummer);
+			levelnummer++;
 
 		}
 	
