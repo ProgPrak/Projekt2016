@@ -194,7 +194,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 					}
 					if(gui.spieler.aufOffenerTuer())
 					{
-						gui.spielFeld.startpunktSpieler = false;
+						gui.naechstesLevel();
 					}
 					
 				}
@@ -239,7 +239,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		// TODO Auto-generated method stub
 		
 	}
-// Bewegungen in alle Richtungen mit der Maustaste, pixelgenau
+// Töten der Monster, falls in der Spieler am Monster steht und in dessen Richtung drückt
 	@Override
 	public void mousePressed(MouseEvent e) 
 	{
@@ -485,8 +485,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		testClient.nextLevel();
 		spielFeld.aktualisiereArray();
 		mm.aktualisiereKarte(spielFeld.getKarte());
-		spielFeld.repaint();
-		mm.repaint();
+		this.repaint();
 	}
 
 	

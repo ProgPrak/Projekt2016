@@ -3,8 +3,6 @@ package GUI;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
-
-import clientengine.Level;
 import datenstruktur.Spieler;
 
 
@@ -53,14 +51,7 @@ public class TestClient
 		this.id=i;
 		this.gui = gui;
 		aktuellesLevel = dummyMap;
-		alleLevel = new ArrayList<int[][]>(5);
 		levelnummer = 1;
-		level1=dummyMap;level2=dummyMap;level3=dummyMap;level4=dummyMap;level5=dummyMap;
-		alleLevel.add(level1);
-		alleLevel.add(level2);
-		alleLevel.add(level3);
-		alleLevel.add(level4);
-		alleLevel.add(level5);
 		
 	}		
 	public void sende(Nachricht m){
@@ -128,11 +119,28 @@ public class TestClient
 	}
 		public void nextLevel(){
 			
-			if(levelnummer == 1)aktuellesLevel = level2;
-			if(levelnummer == 2)aktuellesLevel = level3;
-			if(levelnummer == 3)aktuellesLevel = level4;
-			if(levelnummer == 4)aktuellesLevel = level5;
-			levelnummer++;
+			if(levelnummer == 1)
+			{
+				aktuellesLevel = dummyMap;
+				levelnummer++;
+			}
+			else if(levelnummer == 2)
+			{
+				aktuellesLevel = level3;
+				levelnummer++;
+			}
+			else if(levelnummer == 3)
+			{
+				aktuellesLevel = level4;
+				levelnummer++;
+			}
+			else if(levelnummer == 4)
+			{
+				aktuellesLevel = level5;
+				levelnummer++;
+			}
+			
+			System.out.println("level "+levelnummer);
 
 		}
 	

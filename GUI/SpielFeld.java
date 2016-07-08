@@ -14,7 +14,6 @@ public class SpielFeld extends JPanel
 
 	  GUImain fenster;
 	  private Image boden,wand,tuerZu,tuerOffen,schluesselImg,heiltrank, monster1;
-	   boolean startpunktSpieler = false;
 	  Schluessel schluessel;
 	  int[][] aktuellesLevel;
 	  
@@ -70,7 +69,7 @@ public class SpielFeld extends JPanel
 
 	public void aktualisiereArray()
 	  {
-		  aktuellesLevel = fenster.testClient.aktuellesLevel;
+		  aktuellesLevel = fenster.testClient.getAktuellesLevel();
 		  starty=0;
 		  fenster.spieler.setPos(getSpielerMapX(), getSpielerMapY());
 	  }

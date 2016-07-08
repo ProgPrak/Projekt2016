@@ -80,7 +80,6 @@ public class Spieler extends Figur {
 	{
 		if(fenster.spielFeld.getKarte()[getPosX()/32][getPosY()/32] == 6)
 		{
-			fenster.naechstesLevel();
 			return true;
 		}
 		
