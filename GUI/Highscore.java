@@ -20,10 +20,11 @@ public class Highscore extends JPanel {
 	
 	private LinkedList<HighScoreElement> highScore;
 	
+	GUImain gui;
 	
-	
-	public Highscore(){
-
+	public Highscore(GUImain gui)
+	{
+		this.gui = gui;
 		highScore = new LinkedList<HighScoreElement>();
 		
 		try {
@@ -53,11 +54,12 @@ public class Highscore extends JPanel {
 		}
 	}
 	
-	public void addSpielerToHighScore(int zeit){
+	public void addSpielerToHighScore(int punkte)
+	{
 		String name = JOptionPane.showInputDialog("Bitte geben Sie Ihren Namen ein:");
 		for(int i = 0; i < highScore.size(); i++){
-			if(highScore.get(i).zeit > zeit){
-				highScore.add(i, new HighScoreElement(zeit, name));
+			if(highScore.get(i).punkte < punkte){
+				highScore.add(i, new HighScoreElement(punkte, name));
 				i = highScore.size();
 			}
 		}
@@ -65,7 +67,7 @@ public class Highscore extends JPanel {
 		try {
 			FileWriter writer = new FileWriter(new File("highscore.txt"));
 			for(int i = 0; i < 10; i++){
-				writer.write(highScore.get(i).zeit + "\t" + highScore.get(i).name + "\n");
+				writer.write(highScore.get(i).punkte + "\t" + highScore.get(i).name + "\n");
 			}			
 
 			writer.close();
@@ -76,11 +78,13 @@ public class Highscore extends JPanel {
 		
 	}
 	
-	public LinkedList<HighScoreElement> getHighScore(){
+	public LinkedList<HighScoreElement> getHighScore()
+	{
 		return highScore;
 	}
 	
-	public void paint(Graphics g){
+	public void paint(Graphics g)
+	{
 		Image img = null, boden = null;
 		
 		try{
@@ -99,11 +103,11 @@ public class Highscore extends JPanel {
 		
 		for (int i = 0; i < 10; i++) {
 			String name = highScore.get(i).name;
-			int zeit = highScore.get(i).zeit;
+			int punkte = highScore.get(i).punkte;
 
 			g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
 			g.drawString((i + 1) + ".  " + name, 80, 150 + 30 * (i + 1));
-			g.drawString("" + zeit+"s", 400, 150 + 30 * (i + 1));
+			g.drawString("" + punkte+" Punkte", 400, 150 + 30 * (i + 1));
 		}
 	}
 }
@@ -111,11 +115,11 @@ public class Highscore extends JPanel {
 class HighScoreElement {
 	
 	String name;
-	int zeit;
+	int punkte;
 	
 	public HighScoreElement(int punkte, String name){
 		this.name = name;
-		this.zeit = punkte;
+		this.punkte = punkte;
 	}
 	
 }

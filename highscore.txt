@@ -1,10 +1,10 @@
+30	hallo
+20	jabo
 2	molina
 2	jabo
 2	null
 2	klaus
 2	null
-1000	Anonym
-1000	Anonym
-1000	Anonym
-1000	Anonym
-1000	Anonym
+2	null
+2	null
+2	null

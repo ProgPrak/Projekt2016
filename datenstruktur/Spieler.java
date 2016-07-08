@@ -13,13 +13,13 @@ public class Spieler extends Figur {
 	private int anzHeiltraenke;		//Anzahl der aufgenommenen Tränke
 	private int heiltrankWirkung;	//Wirkung des Heiltranks wird hier gespeichert
 	private GUImain fenster;		//Fenster in dem gespielt wird
+
 	
 	//Konstruktor
 	public Spieler(GUImain fenster){
 		this.fenster = fenster;
 		setAnzahlHeiltraenke(0);
 		setPos(0,0);		
-		setGesundheit(100);
 		setMaxGesundheit(getGesundheit());
 		setName("Hindi Bones");
 		try {
@@ -33,6 +33,7 @@ public class Spieler extends Figur {
 	public void nimmSchluessel(){
 		hatSchluessel = true;
 	}
+
 	
 	//Schlüssel ist nicht mehr aufgenommen
 	public void entferneSchluessel(){
@@ -74,6 +75,12 @@ public class Spieler extends Figur {
 	//Name des Spielers wird geaendert
 	public void setName(String name){
 		this.name = name;
+	}
+	
+	public boolean monsterNah()
+	{
+		if(fenster.spielFeld.getKarte()[getPosX()/32+1][getPosY()/32] == 5 || fenster.spielFeld.getKarte()[getPosX()/32-1][getPosY()/32] == 5 || fenster.spielFeld.getKarte()[getPosX()/32][getPosY()/32+1] == 5 || fenster.spielFeld.getKarte()[getPosX()/32][getPosY()/32-1] == 5) return true;
+		else return false;
 	}
 	
 	public boolean aufOffenerTuer()

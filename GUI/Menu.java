@@ -83,7 +83,7 @@ import javax.swing.JMenuItem;
 	          {
 	        	 gui.highscoreAnzeigen();
 	        	 gui.sn.nachricht("Highscore anzeigen!");
-	        	  gui.sn.repaint();
+	        	 gui.sn.repaint();
 	          }
 	          if (object.getSource() == karteaufdecken)
 	          {

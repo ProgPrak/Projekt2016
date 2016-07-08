@@ -6,16 +6,22 @@ import java.awt.Image;
 public class Figur {
 
 	//Attribute
-	private int Gesundheit;
+	private int Gesundheit = 100;
 	private int MaxGesundheit;
 	private int Schaden;
 	private int posx,posy;
 	private Image Bild;
+	public boolean amLeben = true;
 	
 	//Neue Position der Figur wird gesetzt
 	public void setPos(int x,int y){
 		this.posx=x;
 		this.posy=y;
+	}
+	
+	public boolean getAmLebenBoolean()
+	{
+		return amLeben;
 	}
 	
 	//Y-Koordinate der Figur wird geladen
@@ -39,6 +45,7 @@ public class Figur {
 		if(Gesundheit>MaxGesundheit){
 			Gesundheit=MaxGesundheit;
 		}
+		if(g == 0)amLeben = false;
 	}
 	
 	//Maximale Gesundheit der Figur wird gesetzt
