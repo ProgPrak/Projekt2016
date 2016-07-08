@@ -30,7 +30,6 @@ public class Minimap extends JPanel
 		 schluessel = tk.getImage("img/schluessel.png");
 		 heiltrank = tk.getImage("img/trank.png");
 		 monster1 = tk.getImage("img/drache1.png");
-		 monster2 = tk.getImage("img/drache2.png");
 	}
 
 	// Zeichnet alle Kartengegenstände auf das Panel, dabei wird auf die Karte des Spielfelds zugegegriffen
