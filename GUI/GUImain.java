@@ -23,7 +23,9 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private PasswortFenster pf;
+	
+	// DIe für das Spiel relevanten Panels werden benannt
+	private PasswortFenster pf;	
 	public SpielFeld spielFeld;
 	public Menu menu;
 	private Statusleiste leiste;
@@ -31,46 +33,37 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 	private Highscore highscore;
 	public Systemnachrichten sn;
 	private Minimap mm;
-	public int rand = 480;
+	
+	//Spieler wird benannt
 	public Spieler spieler;
+	
+	//Keine ahnung, Jabo musst du mir sagen :D
+	public int rand = 480;
 	public long startZeit;
 	public int levelNow = 0;
 	public final int BOX = 32, WIDTH = 16, HEIGHT = 16;
 	public boolean highscoreAngezeigt = false;
 	public int breite,laenge;
 	
+	//Test-Client zum übermitteln der Nachrichten
 	private TestClient testClient;
 	
 	public GUImain()
-	{/*
-		this.startZeit = System.currentTimeMillis();
-		this.pf = new PasswortFenster(this);
-		this.spielFeld = new SpielFeld(this);
-		spielFeld.setPreferredSize(new Dimension(600,400));
-		this.menu = new Menu(this);
-		this.leiste = new Statusleiste(this);
-		leiste.setPreferredSize(new Dimension(400,32));
-		this.setSize(500, 400);
-		this.setLocation(960-250, 520-200);
-		this.setLayout(new BorderLayout());
-		this.setVisible(true);
-		this.add(pf);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		this.setResizable(false);
-		this.pack();
-        this.setLocationRelativeTo(null);
-        //setBackground(Color.RED);
-        */
+	{
+		//Initialisierung wird an weiter Methode uebergeben
 		initialisiereJFrame(20*32,15*32,"Hindi Bones");
 
+		//Event-Listener werden eingebaut
 		this.addMouseListener(this);
 		this.addKeyListener(this);
+		
+		//Weiter wichtige Eigenschaften des Frames werden definiert
 		this.setVisible(true);
 		this.setResizable(false);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 	
+	// Initialisierung der Komponenten des Frames und der Panels
 	public void initialisiereJFrame(int width, int height, String title) {
 		breite=width;
 		laenge = height;
