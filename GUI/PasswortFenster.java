@@ -16,6 +16,8 @@ public class PasswortFenster extends JPanel
     private JLabel hintergrundBild;
 	private boolean einloggenWahr = false;
  
+	
+	// Erstellt Labels, sowie Passwort- und Nutzer-Fenster und addet diese zum Panel
     public PasswortFenster(JFrame f) {
        
         kontrollFenster = f;
@@ -36,7 +38,7 @@ public class PasswortFenster extends JPanel
         JLabel passwortLabel = new JLabel("Passwort: ");
         passwortLabel.setLabelFor(passwortFeld);
  
-        JComponent buttonPane = createButtonPanel();
+        JComponent buttonPane = erstelleKnopf();
  
         JPanel textPane = new JPanel(new FlowLayout(FlowLayout.TRAILING));
         textPane.add(nutzerLabel);
@@ -51,13 +53,14 @@ public class PasswortFenster extends JPanel
         
     }
  
-    protected JComponent createButtonPanel() {
+    //
+    protected JComponent erstelleKnopf() {
         JPanel p = new JPanel(new GridLayout(0,1));
-        JButton okButton = new JButton("OK");
+        JButton okKnopf = new JButton("OK");
  
-        okButton.setActionCommand(OK);
-        okButton.addActionListener(this);
-        p.add(okButton);
+        okKnopf.setActionCommand(OK);
+        okKnopf.addActionListener(this);
+        p.add(okKnopf);
  
         return p;
     }
@@ -67,6 +70,7 @@ public class PasswortFenster extends JPanel
     	einloggenWahr = false;
     }
  
+    // Prüft Methoden bei bestimmter Aktion
     public void actionPerformed(ActionEvent e) {
         String cmd = e.getActionCommand();
  
@@ -105,6 +109,7 @@ public class PasswortFenster extends JPanel
         }
     }
 
+    // Überprüft Login-Daten
     private boolean istPasswortKorrekt(String nutzerEingabe, char[] passwortEingabe) {
         boolean isCorrect = true;
         char[] correctPassword = { 'm','a','d','r','i', 'd' };
