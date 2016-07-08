@@ -237,9 +237,10 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		// TODO Auto-generated method stub
 		
 	}
-// maus drücken
+// Bewegungen in alle Richtungen mit der Maustaste, pixelgenau
 	@Override
-	public void mousePressed(MouseEvent e) {
+	public void mousePressed(MouseEvent e) 
+	{
 		if((e.getY()-55+spielFeld.getstarty() < spieler.getPosY()) && (e.getX()<=spieler.getPosX()+35) && (e.getX()>=spieler.getPosX()) && spielFeld.getMap()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] != 0 && spielFeld.getMap()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] ==5)
 		{
 			spielFeld.loescheMonster(spieler.getPosX()/32, ((spieler.getPosY()/32)-1));
@@ -313,11 +314,14 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 
 	@Override
 	public void keyPressed(KeyEvent e) {
+		
+		// Escape-Taste endet Programm
 		if(e.getKeyCode() == KeyEvent.VK_ESCAPE)
 		{
 			System.exit(0);
 		}		
 		
+		// Leertaste nimmt Trank auf, wenn er unter Spieler ist und schickt Nachricht an Server.
 		if(e.getKeyCode() == KeyEvent.VK_SPACE)
 		{
 			if(spielFeld.getMap()[spieler.getPosX()/32][spieler.getPosY()/32] == 2)
@@ -332,6 +336,8 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 
 			}
 		}
+		
+		// N-Taste setzt einen Trank ein.
 		if(e.getKeyCode() == KeyEvent.VK_N)
 		{
 			if(spieler.getAnzahlHeiltraenke() >0)
@@ -342,6 +348,8 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 
 			}
 		}
+		
+		// Spieler Bewegung
 		if(e.getKeyCode() == KeyEvent.VK_LEFT)
 		{
 			if(spielFeld.getMap()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] != 0 && spielFeld.getMap()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] ==5)
