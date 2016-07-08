@@ -12,12 +12,13 @@ public class Minimap extends JPanel
 {
 	
 	GUImain gui;
-	int[][] karte, monsterKarte, trankm;
+	int[][] karte;
 	
 	private Image boden, wand, tuerZu, tuerOffen, schluessel, heiltrank, monster1,monster2;
 
 	private static final long serialVersionUID = 1L;
 
+	// Im Konstruktor werden Bilder aus Datei geladen
 	public Minimap(GUImain gui) {
 		this.gui = gui;
 		 Toolkit tk = Toolkit.getDefaultToolkit();
@@ -32,6 +33,7 @@ public class Minimap extends JPanel
 		 monster2 = tk.getImage("img/drache2.png");
 	}
 
+	// Zeichnet alle Kartengegenstände auf das Panel, dabei wird auf die Karte des Spielfelds zugegegriffen
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
@@ -73,24 +75,9 @@ public class Minimap extends JPanel
 		g.fillRect(0, 100, 100, 400);
 
 	}
-	
-	public void aktualisiereMaps(int[][] map1, int[][] map2, int[][] map3)
-	{
-		karte = map1;
-		monsterKarte = map2;
-		trankm = map3;
-	}
-	
-	public void aktualisiereMonster(int[][] karte)
-	{
-		monsterKarte = karte;
-	}
 
-	public void aktualisiereTrank(int[][] trankMap) {
-		trankm = trankMap;
-	}
-
-	public void aktualisiereMap(int[][] map2) {
-		karte = map2;
+	public void aktualisiereMap(int[][] karte) 
+	{
+		this.karte = karte;
 	}
 }
