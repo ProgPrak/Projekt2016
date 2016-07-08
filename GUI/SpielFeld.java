@@ -34,16 +34,45 @@ public class SpielFeld extends JPanel
 		 schluesselImg = tk.getImage("img/schluessel.png");
 		 heiltrank = tk.getImage("img/trank.png");
 		 monster1 = tk.getImage("img/drache1.png");
-		 this.requestFocus();
-		 
-
-	     
+		 this.requestFocus();	
+		 fenster.spieler.setPos(getSpielerMapX(), getSpielerMapY());
 	  }
 	  
-	  public void aktualisiereArray()
+	  private int getSpielerMapY() 
+	  {
+		  for(int i = startx; i<20;i++)
+	    	{
+	    		for(int j = starty; j<20; j++)
+	    		{
+	    			if(aktuellesLevel[i][j] == 4)
+	    			{
+	    				return j*32;
+	    			}
+	    		}
+	    	}
+		  return 0;
+	  }
+
+	private int getSpielerMapX() 
+	{
+		for(int i = startx; i<20;i++)
+    	{
+    		for(int j = starty; j<20; j++)
+    		{
+    			if(aktuellesLevel[i][j] == 4)
+    			{
+    				return i*32;
+    			}
+    		}
+    	}
+	  return 0;
+	}
+
+	public void aktualisiereArray()
 	  {
 		  aktuellesLevel = fenster.testClient.aktuellesLevel;
 		  starty=0;
+		  fenster.spieler.setPos(getSpielerMapX(), getSpielerMapY());
 	  }
 	  
 	  public int[][] getKarte()
@@ -55,7 +84,6 @@ public class SpielFeld extends JPanel
 	    @Override
 	   public void paintComponent(Graphics g) 
 	    {
-
 	    	super.paintComponent(g);
 	    
 	    	if(((fenster.spieler.getPosY()-448)/32) > 0)starty=(fenster.spieler.getPosY()-448)/32+1;
@@ -101,12 +129,6 @@ public class SpielFeld extends JPanel
 	    			if(aktuellesLevel[i][j] == 4 )
 	    			{
 	    				g.drawImage(boden, i*bildX, (j-starty)*bildY,bildX,bildY, this);
-	    				if(startpunktSpieler == false){
-	    					System.out.println(i*bildX+"  "+(j-starty)*bildY);
-	    					fenster.spieler.setPos(i*bildX, (j-starty)*bildY);
-	    					startpunktSpieler = true;
-	    				}
-	    				//g.drawImage(fenster.spieler.getBild(), i*bildX, j*bildY, this);
 	    				
 	    			}
 	    			if(aktuellesLevel[i][j] == 6)
