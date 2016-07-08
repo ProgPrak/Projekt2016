@@ -14,7 +14,7 @@ public class SpielFeld extends JPanel
 
 	  GUImain fenster;
 	  private Image boden,wand,tuerZu,tuerOffen,schluesselImg,heiltrank, monster1;
-	  private boolean startpunktSpieler = false;
+	   boolean startpunktSpieler = false;
 	  Schluessel schluessel;
 	  int[][] aktuellesLevel;
 	  
@@ -26,7 +26,7 @@ public class SpielFeld extends JPanel
 		 Toolkit tk = Toolkit.getDefaultToolkit();
 		 this.bildx = bildx;
 		 this.bildy = bildy;
-		 aktuellesLevel = fenster.testClient.aktuellesLevel;
+		 aktualisiereArray();
 		 boden = tk.getImage("img/boden.png");
 		 wand = tk.getImage("img/wand.png");
 		 tuerZu = tk.getImage("img/tuer.png");
@@ -38,6 +38,11 @@ public class SpielFeld extends JPanel
 		 
 
 	     
+	  }
+	  
+	  public void aktualisiereArray()
+	  {
+		  aktuellesLevel = fenster.testClient.aktuellesLevel;
 	  }
 	  
 	  public int[][] getKarte()

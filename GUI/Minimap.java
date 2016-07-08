@@ -69,7 +69,6 @@ public class Minimap extends JPanel
 		    			}
 		    			if(karte[i][j] == 3)
 		    			{
-		    				System.out.println("hallo");
 		    				g.drawImage(schluessel, i*5, j*5,5,5, this);
 		    			}
 		    		}
@@ -80,7 +79,7 @@ public class Minimap extends JPanel
 
 	}
 
-	public void aktualisiereMap(int[][] karte) 
+	public void aktualisiereKarte(int[][] karte) 
 	{
 		this.karte = karte;
 	}

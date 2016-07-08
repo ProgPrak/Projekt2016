@@ -54,11 +54,8 @@ public class TestClient
 		this.gui = gui;
 		aktuellesLevel = dummyMap;
 		alleLevel = new ArrayList<int[][]>(5);
-		level1=dummyMap;
-		level2=dummyMap;
-		level3=dummyMap;
-		level4=dummyMap;
-		level5=dummyMap;
+		levelnummer = 1;
+		level1=dummyMap;level2=dummyMap;level3=dummyMap;level4=dummyMap;level5=dummyMap;
 		alleLevel.add(level1);
 		alleLevel.add(level2);
 		alleLevel.add(level3);
@@ -90,7 +87,7 @@ public class TestClient
 				 * !Die hier angegebenen Reaktionen auf die Messages sind nur zu Testzwecken und werden bei der Integration der anderen Komponenten ausgebessert!
 				 */
 					case 0: this.benutzername=m.benutzername;this.passwort=m.passwort; System.out.println("Einloggen von " + benutzername + " erfolgreich!"); break;
-					case 1: System.out.println("Position des Spielers: " + m.getxKoo()+ ", " + m.getyKoo());break;
+					//case 1: System.out.println("Position des Spielers: " + m.getxKoo()+ ", " + m.getyKoo());break;
 					case 2: System.out.println("Der Trank an der Position " + m.getxKoo() + ", " + m.getyKoo() + " wurde aufgenommen");break;
 					case 3: System.out.println("Das Level wurde abgeschlossen!");break;
 					case 4: System.out.println("Der Schluessel an der Stelle "+m.getxKoo()+", "+m.getyKoo()+" wurde aufgenommen");break;
@@ -129,10 +126,10 @@ public class TestClient
 				}
 		}
 	}
-		public int[][] getNaechstesLevel(){
+		public void nextLevel(){
+			
 			levelnummer++;
 			aktuellesLevel = alleLevel.get(levelnummer);
-			return alleLevel.get(levelnummer);
 		}
 	
 	/*
