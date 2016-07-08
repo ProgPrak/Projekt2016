@@ -43,6 +43,7 @@ public class SpielFeld extends JPanel
 	  public void aktualisiereArray()
 	  {
 		  aktuellesLevel = fenster.testClient.aktuellesLevel;
+		  starty=0;
 	  }
 	  
 	  public int[][] getKarte()
@@ -54,15 +55,16 @@ public class SpielFeld extends JPanel
 	    @Override
 	   public void paintComponent(Graphics g) 
 	    {
-	    	
+
 	    	super.paintComponent(g);
+	    
 	    	if(((fenster.spieler.getPosY()-448)/32) > 0)starty=(fenster.spieler.getPosY()-448)/32+1;
 	    	else
 	    		{
 	    			if(starty>1)starty-=1;
 	    			else starty=0;
 	    		}
-	    	maleMap(g, 20,20,bildx,bildy, aktuellesLevel,startx,starty);
+	    	maleMap(g, 20,20, bildx, bildy, aktuellesLevel, startx, starty);
 	    		     
 	    }
 
