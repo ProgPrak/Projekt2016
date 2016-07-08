@@ -9,42 +9,45 @@ import java.util.Arrays;
 public class PasswortFenster extends JPanel
                           implements ActionListener {
     private static String OK = "ok";
-    private String user = "molina";
-    private JFrame controllingFrame; 
-    private JPasswordField passwordField;
-    private JTextField userField;
-
-	private boolean loginTrue = false;
+    private String nutzer = "molina";
+    private JFrame kontrollFenster; 
+    private JPasswordField passwortFeld;
+    private JTextField nutzerFeld;
+    private JLabel hintergrundBild;
+	private boolean einloggenWahr = false;
  
     public PasswortFenster(JFrame f) {
        
-        controllingFrame = f;
+        kontrollFenster = f;
  
+        hintergrundBild = new JLabel(new ImageIcon("img/giphy.gif"));
+        hintergrundBild.setLayout(null);
         
-        passwordField = new JPasswordField(10);
-        passwordField.setActionCommand(OK);
-        passwordField.addActionListener(this);
-        userField = new JTextField(15);
-        userField.setActionCommand(OK);
-        userField.addActionListener(this);
+        passwortFeld = new JPasswordField(10);
+        passwortFeld.setActionCommand(OK);
+        passwortFeld.addActionListener(this);
+        nutzerFeld = new JTextField(15);
+        nutzerFeld.setActionCommand(OK);
+        nutzerFeld.addActionListener(this);
        
-        JLabel userlabel = new JLabel("User: ");
-        userlabel.setLabelFor(userField);
-        JLabel label = new JLabel("Passwort: ");
-        label.setLabelFor(passwordField);
+        JLabel nutzerLabel = new JLabel("nutzer: ");
+        nutzerLabel.setLabelFor(nutzerFeld);
+        JLabel passwortLabel = new JLabel("Passwort: ");
+        passwortLabel.setLabelFor(passwortFeld);
  
         JComponent buttonPane = createButtonPanel();
  
         JPanel textPane = new JPanel(new FlowLayout(FlowLayout.TRAILING));
-        textPane.add(userlabel);
-        textPane.add(userField);
+        textPane.add(nutzerLabel);
+        textPane.add(nutzerFeld);
         
-        textPane.add(label);
-        textPane.add(passwordField);
+        textPane.add(passwortLabel);
+        textPane.add(passwortFeld);
         
  
         add(textPane);
         add(buttonPane);
+        add(hintergrundBild);
     }
  
     protected JComponent createButtonPanel() {
@@ -60,28 +63,28 @@ public class PasswortFenster extends JPanel
     
     public void setBooleanFalse()
     {
-    	loginTrue = false;
+    	einloggenWahr = false;
     }
  
     public void actionPerformed(ActionEvent e) {
         String cmd = e.getActionCommand();
  
         if (OK.equals(cmd)) { 
-            char[] input = passwordField.getPassword();
-            String input2 = userField.getText();
+            char[] input = passwortFeld.getPassword();
+            String input2 = nutzerFeld.getText();
             
-            	if (isPasswordCorrect(input2, input)) 
+            	if (istPasswortKorrekt(input2, input)) 
             	{
-            			loginTrue = true;
-            			passwordField.setText(null);
-            			userField.setText(null);
+            			einloggenWahr = true;
+            			passwortFeld.setText(null);
+            			nutzerFeld.setText(null);
             		
             	} 
             	else 
             	{
-            		passwordField.setText(null);
-        			userField.setText(null);
-            		JOptionPane.showMessageDialog(controllingFrame,
+            		passwortFeld.setText(null);
+        			nutzerFeld.setText(null);
+            		JOptionPane.showMessageDialog(kontrollFenster,
             				"Invalid password/username. Try again.",
             				"Error Message",
             				JOptionPane.ERROR_MESSAGE);
@@ -90,10 +93,10 @@ public class PasswortFenster extends JPanel
             
             Arrays.fill(input, '0');
  
-            passwordField.selectAll();
+            passwortFeld.selectAll();
             resetFocus();
         } else { 
-            JOptionPane.showMessageDialog(controllingFrame,
+            JOptionPane.showMessageDialog(kontrollFenster,
                 "You can get the password by searching this example's\n"
               + "source code for the string \"correctPassword\".\n"
               + "Or look at the section How to Use Password Fields in\n"
@@ -101,7 +104,7 @@ public class PasswortFenster extends JPanel
         }
     }
 
-    private boolean isPasswordCorrect(String userInput, char[] passwordInput) {
+    private boolean istPasswortKorrekt(String nutzerEingabe, char[] passwortEingabe) {
         boolean isCorrect = true;
         char[] correctPassword = { 'm','a','d','r','i', 'd' };
         try
@@ -109,22 +112,22 @@ public class PasswortFenster extends JPanel
         	for(int i = 0; i<correctPassword.length;i++)
         	{
         	
-        		if(passwordInput[i] != correctPassword[i])
+        		if(passwortEingabe[i] != correctPassword[i])
         		{
         			isCorrect = false;
         			break;
         		}
         	}
-        	for(int i1 = 0; i1<user.length()-1;i1++)
+        	for(int i1 = 0; i1<nutzer.length()-1;i1++)
         	{
-        		if(user.charAt(i1) != userInput.charAt(i1))
+        		if(nutzer.charAt(i1) != nutzerEingabe.charAt(i1))
         		{
         			isCorrect = false;
         			break;
         		}
         	}}catch(ArrayIndexOutOfBoundsException e){}
         
-        		if(userInput.length() != user.length() || passwordInput.length != correctPassword.length)isCorrect = false;
+        		if(nutzerEingabe.length() != nutzer.length() || passwortEingabe.length != correctPassword.length)isCorrect = false;
         		return isCorrect;
         
         	
@@ -132,15 +135,15 @@ public class PasswortFenster extends JPanel
  
 
     protected void resetFocus() {
-        passwordField.requestFocusInWindow();
+        passwortFeld.requestFocusInWindow();
     }
 
-	public boolean getLoginTrue() {
-		return loginTrue ;
+	public boolean getEinloggenWahr() {
+		return einloggenWahr ;
 	}
 	
 	public String getLoginName()
 	{
-		return user;
+		return nutzer;
 	}
 }
