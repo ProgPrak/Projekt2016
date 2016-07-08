@@ -30,7 +30,7 @@ public class PasswortFenster extends JPanel
         nutzerFeld.setActionCommand(OK);
         nutzerFeld.addActionListener(this);
        
-        JLabel nutzerLabel = new JLabel("nutzer: ");
+        JLabel nutzerLabel = new JLabel("Nutzer: ");
         nutzerLabel.setLabelFor(nutzerFeld);
         JLabel passwortLabel = new JLabel("Passwort: ");
         passwortLabel.setLabelFor(passwortFeld);
@@ -44,10 +44,10 @@ public class PasswortFenster extends JPanel
         textPane.add(passwortLabel);
         textPane.add(passwortFeld);
         
- 
+        add(hintergrundBild);
         add(textPane);
         add(buttonPane);
-        add(hintergrundBild);
+        
     }
  
     protected JComponent createButtonPanel() {

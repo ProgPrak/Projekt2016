@@ -3,6 +3,7 @@ package GUI;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -59,13 +60,16 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		
 		//Weiter wichtige Eigenschaften des Frames werden definiert
 		this.setVisible(true);
-		this.setResizable(false);
+		//this.setResizable(false);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 	
 	// Initialisierung der Komponenten des Frames und der Panels
 	// Einzelne Panels werden zugewiesen
-	public void initialisiereJFrame(int width, int height, String title) {
+	public void initialisiereJFrame(int width, int height, String title) 
+	{
+		Toolkit tk = Toolkit.getDefaultToolkit();
+		this.setLocation((int)tk.getScreenSize().getWidth()/2-250, (int)tk.getScreenSize().getHeight()/2-117);
 		breite=width;
 		laenge = height;
 		this.setLayout(new BorderLayout());
@@ -77,10 +81,11 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		this.pf = new PasswortFenster(this);
 		this.spieler = new Spieler(this);
 		this.sn = new Systemnachrichten();
+		sn.setLocation((int)tk.getScreenSize().getWidth()/2+500, (int)tk.getScreenSize().getHeight()/2-117);
 		this.mm = new Minimap(this);
 		this.testClient = new TestClient(1);
 		mm.setPreferredSize(new Dimension(100, 500));
-		pf.setPreferredSize(new Dimension(500,50));
+		pf.setPreferredSize(new Dimension(500,235));
 		menu.setPreferredSize(new Dimension(width, 25));
 		spielFeld.setPreferredSize(new Dimension(width, height));
 		leiste.setPreferredSize(new Dimension(width, BOX));

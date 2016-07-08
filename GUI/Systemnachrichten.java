@@ -16,7 +16,6 @@ ArrayList<String> nachricht = new ArrayList<>();
 	{
 		this.setVisible(true);
 		this.setTitle("Systemnachrichten");
-		this.setLocation(750,0);
 		this.setSize(300, 300);
 		//this.setResizable(false);
 		nachricht("Für Test: User:molina, Passwort:madrid");
