@@ -26,7 +26,7 @@ public class TestClient
 			  {0,0,0,1,1,1,1,1,1,1,0,0,0,0,0,5,0,1,0,0},
 			  {0,0,0,2,0,0,0,1,0,1,0,0,0,0,0,1,0,5,0,0},
 			  {0,0,0,1,1,1,0,1,1,1,0,0,0,0,0,1,0,1,0,0},
-			  {0,0,0,0,0,1,0,1,0,7,0,0,0,0,0,1,0,1,0,0},
+			  {0,0,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,1,0,0},
 			  {0,1,1,1,1,1,0,1,1,1,1,1,0,0,0,1,0,1,0,0},
 			  {0,1,0,5,0,0,0,1,0,1,0,1,0,0,0,1,0,1,0,0},
 			  {0,1,1,1,1,1,0,1,1,1,1,1,1,1,0,1,0,1,0,0},
@@ -38,9 +38,9 @@ public class TestClient
 			  {0,1,1,1,1,1,1,4,1,2,0,1,0,1,1,1,1,1,0,0},
 			  {0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,1,0,1,0,0},
 			  {0,0,0,0,0,0,0,0,0,1,3,1,0,0,0,1,0,1,0,0},
-			  {0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,6,0,0},
+			  {0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,7,0,0},
 			  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
-	// 0 = Wand
+		  // 0 = Wand
 		  // 1 = Boden
 		  // 2 = Trank
 		  // 3 = Schluessel
@@ -53,6 +53,18 @@ public class TestClient
 		this.id=i;
 		this.gui = gui;
 		aktuellesLevel = dummyMap;
+		alleLevel = new ArrayList<int[][]>(5);
+		level1=dummyMap;
+		level2=dummyMap;
+		level3=dummyMap;
+		level4=dummyMap;
+		level5=dummyMap;
+		alleLevel.add(level1);
+		alleLevel.add(level2);
+		alleLevel.add(level3);
+		alleLevel.add(level4);
+		alleLevel.add(level5);
+		
 	}		
 	public void sende(Nachricht m){
 		Nachrichten.add(m);

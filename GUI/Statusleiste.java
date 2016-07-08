@@ -49,5 +49,6 @@ public class Statusleiste extends JPanel
 		g.drawString(fenster.spieler.getAnzahlHeiltraenke()+"x", 300, 20);
 		g.drawImage(trank, 310, 0, this);
 		repaint();
+		if(fenster.spieler.hatSchluessel())g.drawImage(schluessel, 400, 0, this);
 	}
 }

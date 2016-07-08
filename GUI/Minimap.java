@@ -41,7 +41,7 @@ public class Minimap extends JPanel
 			for(int j = 0 ; j<20; j++)
 			{
 				
-		    			if(karte[i][j] == 1 || karte[i][j] == 4 || karte[i][j] == 5 || karte[i][j] == 2)
+		    			if(karte[i][j] !=0)
 		    			{
 		    				g.drawImage(boden, i*5, j*5, 5, 5, this);
 		    			}
@@ -51,12 +51,12 @@ public class Minimap extends JPanel
 		    				g.drawImage(wand, i*5, j*5,5,5, this);
 		    			}
 		    			
-		    			if(karte[i][j] == 7)
+		    			if(karte[i][j] == 6)
 		    			{
 		    				g.drawImage(tuerOffen, i*5, j*5,5,5, this);
 		    			}
 		    			
-		    			if(karte[i][j] == 6)
+		    			if(karte[i][j] == 7)
 		    			{
 		    				g.drawImage(tuerZu, i*5, j*5,5,5, this);
 		    			}
@@ -66,6 +66,11 @@ public class Minimap extends JPanel
 		    			if(karte[i][j] == 2)
 		    			{
 		    				g.drawImage(heiltrank, i*5, j*5,5,5, this);
+		    			}
+		    			if(karte[i][j] == 3)
+		    			{
+		    				System.out.println("hallo");
+		    				g.drawImage(schluessel, i*5, j*5,5,5, this);
 		    			}
 		    		}
 		    	}
