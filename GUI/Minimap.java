@@ -22,8 +22,6 @@ public class Minimap extends JPanel
 		this.gui = gui;
 		 Toolkit tk = Toolkit.getDefaultToolkit();
 		 karte = gui.spielFeld.dummyMap;
-		 monsterKarte = gui.spielFeld.monsterMap;
-		 trankm = gui.spielFeld.trankMap;
 		 boden = tk.getImage("img/boden.png");
 		 wand = tk.getImage("img/wand.png");
 		 tuerZu = tk.getImage("img/tuer.png");
@@ -42,7 +40,7 @@ public class Minimap extends JPanel
 			for(int j = 0 ; j<20; j++)
 			{
 				
-		    			if(karte[i][j] == 1 || karte[i][j] == 4)
+		    			if(karte[i][j] == 1 || karte[i][j] == 4 || karte[i][j] == 5 || karte[i][j] == 2)
 		    			{
 		    				g.drawImage(boden, i*5, j*5, 5, 5, this);
 		    			}
@@ -52,22 +50,19 @@ public class Minimap extends JPanel
 		    				g.drawImage(wand, i*5, j*5,5,5, this);
 		    			}
 		    			
-		    			if(karte[i][j] == 2)
+		    			if(karte[i][j] == 7)
 		    			{
 		    				g.drawImage(tuerOffen, i*5, j*5,5,5, this);
 		    			}
 		    			
-		    			if(karte[i][j] == 3)
+		    			if(karte[i][j] == 6)
 		    			{
 		    				g.drawImage(tuerZu, i*5, j*5,5,5, this);
 		    			}
-		    			if(monsterKarte[i][j] == 1){
+		    			if(karte[i][j] == 5){
 		    				g.drawImage(monster1, i*5, j*5,5,5, this);
 		    			}
-		    			if(monsterKarte[i][j] == 2){
-		    				g.drawImage(monster2, i*5, j*5,5,5, this);
-		    			}
-		    			if(trankm[i][j] == 1)
+		    			if(karte[i][j] == 2)
 		    			{
 		    				g.drawImage(heiltrank, i*5, j*5,5,5, this);
 		    			}
