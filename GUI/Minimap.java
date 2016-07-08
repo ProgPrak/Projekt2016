@@ -12,7 +12,7 @@ public class Minimap extends JPanel
 {
 	
 	GUImain gui;
-	int[][] map, monsterm, trankm;
+	int[][] karte, monsterKarte, trankm;
 	
 	private Image boden, wand, tuerZu, tuerOffen, schluessel, heiltrank, monster1,monster2;
 
@@ -21,8 +21,8 @@ public class Minimap extends JPanel
 	public Minimap(GUImain gui) {
 		this.gui = gui;
 		 Toolkit tk = Toolkit.getDefaultToolkit();
-		 map = gui.spielFeld.dummyMap;
-		 monsterm = gui.spielFeld.monsterMap;
+		 karte = gui.spielFeld.dummyMap;
+		 monsterKarte = gui.spielFeld.monsterMap;
 		 trankm = gui.spielFeld.trankMap;
 		 boden = tk.getImage("img/boden.png");
 		 wand = tk.getImage("img/wand.png");
@@ -42,29 +42,29 @@ public class Minimap extends JPanel
 			for(int j = 0 ; j<20; j++)
 			{
 				
-		    			if(map[i][j] == 1 || map[i][j] == 4)
+		    			if(karte[i][j] == 1 || karte[i][j] == 4)
 		    			{
 		    				g.drawImage(boden, i*5, j*5, 5, 5, this);
 		    			}
 		    			
-		    			if(map[i][j] == 0)
+		    			if(karte[i][j] == 0)
 		    			{
 		    				g.drawImage(wand, i*5, j*5,5,5, this);
 		    			}
 		    			
-		    			if(map[i][j] == 2)
+		    			if(karte[i][j] == 2)
 		    			{
 		    				g.drawImage(tuerOffen, i*5, j*5,5,5, this);
 		    			}
 		    			
-		    			if(map[i][j] == 3)
+		    			if(karte[i][j] == 3)
 		    			{
 		    				g.drawImage(tuerZu, i*5, j*5,5,5, this);
 		    			}
-		    			if(monsterm[i][j] == 1){
+		    			if(monsterKarte[i][j] == 1){
 		    				g.drawImage(monster1, i*5, j*5,5,5, this);
 		    			}
-		    			if(monsterm[i][j] == 2){
+		    			if(monsterKarte[i][j] == 2){
 		    				g.drawImage(monster2, i*5, j*5,5,5, this);
 		    			}
 		    			if(trankm[i][j] == 1)
@@ -81,14 +81,14 @@ public class Minimap extends JPanel
 	
 	public void aktualisiereMaps(int[][] map1, int[][] map2, int[][] map3)
 	{
-		map = map1;
-		monsterm = map2;
+		karte = map1;
+		monsterKarte = map2;
 		trankm = map3;
 	}
 	
-	public void aktualisiereMonster(int[][] map)
+	public void aktualisiereMonster(int[][] karte)
 	{
-		monsterm = map;
+		monsterKarte = karte;
 	}
 
 	public void aktualisiereTrank(int[][] trankMap) {
@@ -96,6 +96,6 @@ public class Minimap extends JPanel
 	}
 
 	public void aktualisiereMap(int[][] map2) {
-		map = map2;
+		karte = map2;
 	}
 }
