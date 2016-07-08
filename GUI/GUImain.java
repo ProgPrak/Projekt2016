@@ -64,6 +64,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 	}
 	
 	// Initialisierung der Komponenten des Frames und der Panels
+	// Einzelne Panels werden zugewiesen
 	public void initialisiereJFrame(int width, int height, String title) {
 		breite=width;
 		laenge = height;
@@ -263,37 +264,45 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		}
 	}
 
+	//Bewegung des Spielers über den Mouse-Listener
 	@Override
 	public void mouseReleased(MouseEvent e) 
 	{
-
+		
+		// Wird das Feld über dem Spieler angeklickt, so bewegt sich der Spieler ein Feld nach oben, sofern dies möglich ist
+		// Zudem sendet der Client eine Message an den Server, dass der Spieler nun an einer neuen Position ist
 		if(((e.getY()-55+spielFeld.getstarty()) < spieler.getPosY()) && (e.getX()<=spieler.getPosX()+35) && (e.getX()>=spieler.getPosX()) && spielFeld.getMap()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] != 0 && spielFeld.getMonsterMap()[spieler.getPosX()/32][(spieler.getPosY()/32)-1] == 0)
 		{
 			spieler.hoch();	
 			spielFeld.repaint();	
 			testClient.sende(new Nachricht(1,spieler.getPosX()/32,spieler.getPosY()/32));
-
 		}
+		
+		// Wird das Feld unter dem Spieler angeklickt, so bewegt sich der Spieler ein Feld nach unten, sofern dies möglich ist
+		// Zudem sendet der Client eine Message an den Server, dass der Spieler nun an einer neuen Position ist
 		if(((e.getY()-55+spielFeld.getstarty()) > spieler.getPosY()+32) && (e.getX()<=spieler.getPosX()+35) && (e.getX()>=spieler.getPosX()) && spielFeld.getMap()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] != 0 && spielFeld.getMonsterMap()[spieler.getPosX()/32][(spieler.getPosY()/32)+1] == 0)
 		{
 			spieler.runter();
 			spielFeld.repaint();
 			testClient.sende(new Nachricht(1,spieler.getPosX()/32,spieler.getPosY()/32));
-
 		}
+		
+		// Wird das Feld rechts neben dem Spieler angeklickt, so bewegt sich der Spieler ein Feld nach rechts, sofern dies möglich ist
+		// Zudem sendet der Client eine Message an den Server, dass der Spieler nun an einer neuen Position ist
 		if((e.getX() > spieler.getPosX()+32) && ((e.getY()-55+spielFeld.getstarty()) > spieler.getPosY()) && ((e.getY()-55+spielFeld.getstarty()) < spieler.getPosY()+32) && spielFeld.getMap()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] != 0 && spielFeld.getMonsterMap()[(spieler.getPosX()/32)+1][(spieler.getPosY()/32)] ==0)
 		{
 			spieler.rechts();
 			spielFeld.repaint();
 			testClient.sende(new Nachricht(1,spieler.getPosX()/32,spieler.getPosY()/32));
-
 		}
+		
+		// Wird das Feld links neben dem Spieler angeklickt, so bewegt sich der Spieler ein Feld nach links, sofern dies möglich ist
+		// Zudem sendet der Client eine Message an den Server, dass der Spieler nun an einer neuen Position ist
 		if((e.getX() < spieler.getPosX()) && ((e.getY()-55+spielFeld.getstarty()) > spieler.getPosY()) && ((e.getY()-55+spielFeld.getstarty()) < spieler.getPosY()+32) && spielFeld.getMap()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] != 0 && spielFeld.getMonsterMap()[(spieler.getPosX()/32)-1][(spieler.getPosY()/32)] ==0)
 		{
 			spieler.links();
 			spielFeld.repaint();
 			testClient.sende(new Nachricht(1,spieler.getPosX()/32,spieler.getPosY()/32));
-
 		}
 	}
 
