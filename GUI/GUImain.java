@@ -69,7 +69,6 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		breite=width;
 		laenge = height;
 		this.setLayout(new BorderLayout());
-		this.spielFeld = new SpielFeld(this, 32 ,32);
 		this.leiste = new Statusleiste(this);
 		this.steuerung = new Steuerung();
 		this.highscore = new Highscore();
@@ -78,8 +77,9 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		this.spieler = new Spieler(this);
 		this.sn = new Systemnachrichten();
 		sn.setLocation((int)tk.getScreenSize().getWidth()/2+500, (int)tk.getScreenSize().getHeight()/2-117);
-		this.mm = new Minimap(this);
 		this.testClient = new TestClient(1,this);
+		this.spielFeld = new SpielFeld(this, 32 ,32);
+		this.mm = new Minimap(this);
 		mm.setPreferredSize(new Dimension(100, 500));
 		pf.setPreferredSize(new Dimension(500,235));
 		menu.setPreferredSize(new Dimension(width, 25));

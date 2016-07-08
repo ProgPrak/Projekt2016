@@ -22,7 +22,7 @@ public class Minimap extends JPanel
 	public Minimap(GUImain gui) {
 		this.gui = gui;
 		 Toolkit tk = Toolkit.getDefaultToolkit();
-		 karte = gui.spielFeld.dummyMap;
+		 karte = gui.testClient.getAktuellesLevel();
 		 boden = tk.getImage("img/boden.png");
 		 wand = tk.getImage("img/wand.png");
 		 tuerZu = tk.getImage("img/tuer.png");

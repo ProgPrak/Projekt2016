@@ -37,24 +37,22 @@ public class TestClient
 			  {0,1,0,0,0,0,0,1,0,1,0,1,0,1,0,1,0,1,0,0},
 			  {0,1,1,1,1,1,1,4,1,2,0,1,0,1,1,1,1,1,0,0},
 			  {0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,1,0,1,0,0},
-			  {0,0,0,0,0,0,0,0,0,1,8,1,0,0,0,1,0,1,0,0},
+			  {0,0,0,0,0,0,0,0,0,1,3,1,0,0,0,1,0,1,0,0},
 			  {0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,6,0,0},
 			  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
 	// 0 = Wand
 		  // 1 = Boden
 		  // 2 = Trank
-		  // 3 = tuerZu
+		  // 3 = Schluessel
 		  // 4 = Spieler
 		  // 5 = Monster
 		  // 6 = Tuer offen
 		  // 7 = Tuer zu
-		  // 8 = Schlüssel
 
 	public TestClient(int i, GUImain gui){
 		this.id=i;
 		this.gui = gui;
 		aktuellesLevel = dummyMap;
-		alleLevel.add(level1);alleLevel.add(level2);alleLevel.add(level3);alleLevel.add(level4);alleLevel.add(level5);
 	}		
 	public void sende(Nachricht m){
 		Nachrichten.add(m);

@@ -13,9 +13,9 @@ public class SpielFeld extends JPanel
 	int malex = 20,maley = 20,bildx,bildy,startx=0,starty=0;
 
 	  GUImain fenster;
-	  private Image boden,wand,tuerZu,tuerOffen,schluessel,heiltrank, monster1;
+	  private Image boden,wand,tuerZu,tuerOffen,schluesselImg,heiltrank, monster1;
 	  private boolean startpunktSpieler = false;
-	  
+	  Schluessel schluessel;
 	  int[][] aktuellesLevel;
 	  
 	  
@@ -31,7 +31,7 @@ public class SpielFeld extends JPanel
 		 wand = tk.getImage("img/wand.png");
 		 tuerZu = tk.getImage("img/tuer.png");
 		 tuerOffen = tk.getImage("img/tueroffen.png");
-		 schluessel = tk.getImage("img/schluessel.png");
+		 schluesselImg = tk.getImage("img/schluessel.png");
 		 heiltrank = tk.getImage("img/trank.png");
 		 monster1 = tk.getImage("img/drache1.png");
 		 this.requestFocus();
@@ -88,7 +88,7 @@ public class SpielFeld extends JPanel
 	    			
 	    			if(aktuellesLevel[i][j] == 3)
 	    			{
-	    				g.drawImage(schluessel, i*bildX, (j-starty)*bildY,bildX,bildY, this);
+	    				g.drawImage(schluesselImg, i*bildX, (j-starty)*bildY,bildX,bildY, this);
 	    			}
 	    			
 	    			if(aktuellesLevel[i][j] == 4 )
