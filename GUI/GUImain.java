@@ -25,7 +25,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	// Die für das Spiel relevanten Panels werden benannt
+	// Die für das Spiel relevanten Panels und Variablen werden deklariert
 	private PasswortFenster pf;	
 	public SpielFeld spielFeld;
 	public Menu menu;
@@ -35,10 +35,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 	public Systemnachrichten sn;
 	private Minimap mm;
 	
-	//Spieler wird benannt
 	public Spieler spieler;
-	
-	//Keine ahnung, Jabo musst du mir sagen :D
 	public int rand = 480;
 	public long startZeit;
 	public int levelNow = 0;
@@ -51,14 +48,13 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 	
 	public GUImain()
 	{
-		//Initialisierung wird an weiter Methode uebergeben
 		initialisiereJFrame(20*32,15*32,"Hindi Bones");
 
 		//Event-Listener werden eingebaut
 		this.addMouseListener(this);
 		this.addKeyListener(this);
 		
-		//Weiter wichtige Eigenschaften des Frames werden definiert
+		//Weitere wichtige Eigenschaften des Frames werden definiert
 		this.setVisible(true);
 		this.setResizable(false);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
