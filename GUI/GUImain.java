@@ -202,6 +202,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 					if(gui.spieler.monsterNah())
 					{
 						gui.spieler.setGesundheit(gui.spieler.getGesundheit()-5);
+						gui.leiste.repaint();
 					}
 					if(gui.spieler.getGesundheit() == 0)
 					{
