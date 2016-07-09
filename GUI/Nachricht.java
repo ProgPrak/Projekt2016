@@ -113,4 +113,7 @@ public class Nachricht {
 	public String getPasswort(){
 		return this.passwort;
 	}
+	public String getFehler(){
+		return this.fehlermeldung;
+	}
 }

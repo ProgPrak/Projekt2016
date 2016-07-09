@@ -3,6 +3,9 @@ package GUI;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
+
+import javax.swing.JOptionPane;
+
 import datenstruktur.Spieler;
 import kommunikation.CommClient;
 
@@ -19,7 +22,7 @@ public class TestClient
 	Spieler spieler;
 	int[][] dummyMap;
 	CommClient commClient;
-			  
+			String s;  
 	//
 	final int[][] dummyMap2={
 			  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -51,7 +54,9 @@ public class TestClient
 		  // 6 = Tuer offen
 		  // 7 = Tuer zu
 
-	public TestClient(GUImain gui){
+	public TestClient(GUImain gui, int port){
+		
+		
 		this.gui = gui;
 		levelnummer = 1;
 		dummyMap = new int[][]{
@@ -77,6 +82,10 @@ public class TestClient
 				  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
 				  
 		aktuellesLevel = dummyMap;
+		this.commClient=new CommClient("localhost",port);
+
+		s = JOptionPane.showInputDialog("do it");
+		sende(new Nachricht(5,s));
 	}		
 	
 	public void aktualisiereArray(int i , int j)
