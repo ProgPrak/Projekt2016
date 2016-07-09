@@ -76,7 +76,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		this.steuerung = new Steuerung();
 		this.highscore = new Highscore(this);
 		this.menu = new Menu(this);
-		this.pf = new PasswortFenster(this);
+		this.pf = new PasswortFenster(this,this);
 		this.spieler = new Spieler(this);
 		this.sn = new Systemnachrichten();
 		sn.setLocation((int)tk.getScreenSize().getWidth()/2+500, (int)tk.getScreenSize().getHeight()/2-117);

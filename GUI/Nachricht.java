@@ -107,4 +107,10 @@ public class Nachricht {
 		}
 		return nachricht;
 	}
+	public String getName(){
+		return this.benutzername;
+	}
+	public String getPasswort(){
+		return this.passwort;
+	}
 }

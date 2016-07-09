@@ -15,11 +15,11 @@ public class PasswortFenster extends JPanel
     private JTextField nutzerFeld;
     private JLabel hintergrundBild;
 	private boolean einloggenWahr = false;
- 
+	GUImain gui;
 	
 	// Erstellt Labels, sowie Passwort- und Nutzer-Fenster und addet diese zum Panel
-    public PasswortFenster(JFrame f) {
-       
+    public PasswortFenster(JFrame f, GUImain gui) {
+       this.gui=gui;
         kontrollFenster = f;
  
         hintergrundBild = new JLabel(new ImageIcon("img/giphy1.gif"));
@@ -77,8 +77,9 @@ public class PasswortFenster extends JPanel
         if (OK.equals(cmd)) { 
             char[] input = passwortFeld.getPassword();
             String input2 = nutzerFeld.getText();
-            
-            	if (istPasswortKorrekt(input2, input)) 
+            String passwort = new String(input);
+            gui.testClient.sende(new Nachricht(0,passwort,input2));
+            	/*if (istPasswortKorrekt(input2, input)) 
             	{
             			einloggenWahr = true;
             			passwortFeld.setText(null);
@@ -94,7 +95,7 @@ public class PasswortFenster extends JPanel
             				"Error Message",
             				JOptionPane.ERROR_MESSAGE);
             	}
-            	
+           	
             
             Arrays.fill(input, '0');
  
@@ -105,7 +106,7 @@ public class PasswortFenster extends JPanel
                 "You can get the password by searching this example's\n"
               + "source code for the string \"correctPassword\".\n"
               + "Or look at the section How to Use Password Fields in\n"
-              + "the components section of The Java Tutorial.");
+              + "the components section of The Java Tutorial.");*/
         }
     }
 

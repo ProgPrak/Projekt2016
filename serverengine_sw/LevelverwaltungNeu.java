@@ -37,11 +37,11 @@ public class LevelverwaltungNeu {
 		l3.wandleZuGuiArrayum();
 		l4.wandleZuGuiArrayum();
 		l5.wandleZuGuiArrayum();
-		Message ll1 = new Message(6,l1.GuiArray);
-		Message ll2 = new Message(6,l2.GuiArray);
-		Message ll3 = new Message(6,l3.GuiArray);
-		Message ll4 = new Message(6,l4.GuiArray);
-		Message ll5 = new Message(6,l5.GuiArray);
+		Nachricht ll1 = new Nachricht(6,l1.GuiArray);
+		Nachricht ll2 = new Nachricht(6,l2.GuiArray);
+		Nachricht ll3 = new Nachricht(6,l3.GuiArray);
+		Nachricht ll4 = new Nachricht(6,l4.GuiArray);
+		Nachricht ll5 = new Nachricht(6,l5.GuiArray);
 		server.messageToClient(ll1);
 		server.messageToClient(ll2);
 		server.messageToClient(ll3);
@@ -95,7 +95,7 @@ public class LevelverwaltungNeu {
 		if (levelInhalt.Struktur[spieler.posy][spieler.posx].anzahlTraenke>0) {
 			moeglich = true;
 			levelInhalt.wandleZuGuiArrayum();
-			Message neuesLevel = new Message(6,levelInhalt.GuiArray);
+			Nachricht neuesLevel = new Nachricht(6,levelInhalt.GuiArray);
 			server.messageToClient(neuesLevel);
 		}
 		
@@ -107,7 +107,7 @@ public class LevelverwaltungNeu {
 		if(levelInhalt.Struktur[spieler.posy][spieler.posx].surfaceType==5){
 			moeglich = true;
 			levelInhalt.wandleZuGuiArrayum();
-			Message neuesLevel = new Message(6,levelInhalt.GuiArray);
+			Nachricht neuesLevel = new Nachricht(6,levelInhalt.GuiArray);
 			server.messageToClient(neuesLevel);
 		}
 		
@@ -120,7 +120,7 @@ public class LevelverwaltungNeu {
 			levelInhalt.Struktur[spieler.posy][spieler.posx].surfaceType=2;
 			ergebnis=true;
 			levelInhalt.wandleZuGuiArrayum();
-			Message neuesLevel = new Message(6,levelInhalt.GuiArray);
+			Nachricht neuesLevel = new Nachricht(6,levelInhalt.GuiArray);
 			server.messageToClient(neuesLevel);
 		}
 		return ergebnis;
@@ -163,7 +163,7 @@ public class LevelverwaltungNeu {
 			this.spieler.posy=Nachricht.getyKoo();
 			levelInhalt.Struktur[spieler.posy][spieler.posx].SpielerDrauf=true;
 			levelInhalt.wandleZuGuiArrayum();
-			Message neuesLevel = new Message(6,levelInhalt.GuiArray);
+			Nachricht neuesLevel = new Nachricht(6,levelInhalt.GuiArray);
 			server.messageToClient(neuesLevel);
 		}
 		
