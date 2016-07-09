@@ -71,10 +71,12 @@ public class PasswortFenster extends JPanel
     }
  
     // Prüft Methoden bei bestimmter Aktion
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e) 
+    {
         String cmd = e.getActionCommand();
  
-        if (OK.equals(cmd)) { 
+        if (OK.equals(cmd)) 
+        { 
             char[] input = passwortFeld.getPassword();
             String input2 = nutzerFeld.getText();
             String passwort = new String(input);
@@ -99,16 +101,9 @@ public class PasswortFenster extends JPanel
             	}
            	
             
-            Arrays.fill(input, '0');
- 
-            passwortFeld.selectAll();
+           
             resetFocus();
-        } else { 
-            JOptionPane.showMessageDialog(kontrollFenster,
-                "You can get the password by searching this example's\n"
-              + "source code for the string \"correctPassword\".\n"
-              + "Or look at the section How to Use Password Fields in\n"
-              + "the components section of The Java Tutorial.");*/
+        
         }
     }
 
