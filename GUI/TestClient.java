@@ -61,7 +61,7 @@ public class TestClient
 		
 		this.gui = gui;
 		levelnummer = 1;
-		dummyMap = new int[][]{
+		/*dummyMap = new int[][]{
 				  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 				  {0,0,1,5,1,1,0,1,1,1,0,0,0,0,0,1,1,1,0,0},
 				  {0,0,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,1,0,0},
@@ -83,7 +83,7 @@ public class TestClient
 				  {0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,7,0,0},
 				  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
 				  
-		aktuellesLevel = dummyMap;
+		aktuellesLevel = dummyMap;*/
 		this.commClient=new CommClient("localhost",port);
 
 		s = JOptionPane.showInputDialog("do it");
@@ -103,8 +103,8 @@ public class TestClient
     }
     
 	public void sende(Nachricht m){
-		Nachrichten.add(m);
-		ausgabe();
+		//Nachrichten.add(m);
+		//ausgabe();
 		this.commClient.addToSendQ(m);
 	}
 	
@@ -125,14 +125,14 @@ public class TestClient
 		return aktuellesLevel;
 	}
 	
-	public void ausgabe(){
+	/*public void ausgabe(){
 		while(!Nachrichten.isEmpty()){
 			Nachricht m = Nachrichten.poll();
 			
 				switch (m.getTyp()){
-				/*
-				 * !Die hier angegebenen Reaktionen auf die Messages sind nur zu Testzwecken und werden bei der Integration der anderen Komponenten ausgebessert!
-				 */
+				
+				  !Die hier angegebenen Reaktionen auf die Messages sind nur zu Testzwecken und werden bei der Integration der anderen Komponenten ausgebessert!
+				 
 					case 0: this.benutzername=m.benutzername;this.passwort=m.passwort; System.out.println("Einloggen von " + benutzername + " mit Passwort "+passwort+" erfolgreich!"); break;
 					case 1: System.out.println("Position des Spielers: " + m.getxKoo()+ ", " + m.getyKoo());break;
 					case 2: System.out.println("Der Trank an der Position " + m.getxKoo() + ", " + m.getyKoo() + " wurde aufgenommen");break;
@@ -146,7 +146,7 @@ public class TestClient
 			
 		}
 	}
-	
+	*/
 	public void übertrage(TestClient empfaenger){
 		for(Nachricht n : this.Nachrichten)
 		{
@@ -163,29 +163,24 @@ public class TestClient
 		case 6: if(this.nummerzumladen==1){
 					this.level1=m.getLevelDaten(); 
 					this.nummerzumladen++;
-					break;
 				}
-				if(this.nummerzumladen==2){
+				else if(this.nummerzumladen==2){
 					this.level1=m.getLevelDaten(); 
 					this.nummerzumladen++;
-					break;
 				}
-				if(this.nummerzumladen==3){
+				else if(this.nummerzumladen==3){
 					this.level1=m.getLevelDaten(); 
 					this.nummerzumladen++;
-					break;
 				}
-				if(this.nummerzumladen==4){
+				else if(this.nummerzumladen==4){
 					this.level1=m.getLevelDaten(); 
 					this.nummerzumladen++;
-					break;
 				}
 				if(this.nummerzumladen==5){
 					this.level1=m.getLevelDaten(); 
 					this.nummerzumladen++;
-					break;
 				}
-		
+				break;
 		}
 				
 		

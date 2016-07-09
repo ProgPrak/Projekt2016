@@ -20,6 +20,7 @@ public class Nachricht implements Serializable {
 	 * type 6 : Level geladen
 	 * type 7 : Spielende
 	 * type 8 : Ping
+	 * type 9 : Aktuelles Level
 	 */
 	int typ;
 	
