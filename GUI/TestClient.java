@@ -153,8 +153,7 @@ public class TestClient
 			
 			if(levelnummer == 1)
 			{
-				aktuellesLevel = dummyMap2;
-				System.out.println(aktuellesLevel[18][17]);
+				aktuellesLevel = level2;
 			}
 			if(levelnummer == 2)
 			{

@@ -339,7 +339,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		
 		if(e.getKeyCode() == KeyEvent.VK_E)
 		{
-			if(spieler.hatSchluessel())
+			if(spieler.hatSchluessel() && spielFeld.getKarte()[spieler.getPosX()/32][spieler.getPosY()/32] != 7)
 			{
 				if(spielFeld.getKarte()[spieler.getPosX()/32+1][spieler.getPosY()/32] == 7)
 				{
