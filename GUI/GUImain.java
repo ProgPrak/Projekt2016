@@ -10,6 +10,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import GUI.Highscore;
 import GUI.Menu;
@@ -344,6 +345,33 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		{
 			System.exit(0);
 		}		
+		
+		if(e.getKeyCode() == KeyEvent.VK_L)
+		{
+			String cheat = JOptionPane.showInputDialog("Cheat-Code eingeben:");
+			System.out.println(cheat);
+			
+			if(cheat.equals("schluessel"))
+			{
+				testClient.aktualisiereArray(spielFeld.schluessel.getPosX(),spielFeld.schluessel.getPosY());
+				spieler.nimmSchluessel();
+				sn.nachricht("Spieler hat Schlüssel aufgenommen.");
+				sn.repaint();
+				leiste.repaint();
+			}
+			if(cheat.equals("lebenvoll"))
+			{
+				spieler.setGesundheit(100);
+			}
+			if(cheat.equals("trank"))
+			{
+				String anzahl = JOptionPane.showInputDialog("Gib Anzahl an Tränken an:");
+				try{
+					spieler.setAnzahlHeiltraenke(Math.min(Integer.parseInt(anzahl),100));
+				}catch(NumberFormatException w){}
+			}
+
+		}
 		
 		if(e.getKeyCode() == KeyEvent.VK_E)
 		{

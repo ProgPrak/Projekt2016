@@ -18,6 +18,7 @@ public class SpielFeld extends JPanel
 	  int[][] aktuellesLevel;
 	  
 	  
+	  
 	  //Lädt Bilder aus Dateien
 	  public SpielFeld(GUImain fenster,int bildx,int bildy) 
 	  {
@@ -121,6 +122,7 @@ public class SpielFeld extends JPanel
 	    			
 	    			if(aktuellesLevel[i][j] == 3)
 	    			{
+	    				schluessel = new Schluessel(i,j);
 	    				g.drawImage(schluesselImg, i*bildX, (j-starty)*bildY,bildX,bildY, this);
 	    			}
 	    			
@@ -165,7 +167,6 @@ public class SpielFeld extends JPanel
 	    	}
 	    	g.drawImage(fenster.spieler.getBild(), fenster.spieler.getPosX(), fenster.spieler.getPosY()-(starty*32),bildX,bildY, this);
 			
-	    	
 	    	
 		}
 
