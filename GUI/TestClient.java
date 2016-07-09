@@ -83,7 +83,11 @@ public class TestClient
 				  {0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,7,0,0},
 				  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,s0,0,0,0,0,0}};
 				  */
+<<<<<<< HEAD
 		aktuellesLevel = this.dummyMap2;
+=======
+		aktuellesLevel = dummyMap2;
+>>>>>>> branch 'master' of https://github.com/ProgPrak/Projekt2016.git
 		this.commClient=new CommClient("localhost",port);
 		this.commClient.startingProcess();
 		this.anmeldungerfolgreich=false;

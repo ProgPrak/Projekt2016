@@ -48,9 +48,13 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 	public TestClient testClient;
 
 	public int punkte;
+	Toolkit tk = Toolkit.getDefaultToolkit();
 	
 	public GUImain()
 	{
+		
+		
+		
 		initialisiereJFrame(20*32,15*32,"Hindi Bones");
 
 		//Event-Listener werden eingebaut
@@ -67,10 +71,10 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 	// Einzelne Panels werden zugewiesen
 	public void initialisiereJFrame(int width, int height, String title) 
 	{
-		Toolkit tk = Toolkit.getDefaultToolkit();
-		this.setLocation((int)tk.getScreenSize().getWidth()/2-250, (int)tk.getScreenSize().getHeight()/2-117);
+		
 		breite=width;
 		laenge = height;
+		this.setLocation((int)tk.getScreenSize().getWidth()/2-250, (int)tk.getScreenSize().getHeight()/2-117);
 		this.setLayout(new BorderLayout());
 		this.leiste = new Statusleiste(this);
 		this.steuerung = new Steuerung();
@@ -91,7 +95,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		steuerung.setPreferredSize(new Dimension(width, height));
 		highscore.setPreferredSize(new Dimension(width, height));
 		this.PasswortFensterAnzeigen();
-		this.setTitle(title);
+		
 		this.setBackground(Color.BLACK);
 		
 	}
