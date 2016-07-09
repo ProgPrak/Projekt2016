@@ -1,7 +1,14 @@
 package serverengine_sw;
 import kommunikation.*;
+
+import java.io.Serializable;
+
 import GUI.Nachricht;;
-public class ServerKommunikationTest {
+public class ServerKommunikationTest implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public CommServer server;
 	
 	
@@ -33,7 +40,7 @@ public class ServerKommunikationTest {
 		ServerKommunikationTest s = new ServerKommunikationTest();
 		while(true){
 			if(s.server.getNextMessage()!=null){
-				//System.out.println("next message ist nicht null");
+				System.out.println("next message ist nicht null");
 				s.handleMsg();
 				}
 			}

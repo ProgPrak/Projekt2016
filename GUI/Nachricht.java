@@ -1,7 +1,14 @@
 package GUI;
 
+import java.io.Serializable;
+
 // Nachrichten werden zwischen Client und Server gesendet
-public class Nachricht {
+public class Nachricht implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/* 
 	 * Typen von Messages:
 	 * type 0 : Login-Message

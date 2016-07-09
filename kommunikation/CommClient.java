@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
+import java.io.Serializable;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 import GUI.Nachricht;
@@ -22,8 +23,12 @@ import java.io.IOException;
  *
  */
 
-public class CommClient{
+public class CommClient implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ConcurrentLinkedQueue<Nachricht> receivingQ = new ConcurrentLinkedQueue<>();
 	private ConcurrentLinkedQueue<Nachricht> sendingQ = new ConcurrentLinkedQueue<>();
 	Socket server = null;

@@ -1,6 +1,9 @@
 package kommunikation;
 
+import java.io.Serializable;
+
 import GUI.Nachricht;;
+ 
 
 public interface ICommClient {
 	

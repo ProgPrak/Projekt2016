@@ -23,6 +23,8 @@ public class TestClient
 	int[][] dummyMap;
 	CommClient commClient;
 			String s;  
+	boolean anmeldungerfolgreich;
+	int nummerzumladen;
 	//
 	final int[][] dummyMap2={
 			  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -86,6 +88,8 @@ public class TestClient
 
 		s = JOptionPane.showInputDialog("do it");
 		sende(new Nachricht(5,s));
+		this.anmeldungerfolgreich=false;
+		nummerzumladen=0;
 	}		
 	
 	public void aktualisiereArray(int i , int j)
@@ -99,8 +103,8 @@ public class TestClient
     }
     
 	public void sende(Nachricht m){
-		//Nachrichten.add(m);
-		//ausgabe();
+		Nachrichten.add(m);
+		ausgabe();
 		this.commClient.addToSendQ(m);
 	}
 	
@@ -129,7 +133,7 @@ public class TestClient
 				/*
 				 * !Die hier angegebenen Reaktionen auf die Messages sind nur zu Testzwecken und werden bei der Integration der anderen Komponenten ausgebessert!
 				 */
-					case 0: this.benutzername=m.benutzername;this.passwort=m.passwort; System.out.println("Einloggen von " + benutzername + " erfolgreich!"); break;
+					case 0: this.benutzername=m.benutzername;this.passwort=m.passwort; System.out.println("Einloggen von " + benutzername + " mit Passwort "+passwort+" erfolgreich!"); break;
 					case 1: System.out.println("Position des Spielers: " + m.getxKoo()+ ", " + m.getyKoo());break;
 					case 2: System.out.println("Der Trank an der Position " + m.getxKoo() + ", " + m.getyKoo() + " wurde aufgenommen");break;
 					case 3: System.out.println("Das Level wurde abgeschlossen!");break;
@@ -152,24 +156,60 @@ public class TestClient
 	
 	public void empfange()
 	{
-		for(int i=0;i<NachrichtenEmpfangen.size();i++){
-			Nachricht m = NachrichtenEmpfangen.poll();
-			
-				switch (m.getTyp()){
-				/*
-				 * !Die hier angegebenen Reaktionen auf die Messages sind nur zu Testzwecken und werden bei der Integration der anderen Komponenten ausgebessert!
-				 */
-					case 0: System.out.println("Einloggen erfolgreich!"); break;
-					case 1: System.out.println("Position des Spielers: " + m.getxKoo()+ ", " + m.getyKoo());break;
-					case 2: System.out.println("Der Trank an der Position " + m.getxKoo() + ", " + m.getyKoo() + " wurde aufgenommen");break;
-					case 3: System.out.println("Das Level wurde abgeschlossen!");break;
-					case 4: System.out.println("Der Schluessel an der Stelle "+m.getxKoo()+", "+m.getyKoo()+" wurde aufgenommen");break;
-					case 5: System.out.println("Ein Fehler ist aufgetreten!");break;
-					case 6: System.out.println("Level wurde geladen!");break;
-					case 7: System.out.println("Der Schlüssel wurde durch cheaten aufgenommen.");break;
+		Nachricht m = this.commClient.getNextMessage();
+		switch(m.getTyp()){
+		case 0: this.anmeldungerfolgreich=true;break;
+		case 5: this.anmeldungerfolgreich=false; break;
+		case 6: if(this.nummerzumladen==1){
+					this.level1=m.getLevelDaten(); 
+					this.nummerzumladen++;
+					break;
 				}
+				if(this.nummerzumladen==2){
+					this.level1=m.getLevelDaten(); 
+					this.nummerzumladen++;
+					break;
+				}
+				if(this.nummerzumladen==3){
+					this.level1=m.getLevelDaten(); 
+					this.nummerzumladen++;
+					break;
+				}
+				if(this.nummerzumladen==4){
+					this.level1=m.getLevelDaten(); 
+					this.nummerzumladen++;
+					break;
+				}
+				if(this.nummerzumladen==5){
+					this.level1=m.getLevelDaten(); 
+					this.nummerzumladen++;
+					break;
+				}
+		
 		}
+				
+		
 	}
+		/*
+		 * for(int i=0;i<NachrichtenEmpfangen.size();i++){
+		 *
+		*	Nachricht m = NachrichtenEmpfangen.poll();
+		*	
+		*		switch (m.getTyp()){
+		*		
+		*		 // !Die hier angegebenen Reaktionen auf die Messages sind nur zu Testzwecken und werden bei der Integration der anderen Komponenten ausgebessert!
+		*		 
+		*			case 0: System.out.println("Einloggen erfolgreich!"); break;
+		*			case 1: System.out.println("Position des Spielers: " + m.getxKoo()+ ", " + m.getyKoo());break;
+		*			case 2: System.out.println("Der Trank an der Position " + m.getxKoo() + ", " + m.getyKoo() + " wurde aufgenommen");break;
+		*			case 3: System.out.println("Das Level wurde abgeschlossen!");break;
+		*			case 4: System.out.println("Der Schluessel an der Stelle "+m.getxKoo()+", "+m.getyKoo()+" wurde aufgenommen");break;
+		*			case 5: System.out.println("Ein Fehler ist aufgetreten!");break;
+		*			case 6: System.out.println("Level wurde geladen!");break;
+		*			case 7: System.out.println("Der Schlüssel wurde durch cheaten aufgenommen.");break;
+		*		}
+		*}
+*/
 		public void nextLevel(){
 			
 			if(levelnummer == 1)
@@ -194,7 +234,9 @@ public class TestClient
 			levelnummer++;
 			this.sende(new Nachricht(3));
 		}
-	
+	public boolean getAnmeldungerfolgreich(){
+		return this.anmeldungerfolgreich;
+	}
 	/*
 	 * Nachrichtentypen
 	 * 0 - Einloggen

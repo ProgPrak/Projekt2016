@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
+import java.io.Serializable;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Date;
@@ -21,8 +22,12 @@ import GUI.Nachricht;
 * @author Max Wuestenberg  
 */
 
-	 public class CommServer{
+	 public class CommServer implements Serializable{
 		 
+		/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 		private ConcurrentLinkedQueue<Nachricht> inputQ = new ConcurrentLinkedQueue<>();
 		private ConcurrentLinkedQueue<Nachricht> outputQ = new ConcurrentLinkedQueue<>();
 		private ServerSocket serverSocket = null;
