@@ -1,7 +1,5 @@
 package GUI;
 
-import clientengine.Level;
-
 // Nachrichten werden zwischen Client und Server gesendet
 public class Nachricht {
 	/* 

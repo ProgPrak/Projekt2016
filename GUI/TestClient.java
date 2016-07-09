@@ -8,8 +8,7 @@ import datenstruktur.Spieler;
 
 public class TestClient
 {
-	GUImain gui;
-	int id;																	
+	GUImain gui;																
 	Queue<Nachricht> Nachrichten = new LinkedList<Nachricht>();				
 	Queue<Nachricht> NachrichtenEmpfangen = new LinkedList<Nachricht>();
 	int[][] aktuellesLevel, level1, level2, level3, level4, level5;
@@ -17,7 +16,7 @@ public class TestClient
 	String benutzername, passwort;
 	int levelnummer;
 	Spieler spieler;
-	 int[][] dummyMap;
+	int[][] dummyMap;
 			  
 	
 	final int[][] dummyMap2={
@@ -50,8 +49,7 @@ public class TestClient
 		  // 6 = Tuer offen
 		  // 7 = Tuer zu
 
-	public TestClient(int i, GUImain gui){
-		this.id=i;
+	public TestClient(GUImain gui){
 		this.gui = gui;
 		levelnummer = 1;
 		dummyMap = new int[][]{

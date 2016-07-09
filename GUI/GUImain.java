@@ -79,7 +79,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		this.spieler = new Spieler(this);
 		this.sn = new Systemnachrichten();
 		sn.setLocation((int)tk.getScreenSize().getWidth()/2+500, (int)tk.getScreenSize().getHeight()/2-117);
-		this.testClient = new TestClient(1,this);
+		this.testClient = new TestClient(this);
 		this.spielFeld = new SpielFeld(this, 32 ,32);
 		this.mm = new Minimap(this);
 		mm.setPreferredSize(new Dimension(100, 500));
