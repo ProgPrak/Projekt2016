@@ -382,7 +382,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 				sn.nachricht("Spieler hat Schlüssel aufgenommen.");
 				sn.repaint();
 				testClient.aktualisiereArray(spieler.getPosX()/32,spieler.getPosY()/32);
-				testClient.aktualisiere(2);
+				testClient.aktualisiere(4);
 				mm.aktualisiereKarte(testClient.getAktuellesLevel());
 				mm.repaint();
 			}

@@ -96,7 +96,7 @@ public class TestClient
 	
 	public void aktualisiere(int ereignis){
 		spieler = gui.spieler;
-		sende(new Nachricht(ereignis,spieler.getPosX(),spieler.getPosY()));
+		sende(new Nachricht(ereignis,spieler.getPosX()/32,spieler.getPosY()/32));
 	}
 	
 	public int[][] getAktuellesLevel(){
@@ -112,8 +112,8 @@ public class TestClient
 				 * !Die hier angegebenen Reaktionen auf die Messages sind nur zu Testzwecken und werden bei der Integration der anderen Komponenten ausgebessert!
 				 */
 					case 0: this.benutzername=m.benutzername;this.passwort=m.passwort; System.out.println("Einloggen von " + benutzername + " erfolgreich!"); break;
-					//case 1: System.out.println("Position des Spielers: " + m.getxKoo()+ ", " + m.getyKoo());break;
-					//case 2: System.out.println("Der Trank an der Position " + m.getxKoo() + ", " + m.getyKoo() + " wurde aufgenommen");break;
+					case 1: System.out.println("Position des Spielers: " + m.getxKoo()+ ", " + m.getyKoo());break;
+					case 2: System.out.println("Der Trank an der Position " + m.getxKoo() + ", " + m.getyKoo() + " wurde aufgenommen");break;
 					case 3: System.out.println("Das Level wurde abgeschlossen!");break;
 					case 4: System.out.println("Der Schluessel an der Stelle "+m.getxKoo()+", "+m.getyKoo()+" wurde aufgenommen");break;
 					case 5: System.out.println("Ein Fehler ist aufgetreten!");break;
