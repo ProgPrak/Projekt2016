@@ -122,6 +122,7 @@ public class TestClient
 					case 5: System.out.println("Ein Fehler ist aufgetreten!");break;
 					case 6: System.out.println("Level wurde geladen!");break;
 					case 7: System.out.println("Der Schlüssel wurde durch cheaten aufgenommen.");break;
+					case 8: System.out.println("DU bist tot, Opfer!");
 				}
 			
 		}

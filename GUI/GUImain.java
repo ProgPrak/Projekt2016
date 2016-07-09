@@ -207,8 +207,8 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 					}
 					if(gui.spieler.getGesundheit() == 0)
 					{
-						gui.highscoreAnzeigen();
 						gui.testClient.aktualisiere(8);
+						gui.highscoreAnzeigen();
 						try {
 							sleep(5000);
 						} catch (InterruptedException e) {
