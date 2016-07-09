@@ -11,7 +11,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Date;
 import java.util.concurrent.ConcurrentLinkedQueue;
-import shared.Message;
+
+import GUI.Nachricht;
 
 
 /**
@@ -22,8 +23,8 @@ import shared.Message;
 
 	 public class CommServer{
 		 
-		private ConcurrentLinkedQueue<Message> inputQ = new ConcurrentLinkedQueue<>();
-		private ConcurrentLinkedQueue<Message> outputQ = new ConcurrentLinkedQueue<>();
+		private ConcurrentLinkedQueue<Nachricht> inputQ = new ConcurrentLinkedQueue<>();
+		private ConcurrentLinkedQueue<Nachricht> outputQ = new ConcurrentLinkedQueue<>();
 		private ServerSocket serverSocket = null;
 		public Socket client = null;
 		InputStream is = null;
@@ -100,7 +101,7 @@ import shared.Message;
 			}catch(Exception e){}
 		}
 		
-		public Message getNextMessage(){
+		public Nachricht getNextMessage(){
 			return inputQ.poll();
 		}
 		
@@ -112,37 +113,37 @@ import shared.Message;
 		 */
 		
 		
-		public void handleMessage (Message InputMsg) throws IOException {
+		public void handleMessage (Nachricht InputMsg) throws IOException {
 			
 			switch (InputMsg.getTyp()) {
 			case 8:
 				inputQ.add(InputMsg);	
-				Message msg = new Message (8, "Pong");
+				Nachricht msg = new Nachricht (8, "Pong");
 				messageToClient(msg);
 				break;
 			case 3:
 				inputQ.add(InputMsg);
-				messageToClient(new Message(9,"Level geschafft"));
+				messageToClient(new Nachricht(9,"Level geschafft"));
 				break;					//folgen weitere!
 				
 			case 1: 
 				inputQ.add(InputMsg); // ab hier kümmert sich die ServerEngine
-				messageToClient(new Message(1));
+				messageToClient(new Nachricht(1));
 				break;
 			case 5:
 				inputQ.add(InputMsg);
 				if (InputMsg.getMessage().equals("Logout")){
-					Message m = new Message(5, "Logout-Sucsess");
+					Nachricht m = new Nachricht(5, "Logout-Sucsess");
 					messageToClient(m);	
 				}
 				break;
 			case 0:
 				inputQ.add(InputMsg);
 				if(InputMsg.getMessage().equals("max")){
-					Message msg1 = new Message(5,"Login sucseed");
+					Nachricht msg1 = new Nachricht(5,"Login sucseed");
 					messageToClient(msg1);
 				}else{
-					Message msg2 = new Message(5, "wrong Password");
+					Nachricht msg2 = new Nachricht(5, "wrong Password");
 					messageToClient(msg2);
 				}
 				break;
@@ -152,11 +153,11 @@ import shared.Message;
 		
 		/**
 		 * Speichert Nachricht in die Sendeschlange und schickt diese in Richtung Client
-		 * @param msg ist ein Objekt der Klasse Message und wird verschickt
+		 * @param msg ist ein Objekt der Klasse Nachricht und wird verschickt
 		 * @author Max Wüstenberg 5792312
 		 */
 		
-		public synchronized void messageToClient(Message msg){
+		public synchronized void messageToClient(Nachricht msg){
 			System.out.println("versuche zu senden");
 			if(!client.isConnected()){
 				stopConnection();
@@ -172,7 +173,7 @@ import shared.Message;
 		}
 	
 	/**	Klasse prüft fortwährend ob die Verbindung zum Cleint noch besteht.
-	 * wenn keine "ich bin noch da"-Message innerhalb von 3-4 sek. empfangen wird, 
+	 * wenn keine "ich bin noch da"-Nachricht innerhalb von 3-4 sek. empfangen wird, 
 	 *Verbindungsabbruch!
 	 * @author Max Wüstenberg 5792312
 	 */
@@ -223,16 +224,16 @@ import shared.Message;
 		}
 		
 		public void run(){	
-		Message command;
+		Nachricht command;
 		stc = new StillThereCheck();
 		stc.start();	
 		stillThere = null;
 			while (serverIsOpen) {
 				try{
-					command = (Message) inStream.readObject();
+					command = (Nachricht) inStream.readObject();
 					if (command != null){
 						stillThere = new Date();
-						System.out.println("Message received: " +command.getMessage());
+						System.out.println("Nachricht received: " +command.getMessage());
 						handleMessage(command);
 						Thread.sleep(500);
 					}

@@ -157,17 +157,17 @@ public class LevelverwaltungNeu {
 	
 	
 	public void verarbeiteNachricht(Nachricht Nachricht){
-		if (Nachricht.typ ==1){
+		if (Nachricht.getTyp() ==1){
 			levelInhalt.Struktur[spieler.posy][spieler.posx].SpielerDrauf=false;
-			this.spieler.posx=Nachricht.xKoo;
-			this.spieler.posy=Nachricht.yKoo;
+			this.spieler.posx=Nachricht.getxKoo();
+			this.spieler.posy=Nachricht.getyKoo();
 			levelInhalt.Struktur[spieler.posy][spieler.posx].SpielerDrauf=true;
 			levelInhalt.wandleZuGuiArrayum();
 			Message neuesLevel = new Message(6,levelInhalt.GuiArray);
 			server.messageToClient(neuesLevel);
 		}
 		
-		 if (Nachricht.typ == 2){
+		 if (Nachricht.getTyp() == 2){
 			System.out.println(spieler.anzHeiltraenke);
 			if(this.behandleTrankaufnahme()){
 				System.out.println("Spieler beim Trank");
@@ -176,14 +176,14 @@ public class LevelverwaltungNeu {
 				System.out.println("Spieler nicht beim Trank");
 				System.out.println(spieler.anzHeiltraenke);
 			}
-		}else if (Nachricht.typ == 3){
+		}else if (Nachricht.getTyp() == 3){
 			if(this.levelGewonnen()){
 				System.out.println("N�chstes Level");
 			}else{
 				System.out.println("Level konnte nicht beendet werden");
 				Nachricht Fehlermeldung = new Nachricht (7, "level nicht beendet");
 			}
-		}else if (Nachricht.typ == 4){
+		}else if (Nachricht.getTyp() == 4){
 			if(this.behandleschluesselaufnahme()){
 				System.out.println("Schl�ssel aufgehoben");
 			}else{

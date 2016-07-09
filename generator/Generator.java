@@ -1,4 +1,4 @@
-package pp2016.team20.server.map;
+package generator;
 
 
 public class Generator {

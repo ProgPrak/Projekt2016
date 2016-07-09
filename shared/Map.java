@@ -1,6 +1,6 @@
 package shared;
 
-import pp2016.team20.server.map.*;
+import generator.Generator;
 
 public class Map {
 	public int[][] GuiArray; //Array was die GUI zum painten braucht
