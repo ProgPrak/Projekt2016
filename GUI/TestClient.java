@@ -83,7 +83,7 @@ public class TestClient
 				  {0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,7,0,0},
 				  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,s0,0,0,0,0,0}};
 				  */
-		aktuellesLevel = null;
+		aktuellesLevel = dummyMap2;
 		this.commClient=new CommClient("localhost",port);
 		this.commClient.startingProcess();
 		this.anmeldungerfolgreich=false;
