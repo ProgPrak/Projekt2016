@@ -24,14 +24,14 @@ public class ServerKommunikationTest implements Serializable{
 	}
 	
 	
-	public static void handler(Nachricht msg){
+	public void handler(Nachricht msg){
 		switch(msg.getTyp()){
 		case 0: System.out.println(msg.getName()+" "+msg.getPasswort());
 				if(msg.getName().equals("molina")&&msg.getPasswort().equals("madrid")){
-					System.out.println("erfolgreiches einloggen");
+					server.messageToClient(new Nachricht(10,true));
 				}
 				else{
-					System.out.println("falsches einloggen");
+					server.messageToClient(new Nachricht(10,false));
 				}
 				break;
 		case 5: System.out.println(msg.getFehler());break;

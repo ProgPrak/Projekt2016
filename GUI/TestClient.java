@@ -158,7 +158,13 @@ public class TestClient
 	
 	public void empfange()
 	{
-		Nachricht m = this.commClient.getNextMessage();
+		Nachricht m;
+		while(true){
+			m = this.commClient.getNextMessage();
+			if(m!=null){
+				break;
+				}
+			}
 		switch(m.getTyp()){
 		case 0: this.anmeldungerfolgreich=true;break;
 		case 5: this.anmeldungerfolgreich=false; break;
@@ -183,6 +189,7 @@ public class TestClient
 					this.nummerzumladen++;
 				}
 				break;
+		case 10: this.anmeldungerfolgreich=m.getStatus();
 		}
 				
 		

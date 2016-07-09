@@ -80,8 +80,11 @@ public class PasswortFenster extends JPanel
             char[] input = passwortFeld.getPassword();
             String input2 = nutzerFeld.getText();
             String passwort = new String(input);
+            System.out.println("geht");
             gui.testClient.sende(new Nachricht(0,input2,passwort));
+            System.out.println("geht");
             gui.testClient.empfange();
+            System.out.println("geht");
             	if (gui.testClient.getAnmeldungerfolgreich()) 
             	{
             			einloggenWahr = true;

@@ -21,6 +21,7 @@ public class Nachricht implements Serializable {
 	 * type 7 : Spielende
 	 * type 8 : Ping
 	 * type 9 : Aktuelles Level
+	 * type 10: Einloggen erfolgreich oder auch nicht
 	 */
 	int typ;
 	
@@ -28,11 +29,18 @@ public class Nachricht implements Serializable {
 	int xKoo;										
 	int yKoo;
 	
+	boolean status;
+	
 	// LevelNachricht enthaelt Benutzername und Passwort; Fehlermeldung, falls Verbindung abbricht oder aehnlich
 	String fehlermeldung, benutzername, passwort;
 	
 	//Level-Array kann per Nachricht geschickt werden
 	int[][] leveldaten;
+	
+	public Nachricht(int t, boolean s){
+		this.typ=t;
+		this.status=s;
+	}
 	
 	// Nachricht, die gesendet wird, wenn sich der Spieler bewegt (type 1), die Koordinaten sind die neuen Koordinaten ¨
 	// oder, wenn ein Trank (type 2) oder der Schluessel (type 4) aufgenommen wurden
@@ -83,6 +91,9 @@ public class Nachricht implements Serializable {
 	//Leveldaten werden zurückgegeben
 	public int[][] getLevelDaten(){
 		return leveldaten;
+	}
+	public boolean getStatus(){
+		return this.status;
 	}
 	public String getMessage(){
 		String nachricht = null;
