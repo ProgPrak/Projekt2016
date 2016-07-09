@@ -20,7 +20,7 @@ public class ServerKommunikationTest {
 	
 	public void handleMsg(){
 		Nachricht msg = server.getNextMessage();
-		
+		//
 		switch(msg.getTyp()){
 		case 0: System.out.println(msg.getName()+" "+msg.getPasswort()); break;
 		case 1:
