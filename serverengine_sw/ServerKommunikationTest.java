@@ -1,6 +1,6 @@
 package serverengine_sw;
-import Kommunikation.*;
-import shared.Message;
+import kommunikation.*;
+import GUI.Nachricht;;
 public class ServerKommunikationTest {
 	public CommServer server;
 	
@@ -19,7 +19,7 @@ public class ServerKommunikationTest {
 	
 	
 	public void hadnleMsg(){
-		Message msg = server.getNextMessage();
+		Nachricht msg = server.getNextMessage();
 		
 		switch(msg.getTyp()){
 		case 1:
