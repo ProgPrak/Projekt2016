@@ -88,6 +88,7 @@ public class TestClient
 		this.commClient.startingProcess();
 		this.anmeldungerfolgreich=false;
 		nummerzumladen=0;
+		System.out.println("bis hier hin");
 	}		
 	
 	public void aktualisiereArray(int i , int j)

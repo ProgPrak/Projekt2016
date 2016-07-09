@@ -92,9 +92,11 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		leiste.setPreferredSize(new Dimension(width, BOX));
 		steuerung.setPreferredSize(new Dimension(width, height));
 		highscore.setPreferredSize(new Dimension(width, height));
+		System.out.println("test2");
 		this.PasswortFensterAnzeigen();
 		this.setTitle(title);
 		this.setBackground(Color.BLACK);
+		System.out.println("test3");
 		
 	}
 	
