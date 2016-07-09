@@ -2,6 +2,7 @@ package serverengine_sw;
 
 import shared.*;
 import GUI.*;
+import GUI.Nachricht;
 import kommunikation.*;
 
 
