@@ -7,7 +7,6 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
-import java.io.Serializable;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Date;
@@ -17,17 +16,13 @@ import GUI.Nachricht;
 
 
 /**
-* Das andere Ende der Kommunikation. FÃ¼r Die Berechnung, Reaktionen, usw auf die Befehle des Clients 
-* ist u.a die Spielweltverwaltung zustÃ¤ndig. Schlangen inputQ und outputQ werden dieser zur Verfuegung gestellt
+* Das andere Ende der Kommunikation. Für Die Berechnung, Reaktionen, usw auf die Befehle des Clients 
+* ist u.a die Spielweltverwaltung zuständig. Schlangen inputQ und outputQ werden dieser zur Verfuegung gestellt
 * @author Max Wuestenberg  
 */
 
-	 public class CommServer implements Serializable{
+	 public class CommServer{
 		 
-		/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 		private ConcurrentLinkedQueue<Nachricht> inputQ = new ConcurrentLinkedQueue<>();
 		private ConcurrentLinkedQueue<Nachricht> outputQ = new ConcurrentLinkedQueue<>();
 		private ServerSocket serverSocket = null;
@@ -45,12 +40,12 @@ import GUI.Nachricht;
 		
 		/**
 		 * Konstruktor der Klasse CommServer, in welchem die Verbindung geschlossen wird falls
-		 * der Client sich einwÃ¤hlt. Diese erzeugte Verbindung wird schliesslich von der Methode 
+		 * der Client sich einwählt. Diese erzeugte Verbindung wird schliesslich von der Methode 
 		 * connectionHandle verwaltet.
-		 * @param port, dem Client zur VerfÃ¼gung gestellter Port, diese Integer "Zahl" muss verwendet werden.
+		 * @param port, dem Client zur Verfügung gestellter Port, diese Integer "Zahl" muss verwendet werden.
 		 * @throws ClassNotFoundException
 		 * @throws InterruptedException
-		 * @author Max WÃ¼stenberg 5792312
+		 * @author Max Wüstenberg 5792312
 		 */
 		
 		public CommServer(int port) throws ClassNotFoundException, InterruptedException {
@@ -59,8 +54,8 @@ import GUI.Nachricht;
 			
 			try {
 				serverSocket = new ServerSocket(port);
-				stc = new StillThereCheck();
-				stc.start();
+				//stc = new StillThereCheck();
+				//stc.start();
 				client = serverSocket.accept();
 				connected = client.isConnected();
 				lfc=new ListenFromClient(client);
@@ -75,7 +70,7 @@ import GUI.Nachricht;
 		 * Input des Clients wird in der Queue InputQ gespeichert, sie wird der (ServerEngine)/Spielweltverwaltung d
 		 * bereitgestellt.
 		 * wenn die Befehle bearbeitet wurden, Berechnungen abgeschlossen sind usw. generiert uns die Spielweltv. e
-		 * eine Queue outputQ. Die einzelnen Elemente dieser Schlange werden zurÃ¼ck zum Client geschickt
+		 * eine Queue outputQ. Die einzelnen Elemente dieser Schlange werden zurück zum Client geschickt
 		 * @param client Verbindungsglied des Servers
 		 * @throws ClassNotFoundException falls kein socket gefunden wurde
 		 * @author Max Wuestenberg 5792312
@@ -84,8 +79,8 @@ import GUI.Nachricht;
 		 */
 		
 		/**Beim Aufruf dieser Methode wird Die Verbindung zum Client gekappt,
-		 * vorher werden die Streams geschlossen fÃ¼r einen reibunglosen Abbruch.
-		 * @author Max WÃ¼stenberg 5792312
+		 * vorher werden die Streams geschlossen für einen reibunglosen Abbruch.
+		 * @author Max Wüstenberg 5792312
 		 */
 		
 		public void stopConnection(){
@@ -110,15 +105,23 @@ import GUI.Nachricht;
 			return inputQ.poll();
 		}
 		
+		public void addToOutputQ(Nachricht msg){
+			outputQ.add(msg);
+		}
+		
+		public void stopLfc(){
+			serverIsOpen = false;
+		}
+		
 		/** 
 		 * arbeitet die verschiedenen typen der inputMsg ab
 		 * @param InputMsg
 		 * @throws IOException
-		 * @author Max WÃ¼stenberg 5792312
+		 * @author Max Wüstenberg 5792312
 		 */
 		
 		
-		public void handleMessage (Nachricht InputMsg) throws IOException {
+		/*public void handleMessage (Nachricht InputMsg) throws IOException {
 			
 			switch (InputMsg.getTyp()) {
 			case 8:
@@ -132,7 +135,7 @@ import GUI.Nachricht;
 				break;					//folgen weitere!
 				
 			case 1: 
-				inputQ.add(InputMsg); // ab hier kÃ¼mmert sich die ServerEngine
+				inputQ.add(InputMsg); // ab hier kümmert sich die ServerEngine
 				messageToClient(new Nachricht(1));
 				break;
 			case 5:
@@ -154,12 +157,12 @@ import GUI.Nachricht;
 				break;
 			default:
 			}
-		}
+		}*/
 		
 		/**
 		 * Speichert Nachricht in die Sendeschlange und schickt diese in Richtung Client
 		 * @param msg ist ein Objekt der Klasse Nachricht und wird verschickt
-		 * @author Max WÃ¼stenberg 5792312
+		 * @author Max Wüstenberg 5792312
 		 */
 		
 		public synchronized void messageToClient(Nachricht msg){
@@ -177,10 +180,10 @@ import GUI.Nachricht;
 			}
 		}
 	
-	/**	Klasse prÃ¼ft fortwÃ¤hrend ob die Verbindung zum Cleint noch besteht.
+	/**	Klasse prüft fortwährend ob die Verbindung zum Cleint noch besteht.
 	 * wenn keine "ich bin noch da"-Nachricht innerhalb von 3-4 sek. empfangen wird, 
 	 *Verbindungsabbruch!
-	 * @author Max WÃ¼stenberg 5792312
+	 * @author Max Wüstenberg 5792312
 	 */
 		
 	public class StillThereCheck extends Thread{
@@ -196,14 +199,13 @@ import GUI.Nachricht;
 								//this.stop();
 								run = false;
 							System.out.println("Still There");
-							Thread.sleep(500);
 						}
 						Thread.sleep(500);
 					}
 				}catch(Exception e){
 					e.printStackTrace();
 				}
-				serverIsOpen = false;
+				stopLfc(); // stoppe LFC
 			}
 	}	
 	
@@ -230,8 +232,8 @@ import GUI.Nachricht;
 		
 		public void run(){	
 		Nachricht command;
-		stc = new StillThereCheck();
-		stc.start();	
+		//stc = new StillThereCheck();
+		//stc.start();	
 		stillThere = null;
 			while (serverIsOpen) {
 				try{
@@ -239,8 +241,9 @@ import GUI.Nachricht;
 					if (command != null){
 						stillThere = new Date();
 						System.out.println("Nachricht received: " +command.getMessage());
-						handleMessage(command);
-						Thread.sleep(500);
+						//handleMessage(command);
+						inputQ.add(command);
+						//Thread.sleep(100);
 					}
 				}catch(IOException e){
 					e.printStackTrace();

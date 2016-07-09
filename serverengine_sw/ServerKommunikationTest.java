@@ -25,13 +25,12 @@ public class ServerKommunikationTest implements Serializable{
 	}
 	
 	
-	public void handleMsg(){
-		Nachricht msg = server.getNextMessage();
-		//
+	public static void handler(Nachricht msg){
 		switch(msg.getTyp()){
 		case 0: System.out.println(msg.getName()+" "+msg.getPasswort()); break;
-		case 5: System.out.println(msg.getFehler());
-		case 2:
+		case 5: System.out.println(msg.getFehler());break;
+		case 2: break;
+		default: break;
 			
 		}
 	}
@@ -39,9 +38,9 @@ public class ServerKommunikationTest implements Serializable{
 	public static void main(String[] args){
 		ServerKommunikationTest s = new ServerKommunikationTest();
 		while(true){
-			if(s.server.getNextMessage()!=null){
-				System.out.println("next message ist nicht null");
-				s.handleMsg();
+			Nachricht command = s.server.getNextMessage();
+			if(command!=null){
+				s.handler(command);
 				}
 			}
 	}

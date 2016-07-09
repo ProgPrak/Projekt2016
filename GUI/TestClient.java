@@ -85,11 +85,11 @@ public class TestClient
 				  
 		aktuellesLevel = dummyMap;*/
 		this.commClient=new CommClient("localhost",port);
-
-		s = JOptionPane.showInputDialog("do it");
-		sende(new Nachricht(5,s));
+		this.commClient.startingProcess();
 		this.anmeldungerfolgreich=false;
 		nummerzumladen=0;
+		String s = JOptionPane.showInputDialog("saufakj");
+		this.sende(new Nachricht(5,s));
 	}		
 	
 	public void aktualisiereArray(int i , int j)
@@ -103,9 +103,12 @@ public class TestClient
     }
     
 	public void sende(Nachricht m){
-		//Nachrichten.add(m);
-		//ausgabe();
-		this.commClient.addToSendQ(m);
+		try {
+			this.commClient.sendMessage(m);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void aktualisiere(int ereignis){

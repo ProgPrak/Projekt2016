@@ -1,7 +1,6 @@
 package kommunikation;
 
 import GUI.Nachricht;
-import shared.Message;
 
 public interface ICommServer {
 	

@@ -5,7 +5,6 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
-import java.io.Serializable;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 import GUI.Nachricht;
@@ -17,18 +16,14 @@ import java.io.IOException;
 
 /**
  * 
- * in dieser Klasse wird eine Verbindung zum Server hergstellt, falls mÃ¶glich
+ * in dieser Klasse wird eine Verbindung zum Server hergstellt, falls möglich
  * die verbindung, Austausch von Informationen wird von der Methode connecting() realisiert   
  * @author Max Wuestenberg
  *
  */
 
-public class CommClient implements Serializable{
+public class CommClient{
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private ConcurrentLinkedQueue<Nachricht> receivingQ = new ConcurrentLinkedQueue<>();
 	private ConcurrentLinkedQueue<Nachricht> sendingQ = new ConcurrentLinkedQueue<>();
 	Socket server = null;
@@ -41,9 +36,9 @@ public class CommClient implements Serializable{
 	/**
 	 * Konstruktor wird ausgestattet mit unten angegebenen Parametern. Die Socket-Verbindung zum Server wird
 	 * hergestellt, indem die Web-Adresse und der zuvor bestimmte Port gebracuht werden.
-	 * Des weitern werden Output und InputStream erzeugt um Austausch von Objekten zu gewÃ¤hrleisten.
+	 * Des weitern werden Output und InputStream erzeugt um Austausch von Objekten zu gewährleisten.
 	 * @param targetAdd Adresse des Servers
-	 * @param sPort	alles Ã¼ber ... ist hier in Ordnung
+	 * @param sPort	alles über ... ist hier in Ordnung
 	 */
 
 	public CommClient(String targetAdd, int sPort) {
@@ -65,7 +60,7 @@ public class CommClient implements Serializable{
 		}
 	}
 	/** startet Nachrichtenaustausch vom Client aus. Diese Methode schaut, ob die Sendeschlange mit Objekten 
-	 * gefÃ¼llt ist. Falls dies der Fall ist. wird die Nachricht vom Kopf versan
+	 * gefüllt ist. Falls dies der Fall ist. wird die Nachricht vom Kopf versan
 	 * 
 	 */
 	
@@ -75,29 +70,29 @@ public class CommClient implements Serializable{
 		//PingMsg p = new PingMsg();
 		//p.start();
 		isOpen = true;
-		try{
-			int waiting=0;
+	}
+		/*try{
+			//int waiting=0;
 			while(isOpen){
 				if(sendingQ.isEmpty()){
-					waiting++;
-					Thread.sleep(1000);
+					//waiting++;
+					Thread.sleep(500);
 				}else{
 					Nachricht msg = (Nachricht)sendingQ.poll();
 					this.sendMessage(msg);
-					waiting =0;
-					Thread.sleep(1000);	
+					//waiting =0;	
 				}
 				
-				if(waiting>5){
-					isOpen = false;
-					Nachricht logout = new Nachricht(5,"Logout");
-					this.sendMessage(logout);
-				}
+				//if(waiting>5){
+					//isOpen = false;
+					//Nachricht logout = new Nachricht(5,"Logout");
+					//this.sendMessage(logout);
+				//}
 			}
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-	}
+	}*/
 
 	/** 
 	 * Input des Client wird vom Server bearbeitet und die Antwort des Servers kann verwaltet werden.
@@ -108,7 +103,7 @@ public class CommClient implements Serializable{
 	public synchronized void sendMessage(Nachricht clientCommand) throws ClassNotFoundException {
 			
 		try {
-				
+			addToSendQ(clientCommand);
 			outputStream.writeObject((Nachricht) clientCommand);
 			outputStream.flush();
 			outputStream.reset();
@@ -119,8 +114,8 @@ public class CommClient implements Serializable{
 		}
 	}
 	/**
-	 * elementare Methode fÃ¼r den Client, "Antworten" des Servers werden aus Queue geholt
-	 * @return das element welches am lÃ¤ngsten in der Queue verweilte
+	 * elementare Methode für den Client, "Antworten" des Servers werden aus Queue geholt
+	 * @return das element welches am längsten in der Queue verweilte
 	 * @author Max Wuestenberg 
 	 */
 	public Nachricht getNextMessage(){
@@ -140,6 +135,7 @@ public class CommClient implements Serializable{
 	 */
 
 	public void disconnect(){
+		isOpen = false;
 		System.out.println("einmal abmelden bitte");
 		try{
 			if (inputStream != null)
@@ -165,7 +161,7 @@ public class CommClient implements Serializable{
 	public class PingMsg extends Thread {	
 		public void run(){
 			try{
-				while(true){
+				while(isOpen){
 					sendingQ.add(new Nachricht(8, "Ping"));
 					Thread.sleep(1000);
 				}
@@ -192,7 +188,7 @@ public class CommClient implements Serializable{
 						receivingQ.add(incomMsg);
 						System.out.println(incomMsg.getMessage());
 						if(incomMsg.getMessage().equals("Logout-Sucsess")){
-							this.stop();
+							//this.stop();
 							disconnect();
 						}	
 					}
