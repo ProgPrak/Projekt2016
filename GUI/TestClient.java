@@ -97,6 +97,9 @@ public class TestClient
 		if(ereignis==8){
 			sende(new Nachricht(8));
 		}
+		else if(ereignis == 4){
+			sende(new Nachricht(ereignis,gui.spielFeld.schluessel.getPosX(),gui.spielFeld.schluessel.getPosX()));
+		}
 		else{
 			sende(new Nachricht(ereignis,spieler.getPosX()/32,spieler.getPosY()/32));
 		}
