@@ -46,12 +46,12 @@ public class Statusleiste extends JPanel
 		g.setColor(Color.GREEN);
 		g.fillRect(200, 15, 100, 4);
 		g.setColor(Color.RED);
-		g.fillRect(300, 15, fenster.spieler.getGesundheit()-100, 4);
+		g.fillRect(200, 15,100- fenster.spieler.getGesundheit(), 4);
 		g.setColor(Color.WHITE);
 		g.drawString(fenster.spieler.getAnzahlHeiltraenke()+"x", 350, 20);
 		g.drawImage(trank, 310, 0, this);
 		g.drawString("Punkte: "+Integer.toString(fenster.punkte), 400, 20);
 		repaint();
-		if(fenster.spieler.hatSchluessel())g.drawImage(schluessel, 450, 0, this);
+		if(fenster.spieler.hatSchluessel())g.drawImage(schluessel, 475, 0, this);
 	}
 }
