@@ -81,7 +81,7 @@ public class TestClient
 				  {0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,1,0,1,0,0},
 				  {0,0,0,0,0,0,0,0,0,1,3,1,0,0,0,1,0,1,0,0},
 				  {0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,7,0,0},
-				  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
+				  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,s0,0,0,0,0,0}};
 				  
 		aktuellesLevel = dummyMap;*/
 		this.commClient=new CommClient("localhost",port);
@@ -150,7 +150,7 @@ public class TestClient
 		}
 	}
 	*/
-	public void übertrage(TestClient empfaenger){
+	public void uebertrage(TestClient empfaenger){
 		for(Nachricht n : this.Nachrichten)
 		{
 			empfaenger.NachrichtenEmpfangen.offer(n);

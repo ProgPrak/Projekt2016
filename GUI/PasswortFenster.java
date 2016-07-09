@@ -81,7 +81,6 @@ public class PasswortFenster extends JPanel
             String input2 = nutzerFeld.getText();
             String passwort = new String(input);
             gui.testClient.sende(new Nachricht(0,input2,passwort));
-            gui.testClient.ausgabe();
             gui.testClient.empfange();
             	if (gui.testClient.getAnmeldungerfolgreich()) 
             	{
