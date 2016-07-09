@@ -9,10 +9,12 @@ public class Message implements Serializable {
 	int spielerID;
 	int xKoo;
 	int yKoo;
+	long Erstellzeit;
+	boolean aufgenommen;
 	String fehlermeldung, benutzername, passwort,s;
 	int[][] leveldaten;
 	
-	/* ff
+	/* 
 	 * Typen von Messages:
 	 * type 0 : Login-Message
 	 * type 1 : Spielerbewegung
@@ -21,9 +23,10 @@ public class Message implements Serializable {
 	 * type 4 : Schl¸sselaufnahme
 	 * type 5 : Fehler (z.B. falsche Login-Daten, inkonsistente Bewegungen, usw)
 	 * type 6 : Level geladen
-	 * typ 7: Spielende
+	 * typ 7: cheat
 	 * typ 8: ping
 	 */
+	
 	
 	// Nachricht, die gesendet wird, wenn sich der Spieler bewegt, die Koordinaten sind die neuen Koordinaten
 	public Message(int t, int p,int x, int y){
@@ -46,7 +49,7 @@ public class Message implements Serializable {
 		this.leveldaten = x;
 	}
 
-	// Fehlermeldung, String enthaelt die Fehlermeldung in Textform
+	// Fehlermeldung, String enthaelt die Fehlermeldung in Textform und für PING-Message
 	public Message (int t, String s){
 		this.typ=t;
 		this.fehlermeldung = s;
@@ -68,9 +71,7 @@ public class Message implements Serializable {
 	public int getTyp(){
 		return this.typ;
 	}
-	public int getID(){
-		return this.spielerID;
-	}
+	
 	public int getxKoo(){
 		return this.xKoo;
 	}

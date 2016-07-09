@@ -1,9 +1,10 @@
 package shared;
 
-import map.*;
+import pp2016.team20.server.map.*;
 
 public class Map {
-	private Tile[][] Struktur;
+	public int[][] GuiArray; //Array was die GUI zum painten braucht
+	public Tile[][] Struktur;
 	private int[][] TileTypes;
 	private Generator Generator;
 	private int Hoehe;
@@ -37,6 +38,41 @@ public class Map {
 		}
 	}
 	
+	public void initialisiereGuiArray(){
+		for (int i=0;i<this.Hoehe;i++){
+			for (int j=0;j<this.Breite;j++){
+				GuiArray[i][j]= 0;
+			}
+		}
+	}
+	
+	public void wandleZuGuiArrayum(){
+		for (int i=0; i<this.Hoehe;i++){
+			for (int  j=0;j<this.Breite;j++){
+				if (this.Struktur[i][j].SpielerDrauf==true) this.GuiArray[i][j]=4;
+				else if (this.Struktur[i][j].anzahlTraenke>0) this.GuiArray[i][j]=2;
+				else {
+					int a = this.Struktur[i][j].surfaceType;
+					switch (a){
+					case 5: this.GuiArray[i][j]=3;
+					break;
+					case 0: this.GuiArray[i][j]=0;
+					break;
+					case 1:this.GuiArray[i][j]=1;
+					break;
+					case 2: this.GuiArray[i][j]=7;
+					break;
+					case 3: this.GuiArray[i][j]=6;
+					break;
+					case 4: this.GuiArray[i][j]=6;
+					break;
+					}
+				}
+			}
+		}
+	}
+	
+	
 	public void teileTilesZu(int[][] TileyTypes){
 		int x=0;
 		for (int i=0;i<this.Hoehe;i++){
@@ -47,7 +83,7 @@ public class Map {
 				break;
 				case 0: this.Struktur[i][j].surfaceType=x;
 				break;
-				case 2: this.Struktur[i][j].surfaceType=1;
+				case 2: this.Struktur[i][j].surfaceType=5;
 				break;
 				case 3: this.Struktur[i][j].surfaceType=x;
 				break;
