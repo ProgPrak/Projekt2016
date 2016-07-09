@@ -9,13 +9,10 @@ public class Message implements Serializable {
 	int spielerID;
 	int xKoo;
 	int yKoo;
-	long Erstellzeit;
-	UUID myID;
-	boolean aufgenommen;
-	String fehlermeldung, benutzername, passwort,chat,s;
+	String fehlermeldung, benutzername, passwort,s;
 	int[][] leveldaten;
 	
-	/* 
+	/* ff
 	 * Typen von Messages:
 	 * type 0 : Login-Message
 	 * type 1 : Spielerbewegung
@@ -24,15 +21,9 @@ public class Message implements Serializable {
 	 * type 4 : Schl¸sselaufnahme
 	 * type 5 : Fehler (z.B. falsche Login-Daten, inkonsistente Bewegungen, usw)
 	 * type 6 : Level geladen
-	 * typ 7: cheat
+	 * typ 7: Spielende
 	 * typ 8: ping
 	 */
-	
-	public Message(String chat){
-		this.chat = chat;
-		this.Erstellzeit = System.currentTimeMillis();
-		this.myID = UUID.randomUUID();
-	}
 	
 	// Nachricht, die gesendet wird, wenn sich der Spieler bewegt, die Koordinaten sind die neuen Koordinaten
 	public Message(int t, int p,int x, int y){
