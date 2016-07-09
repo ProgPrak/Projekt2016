@@ -88,8 +88,6 @@ public class TestClient
 		this.commClient.startingProcess();
 		this.anmeldungerfolgreich=false;
 		nummerzumladen=0;
-		String s = JOptionPane.showInputDialog("saufakj");
-		this.sende(new Nachricht(5,s));
 	}		
 	
 	public void aktualisiereArray(int i , int j)
