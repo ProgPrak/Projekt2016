@@ -23,8 +23,8 @@ public class Nachricht {
 	// LevelNachricht enthaelt Benutzername und Passwort; Fehlermeldung, falls Verbindung abbricht oder aehnlich
 	String fehlermeldung, benutzername, passwort;
 	
-	//Level kann per Nachricht geschickt werden
-	Level leveldaten;
+	//Level-Array kann per Nachricht geschickt werden
+	int[][] leveldaten;
 	
 	// Nachricht, die gesendet wird, wenn sich der Spieler bewegt (type 1), die Koordinaten sind die neuen Koordinaten ¨
 	// oder, wenn ein Trank (type 2) oder der Schluessel (type 4) aufgenommen wurden
@@ -35,7 +35,7 @@ public class Nachricht {
 	}
 	
 	// Nachricht, die ein Level enthält (wird am Anfang vom Server empfangen)
-	public Nachricht (int t, Level x){
+	public Nachricht (int t, int[][] x){
 		this.typ = t;
 		this.leveldaten = x;
 	}
@@ -71,5 +71,9 @@ public class Nachricht {
 	//Enthalten y-Koordinate muss bei Standort geladen werden
 	public int getyKoo(){
 		return this.yKoo;
+	}
+	//Leveldaten werden zurückgegeben
+	public int[][] getLevelDaten(){
+		return leveldaten;
 	}
 }

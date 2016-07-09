@@ -1,10 +1,10 @@
+60	Alessio
 30	hallo
 20	jabo
+20	alessio
 2	molina
 2	jabo
 2	null
 2	klaus
-2	null
-2	null
 2	null
 2	null
