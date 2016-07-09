@@ -348,9 +348,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		
 		if(e.getKeyCode() == KeyEvent.VK_L)
 		{
-			String cheat = JOptionPane.showInputDialog("Cheat-Code eingeben:");
-			System.out.println(cheat);
-			
+			String cheat = JOptionPane.showInputDialog("Cheat-Code eingeben:");			
 			if(cheat.equals("schluessel"))
 			{
 				testClient.aktualisiereArray(spielFeld.schluessel.getPosX(),spielFeld.schluessel.getPosY());
