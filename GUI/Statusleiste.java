@@ -40,7 +40,7 @@ public class Statusleiste extends JPanel
 		}	
 		if(spieler !=null)g.drawImage(spieler, 0, 0, this);
 		g.setColor(Color.WHITE);
-		g.drawString("Level: " + fenster.levelNow +1, 56, 20);
+		g.drawString("Level: " + fenster.levelJetzt +1, 56, 20);
 		g.setColor(Color.WHITE);
 		g.drawString("Zeit: " + (System.currentTimeMillis()-fenster.startZeit)/1000, 126, 20);
 		g.setColor(Color.GREEN);

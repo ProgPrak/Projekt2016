@@ -38,7 +38,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 	public Spieler spieler;
 	public int rand = 480;
 	public long startZeit;
-	public int levelNow = 0;
+	public int levelJetzt = 0;
 	public final int BOX = 32, WIDTH = 16, HEIGHT = 16;
 	public boolean highscoreAngezeigt = false;
 	public int breite,laenge;
