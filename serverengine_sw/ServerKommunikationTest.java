@@ -9,8 +9,7 @@ public class ServerKommunikationTest implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public CommServer server;
-	
+	public CommServer server;	
 	
 	public ServerKommunikationTest (){
 		try {
@@ -27,7 +26,14 @@ public class ServerKommunikationTest implements Serializable{
 	
 	public static void handler(Nachricht msg){
 		switch(msg.getTyp()){
-		case 0: System.out.println(msg.getName()+" "+msg.getPasswort()); break;
+		case 0: System.out.println(msg.getName()+" "+msg.getPasswort());
+				if(msg.getName().equals("molina")&&msg.getPasswort().equals("madrid")){
+					System.out.println("erfolgreiches einloggen");
+				}
+				else{
+					System.out.println("falsches einloggen");
+				}
+				break;
 		case 5: System.out.println(msg.getFehler());break;
 		case 2: break;
 		default: break;
