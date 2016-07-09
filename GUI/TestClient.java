@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 import datenstruktur.Spieler;
+import kommunikation.CommClient;
 
 
 public class TestClient
@@ -17,6 +18,7 @@ public class TestClient
 	int levelnummer;
 	Spieler spieler;
 	int[][] dummyMap;
+	CommClient commClient;
 			  
 	
 	final int[][] dummyMap2={
@@ -88,8 +90,9 @@ public class TestClient
     }
     
 	public void sende(Nachricht m){
-		Nachrichten.add(m);
-		ausgabe();
+		//Nachrichten.add(m);
+		//ausgabe();
+		this.commClient.addToSendQ(m);
 	}
 	
 	public void aktualisiere(int ereignis){

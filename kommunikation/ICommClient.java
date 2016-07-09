@@ -1,12 +1,12 @@
 package kommunikation;
 
-import shared.Message;
+import GUI.Nachricht;;
 
 public interface ICommClient {
 	
-	public void sendMessage(Message message);
-	
-	public Message getNextMessage();
+	public void sendMessage(Nachricht message);
+	public void addToSendQ();
+	public Nachricht getNextMessage();
 		
 }
 

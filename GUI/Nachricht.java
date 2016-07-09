@@ -12,6 +12,7 @@ public class Nachricht {
 	 * type 5 : Fehler (z.B. falsche Login-Daten, inkonsistente Bewegungen, usw)
 	 * type 6 : Level geladen
 	 * type 7 : Spielende
+	 * type 8 : Ping
 	 */
 	int typ;
 	
@@ -74,5 +75,36 @@ public class Nachricht {
 	//Leveldaten werden zurückgegeben
 	public int[][] getLevelDaten(){
 		return leveldaten;
+	}
+	public String getMessage(){
+		String nachricht = null;
+		switch(this.getTyp()){
+		
+		case 0:
+			nachricht = this.passwort; // + this.benutzername;
+			break;
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4: 
+			break;
+		case 5: 
+			nachricht = this.fehlermeldung;
+			break;
+		case 6:
+			break;
+		case 7:
+			break;
+		case 8: 
+			nachricht = this.fehlermeldung;
+			break;
+			
+		default:
+				
+		}
+		return nachricht;
 	}
 }

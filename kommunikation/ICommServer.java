@@ -1,10 +1,11 @@
 package kommunikation;
 
+import GUI.Nachricht;
 import shared.Message;
 
 public interface ICommServer {
 	
-	public void messageToClient(Message msg);
+	public void messageToClient(Nachricht msg);
 	
 	public void stopConnection();
 

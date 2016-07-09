@@ -1,12 +1,14 @@
 package kommunikation;
 
-import shared.Message;
 import java.net.Socket;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.util.concurrent.ConcurrentLinkedQueue;
+
+import GUI.Nachricht;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.EOFException;
@@ -22,8 +24,8 @@ import java.io.IOException;
 
 public class CommClient{
 
-	private ConcurrentLinkedQueue<Message> receivingQ = new ConcurrentLinkedQueue<>();
-	private ConcurrentLinkedQueue<Message> sendingQ = new ConcurrentLinkedQueue<>();
+	private ConcurrentLinkedQueue<Nachricht> receivingQ = new ConcurrentLinkedQueue<>();
+	private ConcurrentLinkedQueue<Nachricht> sendingQ = new ConcurrentLinkedQueue<>();
 	Socket server = null;
 	InputStream is = null;
 	OutputStream os = null;
@@ -75,7 +77,7 @@ public class CommClient{
 					waiting++;
 					Thread.sleep(1000);
 				}else{
-					Message msg = (Message)sendingQ.poll();
+					Nachricht msg = (Nachricht)sendingQ.poll();
 					this.sendMessage(msg);
 					waiting =0;
 					Thread.sleep(1000);	
@@ -83,7 +85,7 @@ public class CommClient{
 				
 				if(waiting>5){
 					isOpen = false;
-					Message logout = new Message(5,"Logout");
+					Nachricht logout = new Nachricht(5,"Logout");
 					this.sendMessage(logout);
 				}
 			}
@@ -98,14 +100,14 @@ public class CommClient{
 	 * @param der zu bearbeitende Befehl
 	 * @author Max Wuestenberg 
 	 */
-	public synchronized void sendMessage(Message clientCommand) throws ClassNotFoundException {
+	public synchronized void sendMessage(Nachricht clientCommand) throws ClassNotFoundException {
 			
 		try {
 				
-			outputStream.writeObject((Message) clientCommand);
+			outputStream.writeObject((Nachricht) clientCommand);
 			outputStream.flush();
 			outputStream.reset();
-			System.out.println("Message sent: "+ clientCommand.getTyp());
+			System.out.println("Nachricht sent: "+ clientCommand.getTyp());
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.out.println("Error sending..");
@@ -116,16 +118,16 @@ public class CommClient{
 	 * @return das element welches am längsten in der Queue verweilte
 	 * @author Max Wuestenberg 
 	 */
-	public Message getNextMessage(){
+	public Nachricht getNextMessage(){
 		return receivingQ.poll();	
 	}
 	
 	/**
 	 * 
-	 * @param msg
+	 * @param m
 	 */
-	public void addToSendQ(Message msg){
-		sendingQ.add(msg);	
+	public void addToSendQ(Nachricht m){
+		sendingQ.add(m);
 	}
 	
 	/**
@@ -159,7 +161,7 @@ public class CommClient{
 		public void run(){
 			try{
 				while(true){
-					sendingQ.add(new Message(8, "Ping"));
+					sendingQ.add(new Nachricht(8, "Ping"));
 					Thread.sleep(1000);
 				}
 			}catch(Exception e){
@@ -179,7 +181,7 @@ public class CommClient{
 		public void run(){
 			while(slrun){
 				try{
-					Message incomMsg = (Message) inputStream.readObject();
+					Nachricht incomMsg = (Nachricht) inputStream.readObject();
 					if(incomMsg!= null){
 						System.out.println("saving Msg");
 						receivingQ.add(incomMsg);
