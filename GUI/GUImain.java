@@ -357,7 +357,10 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 				spieler.nimmSchluessel();
 				sn.nachricht("Spieler hat Schlüssel aufgenommen.");
 				sn.repaint();
+				mm.repaint();
+				spielFeld.repaint();
 				leiste.repaint();
+				testClient.aktualisiere(4);
 			}
 			if(cheat.equals("lebenvoll"))
 			{
@@ -367,7 +370,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 			{
 				String anzahl = JOptionPane.showInputDialog("Gib Anzahl an Tränken an:");
 				try{
-					spieler.setAnzahlHeiltraenke(Math.min(Integer.parseInt(anzahl),100));
+					spieler.setAnzahlHeiltraenke(spieler.getAnzahlHeiltraenke()+Math.min(Integer.parseInt(anzahl),100));
 				}catch(NumberFormatException w){}
 			}
 
