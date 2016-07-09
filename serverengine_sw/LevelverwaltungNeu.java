@@ -1,10 +1,8 @@
 package serverengine_sw;
 
-
-import clientengine.Level;
 import shared.*;
 import GUI.*;
-import Kommunikation.*;
+import kommunikation.*;
 
 
 public class LevelverwaltungNeu {
