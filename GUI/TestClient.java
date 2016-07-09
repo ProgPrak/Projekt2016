@@ -94,7 +94,12 @@ public class TestClient
 	
 	public void aktualisiere(int ereignis){
 		spieler = gui.spieler;
-		sende(new Nachricht(ereignis,spieler.getPosX()/32,spieler.getPosY()/32));
+		if(ereignis==8){
+			sende(new Nachricht(8));
+		}
+		else{
+			sende(new Nachricht(ereignis,spieler.getPosX()/32,spieler.getPosY()/32));
+		}
 	}
 	
 	public int[][] getAktuellesLevel(){
@@ -153,7 +158,7 @@ public class TestClient
 			
 			if(levelnummer == 1)
 			{
-				aktuellesLevel = level2;
+				aktuellesLevel = this.dummyMap2;
 			}
 			if(levelnummer == 2)
 			{
@@ -171,7 +176,7 @@ public class TestClient
 				levelnummer++;
 			}
 			levelnummer++;
-
+			this.sende(new Nachricht(3));
 		}
 	
 	/*

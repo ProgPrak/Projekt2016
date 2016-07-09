@@ -11,6 +11,7 @@ public class Nachricht {
 	 * type 4 : Schlüsselaufnahme
 	 * type 5 : Fehler (z.B. falsche Login-Daten, inkonsistente Bewegungen, usw)
 	 * type 6 : Level geladen
+	 * type 7 : Spielende
 	 */
 	int typ;
 	
@@ -51,7 +52,7 @@ public class Nachricht {
 		this.passwort = pw;
 	}
 	
-	// Nachricht, die gesendet wird, wenn das Level geschafft wurde(Typ 3) oder gecheatet wurde (Typ 7)
+	// Nachricht, die gesendet wird, wenn das Level geschafft wurde(Typ 3) oder gecheatet wurde (Typ 7), oder Spielende(Typ 8)
 	public Nachricht (int t){
 		this.typ = t;
 	}
