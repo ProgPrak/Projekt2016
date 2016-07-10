@@ -26,12 +26,9 @@ public class LevelverwaltungNeu {
 		//this.groesse = groesse;
 		//this.breite=breite;
 		//levelInhalt = new Map (this.groesse,this.breite,0,0,anzahlTraenkeImLevel);
-<<<<<<< HEAD
 		groesse=20;
 		breite=20;
 		Spieler spieler = new Spieler();
-=======
->>>>>>> branch 'master' of https://github.com/ProgPrak/Projekt2016.git
 		System.out.println("1");
 		l1= new Map (20,20,1,0,5);
 		l2= new Map (20,20,2,0,4);
@@ -60,28 +57,15 @@ public class LevelverwaltungNeu {
 		for (int i = 0; i<groesse ; i++){
 			for (int j = 0; j<breite ; j++){
 				if (levelInhalt.Struktur[i][j].SpielerDrauf==true){
-<<<<<<< HEAD
 					spieler.setPos(i, j);
-=======
-					Spieler spieler = new Spieler ();
-					spieler.posx=i;
-					spieler.posy=j;
->>>>>>> branch 'master' of https://github.com/ProgPrak/Projekt2016.git
 				}
 			}
-<<<<<<< HEAD
 			
 		}System.out.println(spieler.getPosY());
 		System.out.println(spieler.getPosX());
 		levelInhalt.Struktur[spieler.getPosY()][spieler.getPosX()].SpielerDrauf=true;
 		spielerKooX=spieler.getPosX();
 		spielerKooY=spieler.getPosY();
-=======
-			levelInhalt.Struktur[spieler.posy][spieler.posx].SpielerDrauf=true;
-		}
-		//TestClient server=new TestClient();
-		//TestClient client = new TestClient ();
->>>>>>> branch 'master' of https://github.com/ProgPrak/Projekt2016.git
 		
 	}
 	public  boolean testeTrankBenutzbar(){ //Teste ob Spieler Traenke hat
@@ -156,15 +140,9 @@ public class LevelverwaltungNeu {
 		for (int i = 0; i<groesse ; i++){
 			for (int j = 0; j<breite ; j++){
 				if (levelInhalt.Struktur[i][j].SpielerDrauf==true){
-<<<<<<< HEAD
 					spielerKooX = i;
 					spielerKooY = j;
 					//spieler.setPos(spielerKooX, spielerKooY);
-=======
-					Spieler spieler = new Spieler ();
-					spieler.posx=i;
-					spieler.posy=j;
->>>>>>> branch 'master' of https://github.com/ProgPrak/Projekt2016.git
 				}
 			}
 		}
@@ -174,20 +152,12 @@ public class LevelverwaltungNeu {
 	
 	public void verarbeiteNachricht(Nachricht Nachricht){
 		if (Nachricht.getTyp() ==1){
-<<<<<<< HEAD
 			Spieler spieler = new Spieler();
 			levelInhalt.Struktur[spieler.getPosY()][spieler.getPosX()].SpielerDrauf=false;
 			spielerKooX=Nachricht.getxKoo();
 			spielerKooY=Nachricht.getyKoo();
 			spieler.setPos(spielerKooX, spielerKooY);
 			levelInhalt.Struktur[spieler.getPosY()][spieler.getPosX()].SpielerDrauf=true;
-=======
-			
-			levelInhalt.Struktur[spieler.posy][spieler.posx].SpielerDrauf=false;
-			this.spieler.posx=Nachricht.getxKoo();
-			this.spieler.posy=Nachricht.getyKoo();
-			levelInhalt.Struktur[spieler.posy][spieler.posx].SpielerDrauf=true;
->>>>>>> branch 'master' of https://github.com/ProgPrak/Projekt2016.git
 			levelInhalt.wandleZuGuiArrayum();
 			Nachricht neuesLevel = new Nachricht(6,levelInhalt.GuiArray);
 			//server.messageToClient(neuesLevel);
@@ -208,7 +178,6 @@ public class LevelverwaltungNeu {
 				System.out.println("Level konnte nicht beendet werden");
 				Nachricht Fehlermeldung = new Nachricht (5, "level nicht beendet");
 			}
-<<<<<<< HEAD
 		}else 
 			if (Nachricht.getTyp() == 4)
 			{
@@ -217,15 +186,6 @@ public class LevelverwaltungNeu {
 					einSpielerHatSchluessel = true;
 				}
 
-=======
-		}else if (Nachricht.getTyp() == 4){
-			if(this.behandleschluesselaufnahme()){
-				System.out.println("Schluessel aufgehoben");
-			}else{
-				System.out.println("Schluessel nicht aufgehoben");
-				Nachricht Fehlermeldung = new Nachricht (5, "Schluessel nicht bei Spieler");
-			}
->>>>>>> branch 'master' of https://github.com/ProgPrak/Projekt2016.git
 		
 			}
 			else 
@@ -243,8 +203,4 @@ public class LevelverwaltungNeu {
 			lvwn.skt.handler();
 		}
 	}
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> branch 'master' of https://github.com/ProgPrak/Projekt2016.git

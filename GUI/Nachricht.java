@@ -24,11 +24,7 @@ public class Nachricht implements Serializable {
 	 * type 8 : Ping
 	 * type 9 : Aktuelles Level
 	 * type 10: Einloggen erfolgreich oder auch nicht
-<<<<<<< HEAD
 	 * type 11: Cheats aller Art
-=======
-	 * type 11;;
->>>>>>> branch 'master' of https://github.com/ProgPrak/Projekt2016.git
 	 */
 	int typ;
 	
