@@ -10,7 +10,7 @@ import java.awt.*;
 public class SpielFeld extends JPanel
 {
 	
-	int malex = 20,maley = 20,bildx,bildy,startx=0,starty=0;
+	int malex = 20,maley = 20,bildx,bildy,startx=0,starty=0, tuerKooX, tuerKooY;
 
 	  GUImain fenster;
 	  private Image boden,wand,tuerZu,tuerOffen,schluesselImg,heiltrank, monster1;
@@ -51,6 +51,36 @@ public class SpielFeld extends JPanel
 	    	}
 		  return 0;
 	  }
+	  
+	  private int getTuerKooX() 
+	  {
+		  for(int i = startx; i<20;i++)
+	    	{
+	    		for(int j = starty; j<20; j++)
+	    		{
+	    			if(aktuellesLevel[i][j] == 6)
+	    			{
+	    				return i;
+	    			}
+	    		}
+	    	}
+		  return 0;
+	  }
+	  
+	  private int getTuerKooY() 
+	  {
+		  for(int i = startx; i<20;i++)
+	    	{
+	    		for(int j = starty; j<20; j++)
+	    		{
+	    			if(aktuellesLevel[i][j] == 6)
+	    			{
+	    				return j;
+	    			}
+	    		}
+	    	}
+		  return 0;
+	  }
 
 	private int getSpielerMapX() 
 	{
@@ -69,9 +99,12 @@ public class SpielFeld extends JPanel
 
 	public void aktualisiereArray()
 	  {
+		 
 		  aktuellesLevel = fenster.testClient.getAktuellesLevel();
 		  starty=0;
 		  fenster.spieler.setPos(getSpielerMapX(), getSpielerMapY());
+		  tuerKooX = getTuerKooX();
+		  tuerKooY = getTuerKooY();
 	  }
 	  
 	  public int[][] getKarte()
@@ -131,11 +164,11 @@ public class SpielFeld extends JPanel
 	    				g.drawImage(boden, i*bildX, (j-starty)*bildY,bildX,bildY, this);
 	    				
 	    			}
-	    			if(aktuellesLevel[i][j] == 6)
+	    			if(aktuellesLevel[i][j] == 7)
 	    			{
 	    				g.drawImage(tuerOffen, i*bildX, (j-starty)*bildY,bildX,bildY, this);
 	    			}
-	    			if(aktuellesLevel[i][j] == 7)
+	    			if(aktuellesLevel[i][j] == 6)
 	    			{
 	    				g.drawImage(tuerZu, i*bildX, (j-starty)*bildY,bildX,bildY, this);
 	    			}

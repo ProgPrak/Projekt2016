@@ -39,7 +39,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 	public Spieler spieler;
 	public int rand = 480;
 	public long startZeit;
-	public int levelJetzt = 0;
+	public int levelJetzt = 1;
 	public final int BOX = 32, WIDTH = 16, HEIGHT = 16;
 	public boolean highscoreAngezeigt = false;
 	public int breite,laenge;
@@ -107,6 +107,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		this.remove(pf);
 		this.remove(steuerung);
 		this.add(leiste, BorderLayout.SOUTH);
+		spielFeld.aktualisiereArray();
 		this.getContentPane().add(spielFeld, BorderLayout.CENTER);
 		this.add(menu, BorderLayout.NORTH);
 		this.getContentPane().add(mm, BorderLayout.EAST);
@@ -164,8 +165,6 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		GUImain gui = new GUImain();
 		class DemoThread extends Thread 
 		{
-			
-
 			public void run()
 			{
 				//gui.repaint();
@@ -202,7 +201,18 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 					}
 					if(gui.spieler.aufOffenerTuer())
 					{
-						gui.naechstesLevel();
+						if(gui.levelJetzt == 5)
+						{
+							gui.highscoreAnzeigen();
+							gui.highscore.addSpielerToHighScore(gui.punkte);
+							try {
+								sleep(5000);
+							} catch (InterruptedException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}System.exit(0);
+						}
+						else gui.naechstesLevel();
 					}
 					if(gui.spieler.monsterNah())
 					{
@@ -358,11 +368,13 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 				testClient.aktualisiereArray(spielFeld.schluessel.getPosX(),spielFeld.schluessel.getPosY());
 				spieler.nimmSchluessel();
 				sn.nachricht("Spieler hat Schlüssel aufgenommen.");
+				testClient.aktualisiereArrayFlexibel(spielFeld.tuerKooX, spielFeld.tuerKooY, 7);
+				mm.aktualisiereKarte(spielFeld.getKarte());
 				sn.repaint();
 				mm.repaint();
 				spielFeld.repaint();
 				leiste.repaint();
-				testClient.aktualisiere(4);
+				testClient.aktualisiere(11);
 			}
 			if(cheat.equals("lebenvoll"))
 			{
@@ -378,7 +390,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 
 		}
 		
-		if(e.getKeyCode() == KeyEvent.VK_E)
+		/*if(e.getKeyCode() == KeyEvent.VK_E)
 		{
 			if(spieler.hatSchluessel() && spielFeld.getKarte()[spieler.getPosX()/32][spieler.getPosY()/32] != 7)
 			{
@@ -402,7 +414,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 				mm.repaint();
 				spieler.entferneSchluessel();
 			}
-		}
+		}*/
 		
 		// Leertaste nimmt Trank auf, wenn er unter Spieler ist und schickt Nachricht an Server.
 		if(e.getKeyCode() == KeyEvent.VK_SPACE)
@@ -412,8 +424,8 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 				sn.nachricht("Trank aufgenommen!");
 				sn.repaint();
 				spieler.setAnzahlHeiltraenke(spieler.getAnzahlHeiltraenke()+1);
-				testClient.aktualisiereArray(spieler.getPosX()/32, spieler.getPosY()/32);
 				testClient.aktualisiere(2);
+				spielFeld.aktualisiereArray();
 				mm.aktualisiereKarte(testClient.getAktuellesLevel());
 				mm.repaint();
 			}
@@ -424,9 +436,12 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 				sn.nachricht("Spieler hat Schlüssel aufgenommen.");
 				sn.repaint();
 				testClient.aktualisiereArray(spieler.getPosX()/32,spieler.getPosY()/32);
+				testClient.aktualisiereArrayFlexibel(spielFeld.tuerKooX, spielFeld.tuerKooY, 7);
+				mm.aktualisiereKarte(spielFeld.getKarte());
 				testClient.aktualisiere(4);
 				mm.aktualisiereKarte(testClient.getAktuellesLevel());
 				mm.repaint();
+				spielFeld.repaint();
 			}
 			
 		}
@@ -543,6 +558,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 	}
 
 	public void naechstesLevel() {
+		spieler.entferneSchluessel();
 		testClient.nextLevel();
 		spielFeld.aktualisiereArray();
 		mm.aktualisiereKarte(spielFeld.getKarte());

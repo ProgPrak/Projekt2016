@@ -20,7 +20,7 @@ public class Message implements Serializable {
 	 * type 1 : Spielerbewegung
 	 * type 2 : Trankaufnahme
 	 * type 3 : Level geschafft
-	 * type 4 : Schl¸sselaufnahme
+	 * type 4 : Schluesselaufnahme
 	 * type 5 : Fehler (z.B. falsche Login-Daten, inkonsistente Bewegungen, usw)
 	 * type 6 : Level geladen
 	 * typ 7: cheat

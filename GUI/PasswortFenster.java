@@ -80,35 +80,29 @@ public class PasswortFenster extends JPanel
             char[] input = passwortFeld.getPassword();
             String input2 = nutzerFeld.getText();
             String passwort = new String(input);
-            System.out.println("geht");
             gui.testClient.sende(new Nachricht(0,input2,passwort));
-            System.out.println("geht");
-            gui.testClient.empfange();
-            System.out.println("geht");
-            	if (gui.testClient.getAnmeldungerfolgreich()) 
-            	{
-            			einloggenWahr = true;
-            			passwortFeld.setText(null);
-            			nutzerFeld.setText(null);
+    		this.gui.testClient.empfange();
+    	
+            if (gui.testClient.getAnmeldungerfolgreich()){
+            	//this.gui.testClient.empfange();
+          		einloggenWahr = true;
+           		passwortFeld.setText(null);
+           		nutzerFeld.setText(null);
             		
-            	} 
-            	else 
-            	{
-            		passwortFeld.setText(null);
-        			nutzerFeld.setText(null);
-            		JOptionPane.showMessageDialog(kontrollFenster,
+            } 
+            else {
+            	passwortFeld.setText(null);
+        		nutzerFeld.setText(null);
+            	JOptionPane.showMessageDialog(kontrollFenster,
             				"Invalid password/username. Try again.",
             				"Error Message",
             				JOptionPane.ERROR_MESSAGE);
-            	}
-           	
-            
+            }
            
             resetFocus();
-        
-        }
+		}
     }
-
+    
     // Überprüft Login-Daten
     private boolean istPasswortKorrekt(String nutzerEingabe, char[] passwortEingabe) {
         boolean isCorrect = true;

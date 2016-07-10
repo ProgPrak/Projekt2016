@@ -85,7 +85,7 @@ public class Spieler extends Figur {
 	
 	public boolean aufOffenerTuer()
 	{
-		if(fenster.spielFeld.getKarte()[getPosX()/32][getPosY()/32] == 6)
+		if(fenster.spielFeld.getKarte()[getPosX()/32][getPosY()/32] == 7)
 		{
 			return true;
 		}

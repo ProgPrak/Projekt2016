@@ -50,12 +50,12 @@ public class Minimap extends JPanel
 		    				g.drawImage(wand, i*5, j*5,5,5, this);
 		    			}
 		    			
-		    			if(karte[i][j] == 6)
+		    			if(karte[i][j] == 7)
 		    			{
 		    				g.drawImage(tuerOffen, i*5, j*5,5,5, this);
 		    			}
 		    			
-		    			if(karte[i][j] == 7)
+		    			if(karte[i][j] == 6)
 		    			{
 		    				g.drawImage(tuerZu, i*5, j*5,5,5, this);
 		    			}

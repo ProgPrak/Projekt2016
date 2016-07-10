@@ -2,6 +2,8 @@ package GUI;
 
 import java.io.Serializable;
 
+import javax.swing.plaf.synth.SynthSeparatorUI;
+
 // Nachrichten werden zwischen Client und Server gesendet
 public class Nachricht implements Serializable {
 	/**
@@ -17,11 +19,12 @@ public class Nachricht implements Serializable {
 	 * type 3 : Level geschafft
 	 * type 4 : Schlüsselaufnahme
 	 * type 5 : Fehler (z.B. falsche Login-Daten, inkonsistente Bewegungen, usw)
-	 * type 6 : Level geladen
+	 * type 20 : Level geladen
 	 * type 7 : Spielende
 	 * type 8 : Ping
 	 * type 9 : Aktuelles Level
 	 * type 10: Einloggen erfolgreich oder auch nicht
+	 * type 11: Cheats aller Art
 	 */
 	int typ;
 	
@@ -114,13 +117,16 @@ public class Nachricht implements Serializable {
 			nachricht = this.fehlermeldung;
 			break;
 		case 6:
+			
 			break;
 		case 7:
 			break;
 		case 8: 
 			nachricht = this.fehlermeldung;
 			break;
-			
+		case 10:
+			if(this.getStatus() == true)nachricht = "true";
+			else nachricht = "false";
 		default:
 				
 		}

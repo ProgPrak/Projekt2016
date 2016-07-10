@@ -166,11 +166,9 @@ import GUI.Nachricht;
 		 */
 		
 		public synchronized void messageToClient(Nachricht msg){
-			System.out.println("versuche zu senden");
 			if(!client.isConnected()){
 				stopConnection();
 			}
-			System.out.println(msg.getMessage());
 			try {
 				outputQ.add(msg);
 				lfc.outStream.writeObject(msg);
@@ -193,7 +191,6 @@ import GUI.Nachricht;
 					while(run){
 						if(stillThere != null){
 							long timer = new Date().getTime() - stillThere.getTime();
-							System.out.println(timer);
 							if(timer>3000)
 								//dump();
 								//this.stop();
@@ -217,7 +214,6 @@ import GUI.Nachricht;
 		
 		ListenFromClient(Socket socket){
 			this.client = socket;
-			System.out.println("LFC versucht ObjectInputstream ud Out zu erzeugen");
 			try{
 				outStream = new ObjectOutputStream(new BufferedOutputStream(socket.getOutputStream()));
 				outStream.flush();
@@ -240,7 +236,6 @@ import GUI.Nachricht;
 					command = (Nachricht) inStream.readObject();
 					if (command != null){
 						stillThere = new Date();
-						System.out.println("Nachricht received: " +command.getMessage());
 						//handleMessage(command);
 						inputQ.add(command);
 						//Thread.sleep(100);

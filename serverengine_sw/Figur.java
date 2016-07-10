@@ -1,7 +1,5 @@
 package serverengine_sw;
 
-import java.awt.Image;
-
 //Oberklasse f�r Monster und Spieler
 public class Figur {
 

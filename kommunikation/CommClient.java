@@ -107,7 +107,6 @@ public class CommClient{
 			outputStream.writeObject((Nachricht) clientCommand);
 			outputStream.flush();
 			outputStream.reset();
-			System.out.println("Nachricht sent: "+ clientCommand.getTyp());
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.out.println("Error sending..");
@@ -136,7 +135,6 @@ public class CommClient{
 
 	public void disconnect(){
 		isOpen = false;
-		System.out.println("einmal abmelden bitte");
 		try{
 			if (inputStream != null)
 				inputStream.close();
@@ -184,10 +182,8 @@ public class CommClient{
 				try{
 					Nachricht incomMsg = (Nachricht) inputStream.readObject();
 					if(incomMsg!= null){
-						System.out.println("saving Msg");
 						receivingQ.add(incomMsg);
-						System.out.println(incomMsg.getMessage());
-						if(incomMsg.getMessage().equals("Logout-Sucsess")){
+						if(incomMsg.getMessage() != null && incomMsg.getMessage().equals("Logout-Sucess")){
 							//this.stop();
 							disconnect();
 						}	

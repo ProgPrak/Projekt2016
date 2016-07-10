@@ -25,6 +25,7 @@ public class TestClient
 			String s;  
 	boolean anmeldungerfolgreich;
 	int nummerzumladen;
+	boolean empfangen;
 	//
 	final int[][] dummyMap2={
 			  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -88,7 +89,9 @@ public class TestClient
 		this.commClient.startingProcess();
 		this.anmeldungerfolgreich=false;
 		nummerzumladen=0;
-		System.out.println("bis hier hin");
+		empfangen=false;
+		sende(new Nachricht(20));
+		empfange();
 	}		
 	
 	public void aktualisiereArray(int i , int j)
@@ -115,12 +118,13 @@ public class TestClient
 		if(ereignis==8){
 			sende(new Nachricht(8));
 		}
-		else if(ereignis == 4){
-			sende(new Nachricht(ereignis,gui.spielFeld.schluessel.getPosX(),gui.spielFeld.schluessel.getPosX()));
+		else if(ereignis == 4 || ereignis == 11){
+			sende(new Nachricht(ereignis,gui.spielFeld.schluessel.getPosX(),gui.spielFeld.schluessel.getPosY()));
 		}
 		else{
 			sende(new Nachricht(ereignis,spieler.getPosX()/32,spieler.getPosY()/32));
 		}
+		this.empfange();
 	}
 	
 	public int[][] getAktuellesLevel(){
@@ -158,18 +162,19 @@ public class TestClient
 	
 	public void empfange()
 	{
-		Nachricht m;
-		while(true){
+		Nachricht m = null;
+		this.empfangen = false;
+		while(this.empfangen==false){
 			m = this.commClient.getNextMessage();
 			if(m!=null){
-				break;
+				this.empfangen=true;
 				}
 			}
 		switch(m.getTyp()){
-		case 0: this.anmeldungerfolgreich=true;break;
-		case 5: this.anmeldungerfolgreich=false; break;
-		case 6: if(this.nummerzumladen==1){
-					this.level1=m.getLevelDaten(); 
+		case 5: break;
+		/*case 6: if(this.nummerzumladen==1){
+					aktuellesLevel = m.getLevelDaten(); 
+					this.level1=aktuellesLevel; 
 					this.nummerzumladen++;
 				}
 				else if(this.nummerzumladen==2){
@@ -184,14 +189,20 @@ public class TestClient
 					this.level1=m.getLevelDaten(); 
 					this.nummerzumladen++;
 				}
-				if(this.nummerzumladen==5){
+				else if(this.nummerzumladen==5){
 					this.level1=m.getLevelDaten(); 
 					this.nummerzumladen++;
 				}
-				break;
-		case 10: this.anmeldungerfolgreich=m.getStatus();
+				break;*/
+		case 9 : this.aktuellesLevel = m.getLevelDaten(); break;
+		case 10: this.anmeldungerfolgreich=m.getStatus(); break;
+		case 20: 
+			aktuellesLevel = m.getLevelDaten(); 
+			
+			this.level1=aktuellesLevel; 
+			this.nummerzumladen++;
+		break;
 		}
-				
 		
 	}
 		/*
@@ -216,27 +227,26 @@ public class TestClient
 */
 		public void nextLevel(){
 			
-			if(levelnummer == 1)
+			/*if(levelnummer == 1)
 			{
-				aktuellesLevel = this.dummyMap2;
+				aktuellesLevel = level2;
 			}
 			if(levelnummer == 2)
 			{
 				aktuellesLevel = level3;
-				levelnummer++;
 			}
 			if(levelnummer == 3)
 			{
 				aktuellesLevel = level4;
-				levelnummer++;
 			}
 			if(levelnummer == 4)
 			{
 				aktuellesLevel = level5;
-				levelnummer++;
 			}
-			levelnummer++;
+			levelnummer++;*/
 			this.sende(new Nachricht(3));
+			gui.levelJetzt++;
+			empfange();
 		}
 	public boolean getAnmeldungerfolgreich(){
 		return this.anmeldungerfolgreich;
