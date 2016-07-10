@@ -26,7 +26,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	// Die für das Spiel relevanten Panels und Variablen werden deklariert
+	// Die für das Spiel relevanten Panels und Variablen werden deklariert.
 	private PasswortFenster pf;	
 	public SpielFeld spielFeld;
 	public Menu menu;
@@ -108,6 +108,7 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		this.remove(steuerung);
 		this.add(leiste, BorderLayout.SOUTH);
 		spielFeld.aktualisiereArray();
+
 		this.getContentPane().add(spielFeld, BorderLayout.CENTER);
 		this.add(menu, BorderLayout.NORTH);
 		this.getContentPane().add(mm, BorderLayout.EAST);
