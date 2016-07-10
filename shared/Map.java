@@ -25,7 +25,8 @@ public class Map {
 		Generator = new Generator (Hoehe,Breite, AnzahlMonster, AnzahlHiddenMonster, AnzahlTraenke);
 		TileTypes=Generator.floodfill();
 		teileTilesZu(TileTypes);
-		
+		GuiArray = new int[this.Hoehe][this.Breite];
+		this.initialisiereGuiArray();
 	}
 	
 	public void generiereTiles(){

@@ -1,9 +1,7 @@
 package serverengine_sw;
 
 import shared.*;
-import GUI.*;
 import GUI.Nachricht;
-import kommunikation.*;
 
 
 public class LevelverwaltungNeu {
@@ -20,24 +18,27 @@ public class LevelverwaltungNeu {
 	public TestClient client;
 	//public TestClient server;
 	//public ServerKommunikationTest server;
-	public CommServer server;
+	ServerKommunikationTest skt;
 	
 	
 	public LevelverwaltungNeu() {
-		this.groesse = groesse;
-		this.breite=breite;
+		//this.groesse = groesse;
+		//this.breite=breite;
 		//levelInhalt = new Map (this.groesse,this.breite,0,0,anzahlTraenkeImLevel);
+		System.out.println("1");
 		l1= new Map (20,20,1,0,5);
 		l2= new Map (20,20,2,0,4);
 		l3= new Map (20,20,3,0,3);
 		l4= new Map (20,20,4,0,2);
 		l5= new Map (20,20,5,0,1);
+		System.out.println("2");
 		l1.wandleZuGuiArrayum();
 		l2.wandleZuGuiArrayum();
 		l3.wandleZuGuiArrayum();
 		l4.wandleZuGuiArrayum();
 		l5.wandleZuGuiArrayum();
-		Nachricht ll1 = new Nachricht(6,l1.GuiArray);
+		System.out.println("3");
+		/*Nachricht ll1 = new Nachricht(6,l1.GuiArray);
 		Nachricht ll2 = new Nachricht(6,l2.GuiArray);
 		Nachricht ll3 = new Nachricht(6,l3.GuiArray);
 		Nachricht ll4 = new Nachricht(6,l4.GuiArray);
@@ -46,30 +47,21 @@ public class LevelverwaltungNeu {
 		server.messageToClient(ll2);
 		server.messageToClient(ll3);
 		server.messageToClient(ll4);
-		server.messageToClient(ll5);
+		server.messageToClient(ll5);*/
 		levelInhalt=l1;
 		levelcounter=1;
-		try {
-			server= new CommServer(7891);
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		for (int i = 0; i<groesse ; i++){
 			for (int j = 0; j<breite ; j++){
 				if (levelInhalt.Struktur[i][j].SpielerDrauf==true){
-					Spieler spieler = new Spieler (0);
+					Spieler spieler = new Spieler ();
 					spieler.posx=i;
 					spieler.posy=j;
 				}
 			}
 			levelInhalt.Struktur[spieler.posy][spieler.posx].SpielerDrauf=true;
 		}
-		TestClient server=new TestClient();
-		TestClient client = new TestClient ();
+		//TestClient server=new TestClient();
+		//TestClient client = new TestClient ();
 		
 	}
 	public static boolean testeTrankBenutzbar(){ //Teste ob Spieler Traenke hat
@@ -96,7 +88,7 @@ public class LevelverwaltungNeu {
 			moeglich = true;
 			levelInhalt.wandleZuGuiArrayum();
 			Nachricht neuesLevel = new Nachricht(6,levelInhalt.GuiArray);
-			server.messageToClient(neuesLevel);
+			//server.messageToClient(neuesLevel);
 		}
 		
 		return moeglich;
@@ -108,7 +100,7 @@ public class LevelverwaltungNeu {
 			moeglich = true;
 			levelInhalt.wandleZuGuiArrayum();
 			Nachricht neuesLevel = new Nachricht(6,levelInhalt.GuiArray);
-			server.messageToClient(neuesLevel);
+			//server.messageToClient(neuesLevel);
 		}
 		
 		return moeglich;
@@ -121,7 +113,7 @@ public class LevelverwaltungNeu {
 			ergebnis=true;
 			levelInhalt.wandleZuGuiArrayum();
 			Nachricht neuesLevel = new Nachricht(6,levelInhalt.GuiArray);
-			server.messageToClient(neuesLevel);
+			//server.messageToClient(neuesLevel);
 		}
 		return ergebnis;
 	}
@@ -146,7 +138,7 @@ public class LevelverwaltungNeu {
 		for (int i = 0; i<groesse ; i++){
 			for (int j = 0; j<breite ; j++){
 				if (levelInhalt.Struktur[i][j].SpielerDrauf==true){
-					Spieler spieler = new Spieler (0);
+					Spieler spieler = new Spieler ();
 					spieler.posx=i;
 					spieler.posy=j;
 				}
@@ -158,13 +150,14 @@ public class LevelverwaltungNeu {
 	
 	public void verarbeiteNachricht(Nachricht Nachricht){
 		if (Nachricht.getTyp() ==1){
+			
 			levelInhalt.Struktur[spieler.posy][spieler.posx].SpielerDrauf=false;
 			this.spieler.posx=Nachricht.getxKoo();
 			this.spieler.posy=Nachricht.getyKoo();
 			levelInhalt.Struktur[spieler.posy][spieler.posx].SpielerDrauf=true;
 			levelInhalt.wandleZuGuiArrayum();
 			Nachricht neuesLevel = new Nachricht(6,levelInhalt.GuiArray);
-			server.messageToClient(neuesLevel);
+			//server.messageToClient(neuesLevel);
 		}
 		
 		 if (Nachricht.getTyp() == 2){
@@ -178,20 +171,27 @@ public class LevelverwaltungNeu {
 			}
 		}else if (Nachricht.getTyp() == 3){
 			if(this.levelGewonnen()){
-				System.out.println("N�chstes Level");
+				System.out.println("Naechstes Level");
 			}else{
 				System.out.println("Level konnte nicht beendet werden");
-				Nachricht Fehlermeldung = new Nachricht (7, "level nicht beendet");
+				Nachricht Fehlermeldung = new Nachricht (5, "level nicht beendet");
 			}
 		}else if (Nachricht.getTyp() == 4){
 			if(this.behandleschluesselaufnahme()){
-				System.out.println("Schl�ssel aufgehoben");
+				System.out.println("Schluessel aufgehoben");
 			}else{
-				System.out.println("Schl�ssel nicht aufgehoben");
-				Nachricht Fehlermeldung = new Nachricht (7, "Schl�ssel nicht bei Spieler");
+				System.out.println("Schluessel nicht aufgehoben");
+				Nachricht Fehlermeldung = new Nachricht (5, "Schluessel nicht bei Spieler");
 			}
 		
 		}
 	}
 
+	public static void main(String[]args){
+		LevelverwaltungNeu lvwn = new LevelverwaltungNeu();
+		while(true)
+		{
+			lvwn.skt.handler();
+		}
+	}
 }

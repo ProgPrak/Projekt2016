@@ -107,6 +107,8 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		this.remove(pf);
 		this.remove(steuerung);
 		this.add(leiste, BorderLayout.SOUTH);
+		spielFeld.aktualisiereArray();
+		System.out.println();
 		this.getContentPane().add(spielFeld, BorderLayout.CENTER);
 		this.add(menu, BorderLayout.NORTH);
 		this.getContentPane().add(mm, BorderLayout.EAST);
@@ -164,8 +166,6 @@ public class GUImain extends JFrame implements MouseListener, KeyListener
 		GUImain gui = new GUImain();
 		class DemoThread extends Thread 
 		{
-			
-
 			public void run()
 			{
 				//gui.repaint();

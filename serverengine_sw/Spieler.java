@@ -6,8 +6,7 @@ public class Spieler extends Figur {
 	int anzHeiltraenke;
 	
 	//Spieler erhält bei der Erstellung eine ID
-	public Spieler(int i){
-		setID(i);
+	public Spieler(){
 		setPos(0,0);
 		anzHeiltraenke=0;
 		setMaxGesundheit(200);
